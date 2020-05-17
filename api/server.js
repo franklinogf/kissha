@@ -1,9 +1,12 @@
 const express = require("express")
+const mysql = require('mysql')
 const app = express()
+const products = require('./routes/products')
+require("dotenv/config")
 
-app.get('/',(req,res)=>{
-   res.send("It works!")
-})
+const port = process.env.PORT
 
+// Middlewear
+app.use('/products', products)
 
-app.listen(5000)
+app.listen(port, () => console.log(`Listing on port ${port}`))

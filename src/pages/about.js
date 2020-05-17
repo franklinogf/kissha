@@ -6,6 +6,5 @@ const colors = {
 }
 
 export default () => <div>
-   <h1 style={ colors.textBlue }>Kissha</h1>
-   <p style={ colors.textRed }>Shop your beauty</p>
+   <h1 style={ colors.textBlue }>About</h1>
 </div>

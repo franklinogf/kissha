@@ -6,10 +6,18 @@ require("dotenv/config")
 
 const port = process.env.PORT
 
-// Middlewear
-app.use('/products', products)
+/* ------------------------------- Middlewear ------------------------------- */
 
+app.use(express.json())
+
+/* --------------------------------- Routes --------------------------------- */
+
+app.use('/products', products)
 app.use('/categories', categories)
+
+
+
+/* ------------------------------ Start server ------------------------------ */
 
 app.listen(port, () => console.log(`
 Listing on port ${port}

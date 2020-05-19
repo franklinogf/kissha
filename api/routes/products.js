@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const mysql = require('../database')
 
+/*product routes*/ 
 router.get('/',(req,res)=>{
   mysql.query("SELECT * FROM categories",(err,rows,fields)=>{
      if(!err){
@@ -11,5 +12,7 @@ router.get('/',(req,res)=>{
      }
   })
 })
+
+
 
 module.exports = router

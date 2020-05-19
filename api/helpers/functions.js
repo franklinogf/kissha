@@ -1,3 +1,4 @@
+/* ----- create the set cols for the update query and return the values ----- */
 
 const updateQuery = (data) =>  {
    let whereValues = []

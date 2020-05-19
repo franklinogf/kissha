@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
          } else {
             res.json({
                status: false,
-               message: "Not category found"
+               message: `Not ${_table} found`
             })
          }
       } else {
@@ -76,7 +76,7 @@ router.patch('/:id/', (req, res) => {
       if (!err) {
          res.json({
             status: true,
-            message: "Ok",
+            message: "Updated",
             data: rows[0]
          })
       } else {

@@ -2,17 +2,38 @@
 
 const updateQuery = (data) =>  {
    let whereValues = []
-   let updateQuery = ''
+   let colQuery = ''
 
    let index = 0;
    for (col in data) {
       whereValues.push(data[col]);
       const coma = index === 0 ? '' : ', '
-      updateQuery += `${coma}${col} = ?`
+      colQuery += `${coma}${col} = ?`
       index++
    }
-   return [updateQuery,whereValues]
+   return [colQuery,whereValues]
 }
 
+/* ----------------- returns the insert query and the values ---------------- */
 
-module.exports = updateQuery;
+const insertQuery = (data) =>  {
+   let whereValues = []
+   let colQuery = ''
+   let valuesQuery = ''
+
+   let index = 0;
+   for (col in data) {
+      whereValues.push(data[col]);
+      const coma = index === 0 ? '' : ', '
+      colQuery += `${coma}${col}`
+      valuesQuery += `${coma}?`
+      index++
+   }
+   const query = `(${query}) VALUES (${valuesQuery})`
+   return [query,whereValues]
+}
+
+module.exports = {
+   updateQuery,
+   insertQuery
+};

@@ -1,9 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const mysql = require('../database')
-// this is for testing porpuses
-/*product routes*/ 
-// this is a test from the miguel side
+
 router.get('/',(req,res)=>{
   mysql.query("SELECT * FROM categories",(err,rows,fields)=>{
      if(!err){

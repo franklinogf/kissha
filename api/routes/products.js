@@ -10,10 +10,21 @@ const _table = "products";
 router.get('/', (req, res) => {
    mysql.query(`SELECT * FROM ${_table}`, (err, rows, fields) => {
       if (!err) {
-         res.json({
-            status: true,
-            message: "Ok",
-            data: rows
+         rows.map(row => {
+            mysql.query(`SELECT * FROM categories WHERE id = ?`, row.idCategory, (err, categoryRows, fields) => {
+               delete row.idCategory
+               row.category = {
+                  id: categoryRows[0].id,
+                  name: categoryRows[0].name
+               }
+               res.json({
+                  status: true,
+                  message: "Ok",
+                  data: rows
+               })
+
+            })
+
          })
       } else {
          res.json({

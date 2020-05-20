@@ -2,7 +2,7 @@
 const DataTypes = require('sequelize');
 const mysql = require('../database');
 
-const address = mysql.define('address', {
+const addresses = mysql.define('addresses', {
   'id': {
     type: DataTypes.INTEGER(11),
     allowNull: false,
@@ -65,5 +65,5 @@ const address = mysql.define('address', {
   tableName: 'addresses'
 });
 
-module.exports = address;
+module.exports = addresses;
 

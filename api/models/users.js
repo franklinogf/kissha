@@ -40,13 +40,13 @@ const users = mysql.define('users', {
     allowNull: true,
     comment: "null"
   },
-  'created_at': {
+  'createdAt': {
     type: DataTypes.DATE,
     allowNull: true,
     defaultValue: mysql.literal('CURRENT_TIMESTAMP'),
     comment: "null"
   },
-  'updated_at': {
+  'updatedAt': {
     type: DataTypes.DATE,
     allowNull: true,
     defaultValue: mysql.literal('CURRENT_TIMESTAMP'),

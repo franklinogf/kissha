@@ -13,11 +13,20 @@ db.authenticate()
     .then(() => console.log('DB Conectada'))
     .catch(error => console.log(error))
 
-// Middlewear
+// Middleware
 app.use(express.json())
-
+app.use(['/users/:id',"/categories/:id","/address/:id"], (req, res, next) => {
+    const { id } = req.params
+    if(!Number.isInteger(Number(id))){       
+        res.status(500).json({
+            status:false,
+            message:`:id should be a integer, '${id}' given`
+        })
+        return
+    }
+    next()
+})
 // Routes
-
 app.use('/users', users)
 app.use('/address', address)
 app.use('/categories', categories)

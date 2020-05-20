@@ -2,20 +2,20 @@ const express = require("express")
 const router = express.Router()
 const { Properties } = require('../helpers/functions')
 const categories = require('../models/categories')
+const table = 'categories'
 
 router.get('/', (req, res) => {
-
-   categories.findAll().then(categories => {
-      if (categories !== null) {
+   eval(table).findAll().then(data => {
+      if (data !== null) {
          res.json({
             status: true,
             message: "Ok",
-            data: categories
+            data: data
          })
       } else {
          res.json({
             status: false,
-            message: `No categories found`
+            message: `No ${table} found`
          })
       }
    })
@@ -24,17 +24,17 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
    const { id } = req.params
-   categories.findByPk(id).then(category => {
-      if (category !== null) {
+   eval(table).findByPk(id).then(data => {
+      if (data !== null) {
          res.json({
             status: true,
             message: "Ok",
-            data: category
+            data: data
          })
       } else {
          res.json({
             status: false,
-            message: `No categories found`
+            message: `No ${table} found`
          })
       }
    })
@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
    const data = Properties(req.body)
-   categories.create(data).then(err => {
+   eval(table).create(data).then(err => {
       if (err == 1) {
          res.json({
             status: true,
@@ -61,7 +61,7 @@ router.post('/', (req, res) => {
 router.patch('/:id', (req, res) => {
    const { id } = req.params
    const data = Properties(req.body)
-   const query = categories.update(data, {
+   const query = eval(table).update(data, {
       where: { id }
    })
       .then(err => {
@@ -81,7 +81,7 @@ router.patch('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
    const { id } = req.params
-   categories.delete({
+   eval(table).delete({
       where: { id }
    }).then(err => {
       if (err == 1) {

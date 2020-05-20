@@ -5,7 +5,7 @@ const table = require('../models/address')
 
 router.get('/', (req, res) => {
     table.findAll().then(data => {
-        if (data !== null) {
+        if (data.length > 0) {
             res.json({
                 status: true,
                 message: "Ok",
@@ -42,18 +42,20 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     const data = Properties(req.body)
-    table.create(data).then(err => {
-        if (err == 1) {
-            res.json({
-                status: true,
-                message: "created"
-            })
-        } else {
-            res.json({
-                status: false,
-                message: "No created"
-            })
-        }
+    table.create(data).then(data => {       
+        res.json({
+            status: true,
+            message: "created",
+            data: data
+        })
+           
+    }).catch(err => {
+        console.log('err: ', err);
+        res.json({
+            status: false,
+            message: "No created"
+        })
+   
     })
 })
 

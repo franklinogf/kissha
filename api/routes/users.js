@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     table.findAll({
         include: addresses
     }).then(data => {
-        if (data !== null) {
+        if (data.length > 0) {
             res.json({
                 status: true,
                 message: "Ok",
@@ -52,10 +52,10 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/address', (req, res) => {
     const { id } = req.params
-    addresses.findAll({       
-        where: { id }
+    addresses.findAll({
+        where: { userId: id }
     }).then(data => {
-        if (data !== null) {
+        if (data.length > 0) {
             res.json({
                 status: true,
                 message: "Ok",
@@ -71,20 +71,41 @@ router.get('/:id/address', (req, res) => {
 
 })
 
+router.post('/:id/address', (req, res) => {
+    const { id } = req.params
+    const data = Properties(req.body)
+    addresses.create({...data, userId: id }).then(data => {
+        res.json({
+            status: true,
+            message: "Ok",
+            data: data
+        })
+    }).catch(err => {
+        console.log('err: ', err);
+        res.json({
+            status: false,
+            message: `No data found`
+        })
+    })
+
+})
+
 router.post('/', (req, res) => {
     const data = Properties(req.body)
-    table.create(data).then(err => {
-        if (err == 1) {
-            res.json({
-                status: true,
-                message: "created"
-            })
-        } else {
-            res.json({
-                status: false,
-                message: "No created"
-            })
-        }
+    table.create(data).then(data => {
+        res.json({
+            status: true,
+            message: "created",
+            data: data
+        })
+
+    }).catch(err => {
+        console.log('err: ', err);
+        res.json({
+            status: false,
+            message: "No created"
+        })
+
     })
 })
 

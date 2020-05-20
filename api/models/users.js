@@ -1,8 +1,7 @@
-/* jshint indent: 2 */
 const DataTypes = require('sequelize')
 const mysql = require('../database')
 
-const users = mysql.define('users', {
+module.exports = mysql.define('users', {
   'id': {
     type: DataTypes.INTEGER(11),
     allowNull: false,
@@ -54,10 +53,4 @@ const users = mysql.define('users', {
   }
 }, {
   tableName: 'users'
-});
-
-
-
-
-module.exports = users;
-
+})

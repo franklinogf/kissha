@@ -1,8 +1,7 @@
 const DataTypes = require('sequelize')
 const mysql = require('../database')
 
-
-const categories = mysql.define('categories', {
+module.exports = mysql.define('categories', {
   'id': {
     type: DataTypes.INTEGER(11),
     allowNull: false,
@@ -30,6 +29,4 @@ const categories = mysql.define('categories', {
   }
 }, {
   tableName: 'categories'
-});
-
-module.exports = categories
+})

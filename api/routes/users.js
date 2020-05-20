@@ -8,7 +8,6 @@ const addresses = require('../models/address')
 table.hasMany(addresses)
 addresses.belongsTo(table)
 
-
 router.get('/', (req, res) => {
     table.findAll({
         include: addresses
@@ -33,6 +32,27 @@ router.get('/:id', (req, res) => {
     const { id } = req.params
     table.findOne({
         include: addresses,
+        where: { id }
+    }).then(data => {
+        if (data !== null) {
+            res.json({
+                status: true,
+                message: "Ok",
+                data: data
+            })
+        } else {
+            res.json({
+                status: false,
+                message: `No data found`
+            })
+        }
+    })
+
+})
+
+router.get('/:id/address', (req, res) => {
+    const { id } = req.params
+    addresses.findAll({       
         where: { id }
     }).then(data => {
         if (data !== null) {

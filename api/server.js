@@ -1,23 +1,25 @@
 const express = require("express")
 const app = express()
-const products = require('./routes/products')
-const categories = require('./routes/categories')
+const users = require('./routes/users')
+const address = require('./routes/address')
 require("dotenv/config")
-
+const db = require('./config/database')
 const port = process.env.PORT
 
-/* ------------------------------- Middlewear ------------------------------- */
+db.authenticate()
+    .then(()=> console.log('DB Conectada'))
+    .catch(error => console.log(error))
+
+// Middlewear
 
 app.use(express.json())
 
-/* --------------------------------- Routes --------------------------------- */
+// Routes
 
-app.use('/products', products)
-app.use('/categories', categories)
+app.use('/users', users)
+app.use('/address', address)
 
-
-
-/* ------------------------------ Start server ------------------------------ */
+// Start Server
 
 app.listen(port, () => console.log(`
 Listing on port ${port}

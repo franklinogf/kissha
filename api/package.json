@@ -1,35 +1,23 @@
 {
-  "name": "kissha-api",
+  "name": "rest-api-node",
   "version": "1.0.0",
-  "description": "api for the kissha store",
+  "description": "A Node.js RESTful API tutorial proyecto (build a simple shop API)",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LaCherCha1/kissha.git"
-  },
   "keywords": [
-    "api",
-    "store",
-    "kissha",
-    "data",
-    "makeup",
-    "cosmetics"
+    "node",
+    "restful",
+    "api"
   ],
-  "author": "Franklin Gonzalez, Miguel Peña",
+  "author": "Miguel Angel Peña Santos",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LaCherCha1/kissha/issues"
-  },
-  "homepage": "https://github.com/LaCherCha1/kissha#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mysql": "^2.18.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.4",
+    "sequelize": "^5.21.10"
   }
 }

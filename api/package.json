@@ -1,7 +1,7 @@
 {
-  "name": "rest-api-node",
+  "name": "kissha-api",
   "version": "1.0.0",
-  "description": "A Node.js RESTful API tutorial proyecto (build a simple shop API)",
+  "description": "api for the kissha store",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
@@ -11,7 +11,7 @@
     "restful",
     "api"
   ],
-  "author": "Miguel Angel Peña Santos",
+  "author": "Franklin Gonzalez, Miguel Peña",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",

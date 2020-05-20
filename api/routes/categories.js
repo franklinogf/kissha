@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
 router.patch('/:id', (req, res) => {
    const { id } = req.params
    const data = Properties(req.body)
-   const query = table.update(data, {
+   table.update(data, {
       where: { id }
    })
       .then(err => {

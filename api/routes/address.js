@@ -7,9 +7,7 @@ var address = require('../models/address')
 
 router.get('/', (req, res) => {
 
-    address.findAll({
-        include: users
-    }).then(address => {
+    address.findAll().then(address => {
         res.json(address);
     })
 

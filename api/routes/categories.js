@@ -1,11 +1,10 @@
 const express = require("express")
 const router = express.Router()
 const { Properties } = require('../helpers/functions')
-const categories = require('../models/categories')
-const table = 'categories'
+const table = require('../models/categories')
 
 router.get('/', (req, res) => {
-   eval(table).findAll().then(data => {
+   table.findAll().then(data => {
       if (data !== null) {
          res.json({
             status: true,
@@ -15,7 +14,7 @@ router.get('/', (req, res) => {
       } else {
          res.json({
             status: false,
-            message: `No ${table} found`
+            message: `No data found`
          })
       }
    })
@@ -24,7 +23,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
    const { id } = req.params
-   eval(table).findByPk(id).then(data => {
+   table.findByPk(id).then(data => {
       if (data !== null) {
          res.json({
             status: true,
@@ -34,7 +33,7 @@ router.get('/:id', (req, res) => {
       } else {
          res.json({
             status: false,
-            message: `No ${table} found`
+            message: `No data found`
          })
       }
    })
@@ -43,7 +42,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
    const data = Properties(req.body)
-   eval(table).create(data).then(err => {
+   table.create(data).then(err => {
       if (err == 1) {
          res.json({
             status: true,
@@ -61,7 +60,7 @@ router.post('/', (req, res) => {
 router.patch('/:id', (req, res) => {
    const { id } = req.params
    const data = Properties(req.body)
-   const query = eval(table).update(data, {
+   const query = table.update(data, {
       where: { id }
    })
       .then(err => {
@@ -81,7 +80,7 @@ router.patch('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
    const { id } = req.params
-   eval(table).delete({
+   table.delete({
       where: { id }
    }).then(err => {
       if (err == 1) {

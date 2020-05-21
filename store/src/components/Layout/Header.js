@@ -1,25 +1,23 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import Logo from "../Logo/Logo"
-import {Navbar,Nav,NavDropdown} from "react-bootstrap"
+import { Navbar, Nav, NavLink } from "react-bootstrap"
 
 const Header = () => {
    return (
       <div>
-         <Logo />
+         <Link to="/" >
+            <Logo />
+         </Link>
          <Navbar sticky="top" className="d-flex justify-content-center mt-3" bg='white' expand="md">
             <Navbar.Toggle aria-controls="navbar" />
             <Navbar.Collapse className="justify-content-center" id="navbar">
                <Nav>
-                  <NavDropdown className="mr-md-2 mr-lg-4" title="Brows" id='nav-dropdown'>
-                     <NavDropdown.Item href="#">Another action </NavDropdown.Item>
-                     <NavDropdown.Item href="#">Something </NavDropdown.Item>
-                     <NavDropdown.Item href="#">Separated link</NavDropdown.Item>
-                  </NavDropdown>
-                  <Nav.Link className="mr-md-2 mr-lg-4" href="#">Eyes</Nav.Link>
-                  <Nav.Link className="mr-md-2 mr-lg-4" href="#">Face</Nav.Link>
-                  <Nav.Link className="mr-md-2 mr-lg-4" href="#">Skin Care</Nav.Link>
-                  <Nav.Link className="mr-md-2 mr-lg-4" href="#">Body Care</Nav.Link>
-                  <Nav.Link className="mr-md-2 mr-lg-4" href="#">Lips</Nav.Link>
+                  <NavLink className="mr-md-2 mr-lg-4" href="/about/" >New Arrivals</NavLink>
+                  <NavLink className="mr-md-2 mr-lg-4" href="#" >Best Seller</NavLink>
+                  <NavLink className="mr-md-2 mr-lg-4" href="#" >Makeup </NavLink>
+                  <NavLink className="mr-md-2 mr-lg-4" href="#" >Skin care </NavLink>
+                  <NavLink className="mr-md-2 mr-lg-4" href="#" >Sales</NavLink>
                </Nav>
             </Navbar.Collapse>
          </Navbar>

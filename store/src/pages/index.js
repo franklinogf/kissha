@@ -1,11 +1,15 @@
-import React from "react"
-
-const colors = {
-   textBlue: { color: "blue" },
-   textRed: { color: "red" },
+import React, { Component } from 'react'
+import Container from 'react-bootstrap/Container'
+import Header from '../components/Layout/Header'
+import '../css/bootstrap.min.css'
+export default class index extends Component {
+   render() {
+      return (
+         <div>
+            <Container bg="primary" className="p-5">
+               <Header />
+            </Container>
+         </div>
+      )
+   }
 }
-
-export default () => <div>
-   <h1 style={ colors.textBlue }>Kissha</h1>
-   <p style={ colors.textRed }>Shop your beauty</p>
-</div>

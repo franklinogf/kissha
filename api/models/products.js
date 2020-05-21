@@ -49,7 +49,7 @@ module.exports = mysql.define('products', {
     allowNull: true,
     comment: "null"
   },
-  'idCategory': {
+  'categoryId': {
     type: DataTypes.INTEGER(11),
     allowNull: true,
     comment: "null",

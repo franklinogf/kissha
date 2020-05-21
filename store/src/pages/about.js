@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 import Header from '../components/Layout/Header'
-import '../css/bootstrap.min.css'
+// import '../css/bootstrap.min.css'
 export default class about extends Component {
    render() {
       return (

@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
-import Header from '../components/Layout/Header'
-// import '../css/bootstrap.min.css'
+import Layout from '../components/Layout/Layout'
+
 export default class about extends Component {
    render() {
       return (
          <div>
-            <Container bg="primary" className="p-5">
-               <Header />
-            </Container>
+            <Layout.Main>
+               About
+           </Layout.Main>
          </div>
       )
    }

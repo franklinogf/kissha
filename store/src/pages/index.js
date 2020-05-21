@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 import Header from '../components/Layout/Header'
-import '../css/bootstrap.min.css'
+import '../../node_modules/bootstrap/dist/css/bootstrap.css'
 export default class index extends Component {
    render() {
       return (

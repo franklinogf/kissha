@@ -1,8 +1,6 @@
 import React from 'react'
 import Logo from "../Logo/Logo"
-import Navbar from "react-bootstrap/Navbar"
-import Nav from "react-bootstrap/Nav"
-import NavDropdown from "react-bootstrap/NavDropdown"
+import {Navbar,Nav,NavDropdown} from "react-bootstrap"
 
 const Header = () => {
    return (

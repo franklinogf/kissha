@@ -1,10 +1,11 @@
 import React from 'react'
 import logo from "./logo.png"
+import { Image } from 'react-bootstrap'
 
 export default function Logo() {
    return (
       <div>
-         <img className="d-block mx-auto img-fluid" src={logo} alt='logo' /> 
+         <Image className="d-block mx-auto" src={logo} alt='logo'/>
       </div>
    ) 
 }

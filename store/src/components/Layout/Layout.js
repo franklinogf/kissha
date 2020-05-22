@@ -11,8 +11,8 @@ const Layout = {
             <Container bg="primary" className="p-5">
                <Header />
                { children }
-               <Footer />
             </Container>
+            <Footer />
          </div>
       )
    }

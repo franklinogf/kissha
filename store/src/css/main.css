@@ -1,5 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+/*GENERAL IMPORTS*/
+@font-face {
+    font-family: 'font-icon';
+    src:  url('../fonts/Social-Media.ttf') format('truetype');
+}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
 
-.montserrat{
+/*GENERAL CSS*/
+a{
+    text-decoration: none;
+}
+
+/* FOOTER */
+
+.fTop {
+  padding: 4.375rem 0rem 1.875rem;
+  background-color: #13161b;
+}
+.fBottom {
+  padding: 1.875rem 0rem 1.875rem;
+  background-color: #080a0c;
+}
+
+.fCard {
+  max-width: 18.75rem !important;
+  height: 16.563rem !important;
+}
+
+.h-p{
+    transition: .3s;
+}
+
+.h-p:hover{
+    color: #ff758c !important;
+    text-decoration: none !important;
+}
+
+.f-card-title {
+  font-family: Montserrat;
+  font-size: 14px !important; 
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  letter-spacing: 1px !important;
+}
+
+.f-card-br{
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: #ff758c;
+}
+
+.social-icon{
+    font-family: 'font-icon';
+    font-size: 40px;   
+    color:#ff758c;
+    margin: 0px;
+    padding: 0px;
+    transition: all 100ms;
+}
+
+.facebook:hover{
+    color: #39579A;
+    cursor: pointer;
+}
+
+.twitter:hover{
+    color: #1EB7ED;
+    cursor: pointer;
+}
+
+.instagram:hover{
+    color: #C03C4B;
+    cursor: pointer;
+}
+
+.email:hover{
+    color: #c4c4c4;
+    cursor: pointer;
+}
+
+.f-rights{
+    font-size: 10px;
     font-family: Montserrat;
+    color: #777c8b;
+    font-weight: 600;
 }

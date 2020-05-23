@@ -11,7 +11,7 @@ const Layout = {
         <Container variant="primary" className="p-5">
           <Header />
         </Container>
-        <Container fluid>{children}</Container>
+        <Container fluid className="p-0">{children}</Container>
         <Footer />
       </div>
     )

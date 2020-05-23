@@ -5,7 +5,7 @@ import "../../css/footer.css"
 
 const Footer = () => {
   return (
-    <div>
+    <>
       <Row className="justify-content-center text-white fTop px-5">
         <Col className="mt-5 mt-lg-0 px-3" md={6} lg={3}>
           <Row>
@@ -142,7 +142,7 @@ const Footer = () => {
           </p>
         </Col>
       </Row>
-    </div>
+    </>
   )
 }
 

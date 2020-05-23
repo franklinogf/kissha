@@ -1,12 +1,12 @@
 import React, { Component } from "react"
-import Layout from "../components/Layout/Layout"
+import MainLayout from "../components/Layout/MainLayout"
 import { Row, Col, Container, Button } from "react-bootstrap"
 import ImageCard from "../components/ImageCard/ImageCard"
 
 export default class index extends Component {
   render() {
     return (
-      <Layout.Main>
+      <MainLayout>
         <Container>
           <Row className="d-flex row-cols-1 row-cols-lg-3 pb-5 mt-5">
             <Col className="mt-3 d-flex justify-content-center">
@@ -31,7 +31,7 @@ export default class index extends Component {
         </Container>
         <Container
           className="p-5 text-dark"
-          fluid
+          fluid={true}
           style={{
             height: 496,
             backgroundImage:
@@ -55,7 +55,7 @@ export default class index extends Component {
             deserunt nisi occaecat mollit ipsum.
           </p>
         </Container>
-      </Layout.Main>
+      </MainLayout>
     )
   }
 }

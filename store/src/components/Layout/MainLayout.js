@@ -4,8 +4,7 @@ import Header from "./Header"
 import Footer from "./Footer"
 import "../../scss/main-bootstrap.scss"
 
-const Layout = { 
-  Main: ({ children }) => {
+const MainLayout = ({children}) => { 
     return (
       <>
         <Container className="pt-5">
@@ -15,7 +14,7 @@ const Layout = {
         <Footer />
       </>
     )
-  },
-}
+  }
 
-export default Layout
+
+export default MainLayout

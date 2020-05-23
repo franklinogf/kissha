@@ -1,12 +1,12 @@
 import React, { Component } from "react"
-import Layout from "../components/Layout/Layout"
-// import '../css/main-bootstrap.css'console.log();
+import MainLayout from "../components/Layout/MainLayout"
+
 export default class about extends Component {
   render() {
     return (     
-        <Layout.Main>
+        <MainLayout>
           About
-        </Layout.Main>
+        </MainLayout>
     )
   }
 }

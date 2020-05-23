@@ -14,10 +14,10 @@ const Header = () => {
             <Navbar.Collapse className="justify-content-center" id="navbar">
                <Nav>
                   <Link className="mr-md-2 mr-lg-4 nav-link" to="/about/" >New Arrivals</Link>
-                  <Link className="mr-md-2 mr-lg-4 nav-link" to="#" >Best Seller</Link>
-                  <Link className="mr-md-2 mr-lg-4 nav-link" to="#" >Makeup </Link>
-                  <Link className="mr-md-2 mr-lg-4 nav-link" to="#" >Skin care </Link>
-                  <Link className="mr-md-2 mr-lg-4 nav-link" to="#" >Sales</Link>
+                  <Link className="mr-md-2 mr-lg-4 nav-link" to="/" >Best Seller</Link>
+                  <Link className="mr-md-2 mr-lg-4 nav-link" to="/" >Makeup </Link>
+                  <Link className="mr-md-2 mr-lg-4 nav-link" to="/" >Skin care </Link>
+                  <Link className="mr-md-2 mr-lg-4 nav-link" to="/" >Sales</Link>
                </Nav>
             </Navbar.Collapse>
          </Navbar>

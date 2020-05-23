@@ -7,13 +7,13 @@ import "../../scss/main-bootstrap.scss"
 const Layout = { 
   Main: ({ children }) => {
     return (
-      <div>
+      <>
         <Container className="pt-5">
           <Header />
         </Container>
         <Container fluid className="p-0">{children}</Container>
         <Footer />
-      </div>
+      </>
     )
   },
 }

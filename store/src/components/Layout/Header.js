@@ -5,7 +5,7 @@ import { Navbar, Nav } from "react-bootstrap"
 
 const Header = () => {
   return (
-    <div>
+    <>
       <Link to="/">
         <Logo />
       </Link>
@@ -36,7 +36,7 @@ const Header = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </div>
+    </>
   )
 }
 

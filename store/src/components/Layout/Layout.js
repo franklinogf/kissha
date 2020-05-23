@@ -2,7 +2,7 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import Header from './Header'
 import Footer from './Footer'
-import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
+import '../../css/main-bootstrap.css'
 
 const Layout = {
    Main: ({ children }) => {

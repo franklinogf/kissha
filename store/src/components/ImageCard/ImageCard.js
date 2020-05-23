@@ -29,7 +29,7 @@ function ImageCard({ src, title }) {
           <span className="pb-1 title">{title}</span>
         </Card.Header>
       )}
-      <Card.Img fluid className="rounded-0 h-100" src={src} />
+      <Card.Img className="rounded-0 h-100 img-fluid" src={src} />
     </Card>
   )
 }

@@ -8,7 +8,7 @@ const Layout = {
   Main: ({ children }) => {
     return (
       <div>
-        <Container variant="primary" className="p-5">
+        <Container className="pt-5">
           <Header />
         </Container>
         <Container fluid className="p-0">{children}</Container>

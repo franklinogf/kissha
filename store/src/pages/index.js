@@ -1,46 +1,46 @@
 import React, { Component } from "react"
 import Layout from "../components/Layout/Layout"
-import { Row, Col, Card, Container } from "react-bootstrap"
-import image1 from "../images/image1.png"
-import image2 from "../images/image2.png"
-import image3 from "../images/image3.png"
-import Logo from "../components/Logo/logo.png"
+import { Row, Col, Container, Button } from "react-bootstrap"
 import ImageCard from "../components/ImageCard/ImageCard"
 
 export default class index extends Component {
-     
   render() {
     return (
       <div>
         <Layout.Main>
           <Container>
-          <Row className="text-center d-flex row-cols-1 row-cols-lg-3 pb-5 mt-5">
-            <Col className="mt-3">
-              <ImageCard src={image1}/>
-            </Col>
-            <Col className="mt-3">
-            <ImageCard src={image2}/>
-            </Col>
-            <Col className="mt-3">
-            <ImageCard src={image3}/>
-            </Col>
-          </Row>
+            <Row className="d-flex row-cols-1 row-cols-lg-3 pb-5 mt-5">
+              <Col className="mt-3 d-flex justify-content-center">
+                <ImageCard title="Makeup Tools" src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80" />
+              </Col>
+              <Col className="mt-3 d-flex justify-content-center">
+                <ImageCard title="Skin Care" src="https://images.unsplash.com/photo-1498843053639-170ff2122f35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" />
+              </Col>
+              <Col className="mt-3 d-flex justify-content-center">                
+                <ImageCard title="Accesories" src='https://images.unsplash.com/photo-1578083881514-75d7049175bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80' />
+              </Col>
+            </Row>
+          </Container>
+          <Container
+            className="p-5 text-dark"
+            fluid
+            style={{
+              height: 496,
+              backgroundImage:
+                "url(https://images.unsplash.com/photo-1562516710-38a6fa229b23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1385&q=80)",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <p style={{ maxWidth: "40rem" }} className="display-4">
+              This is a wider card with supporting text
+            </p>
+            <Button variant="primary" className="mt-3">
+              Read More
+            </Button>
           </Container>
 
-          <Card className="bg-light text-dark" style={{ height: 496 }}>
-            <Card.Img src={Logo} alt="Card image" />
-            <Card.ImgOverlay>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-              <Card.Text>Last updated 3 mins ago</Card.Text>
-            </Card.ImgOverlay>
-          </Card>
-
-          <Container fluid className="bg-info p-5" style={{ height: 496 }}>
+          <Container fluid className="bg-light p-5" style={{ height: 496 }}>
             <h1>Space 1</h1>
             <p>
               Qui ipsum enim labore aliqua fugiat laboris nisi pariatur tempor

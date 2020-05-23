@@ -1,9 +1,19 @@
 $enable-shadows:true;
 $enable-responsive-font-sizes:true;
+
 $theme-colors: (
    primary: #ff758c
    // secondary: ,  
  );
  
-
-@import '~bootstrap/scss/bootstrap.scss'
+ 
+ @import '~bootstrap/scss/bootstrap.scss';
+ 
+ .title {
+  font-family: Montserrat;
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  letter-spacing: 1px !important;
+  border-bottom: 3px solid var(--primary);
+}

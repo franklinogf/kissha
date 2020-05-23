@@ -36,14 +36,14 @@ a {
   text-decoration: none !important;
 }
 
-.title {
+/* .title {
   font-family: Montserrat;
   font-size: 14px !important;
   text-transform: uppercase !important;
   font-weight: 600 !important;
   letter-spacing: 1px !important;
   border-bottom: 3px solid var(--primary);
-}
+} */
 
 .f-card-br {
   border-top-width: 3px;

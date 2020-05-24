@@ -27,5 +27,4 @@ export const ImageCard = ({ src, title }) => {
   )
 }
 
-export default ImageCard
 

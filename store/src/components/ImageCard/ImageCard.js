@@ -1,27 +1,20 @@
-import React, { useState } from "react"
+import React from "react"
 import { Card } from "react-bootstrap"
+import styled from "styled-components"
 
-const styles = {
-  card: {
-    maxWidth: 400,
-    transition: ".5s",
-    border: "10px solid var(--light)",
-  },
-  cardHovered: {
-    maxWidth: 400,
-    transition: ".5s",
-    border: "10px solid var(--primary)",
-  },
-}
+const StyledCard = styled(Card)`
+  max-width: 400px;
+  transition: 0.5s;
+  border: 10px solid var(--light);
 
-function ImageCard({ src, title }) {
-  const [hover, setHover] = useState(false)
+  ${this}:hover{
+    border: 10px solid var(--primary);
+  }
+  `
+  
+export const ImageCard = ({ src, title }) => {
   return (
-    <Card
-      onMouseLeave={() => setHover(false)}
-      onMouseOver={() => setHover(true)}
-      onFocus={() => setHover(true)}
-      style={hover ? styles.cardHovered : styles.card}
+    <StyledCard
       className="overflow-hidden"
     >
       {title && (
@@ -30,8 +23,9 @@ function ImageCard({ src, title }) {
         </Card.Header>
       )}
       <Card.Img className="rounded-0 h-100 img-fluid" src={src} />
-    </Card>
+    </StyledCard>
   )
 }
 
 export default ImageCard
+

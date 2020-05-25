@@ -9,14 +9,15 @@ export default class index extends Component {
   constructor(props){
     super(props)
     this.state = {
-      products: [1]
+      products: []
     }
   }
 
-  // componentWillMount(){
-  //   fetch("http://localhost:5000/products")
-  //   .then(data => console.log(data))
-  // }
+  componentWillMount(){
+    fetch("http://localhost:5000/products")
+    .then(data => data.json())
+    .then(products => this.setState({products: products.data}))
+  }
 
   render() {
     return (

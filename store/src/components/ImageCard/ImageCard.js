@@ -7,12 +7,12 @@ const StyledCard = styled(Card)`
   transition: 0.5s;
   border: 10px solid var(--light);
 
-  ${this}:hover{
+  &:hover{
     border: 10px solid var(--primary);
   }
   `
   
-export const ImageCard = ({ src, title }) => {
+const ImageCard = ({ src, title }) => {
   return (
     <StyledCard
       className="overflow-hidden"
@@ -28,3 +28,4 @@ export const ImageCard = ({ src, title }) => {
 }
 
 
+export default ImageCard

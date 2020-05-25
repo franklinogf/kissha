@@ -1,6 +1,8 @@
 const express = require("express")
 const app = express()
+const cors = require('cors')
 const db = require('./database')
+
 const users = require('./routes/users')
 const address = require('./routes/address')
 const categories = require('./routes/categories')
@@ -15,6 +17,7 @@ db.authenticate()
     .catch(error => console.log(error))
 
 // Middleware
+app.use(cors())
 app.use(express.json())
 app.use(['/users/:id',"/categories/:id","/address/:id"], (req, res, next) => {
     const { id } = req.params

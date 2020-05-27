@@ -4,6 +4,7 @@ import Section from "../components/Layout/Section"
 import { Row, Col, Container, Button } from "react-bootstrap"
 import ImageCard from "../components/ImageCard/ImageCard"
 import { ProductRow } from "../components/Products/ProductRow"
+import DeliveryCard from "../components/Delivery/DeliveryCard"
 
 export default class index extends Component {
   constructor(props) {
@@ -67,6 +68,11 @@ export default class index extends Component {
           <Container>
             <ProductRow products={this.state.products} />
           </Container>
+        </Section>
+
+        <Section>
+          <DeliveryCard></DeliveryCard>
+          <DeliveryCard></DeliveryCard>
         </Section>
       </MainLayout>
     )

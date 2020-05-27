@@ -6,17 +6,17 @@ import ImageCard from "../components/ImageCard/ImageCard"
 import { ProductRow } from "../components/Products/ProductRow"
 
 export default class index extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      products: []
+      products: [],
     }
   }
 
-  componentWillMount(){
+  componentWillMount() {
     fetch("http://localhost:5000/products")
-    .then(data => data.json())
-    .then(products => this.setState({products: products.data}))
+      .then(data => data.json())
+      .then(products => this.setState({ products: products.data }))
   }
 
   render() {
@@ -24,26 +24,26 @@ export default class index extends Component {
       <MainLayout>
         <Section>
           <Container>
-          <Row className="d-flex row-cols-1 row-cols-lg-3 pb-5 mt-5">
-            <Col className="mt-3 d-flex justify-content-center">
-              <ImageCard
-                title="Makeup Tools"
-                src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80"
-              />
-            </Col>
-            <Col className="mt-3 d-flex justify-content-center">
-              <ImageCard
-                title="Skin Care"
-                src="https://images.unsplash.com/photo-1498843053639-170ff2122f35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-              />
-            </Col>
-            <Col className="mt-3 d-flex justify-content-center">
-              <ImageCard
-                title="Accesories"
-                src="https://images.unsplash.com/photo-1578083881514-75d7049175bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-              />
-            </Col>
-          </Row>
+            <Row className="d-flex row-cols-1 row-cols-lg-3 pb-5 mt-5">
+              <Col className="mt-3 d-flex justify-content-center">
+                <ImageCard
+                  title="Makeup Tools"
+                  src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80"
+                />
+              </Col>
+              <Col className="mt-3 d-flex justify-content-center">
+                <ImageCard
+                  title="Skin Care"
+                  src="https://images.unsplash.com/photo-1498843053639-170ff2122f35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+                />
+              </Col>
+              <Col className="mt-3 d-flex justify-content-center">
+                <ImageCard
+                  title="Accesories"
+                  src="https://images.unsplash.com/photo-1578083881514-75d7049175bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+                />
+              </Col>
+            </Row>
           </Container>
         </Section>
         <Section img="https://images.unsplash.com/photo-1562516710-38a6fa229b23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1385&q=80">
@@ -65,7 +65,7 @@ export default class index extends Component {
 
         <Section>
           <Container>
-            <ProductRow products={this.state.products}/>
+            <ProductRow products={this.state.products} />
           </Container>
         </Section>
       </MainLayout>

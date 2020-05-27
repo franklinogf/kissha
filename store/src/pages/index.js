@@ -23,6 +23,7 @@ export default class index extends Component {
     return (
       <MainLayout>
         <Section>
+          <Container>
           <Row className="d-flex row-cols-1 row-cols-lg-3 pb-5 mt-5">
             <Col className="mt-3 d-flex justify-content-center">
               <ImageCard
@@ -43,6 +44,7 @@ export default class index extends Component {
               />
             </Col>
           </Row>
+          </Container>
         </Section>
         <Section img="https://images.unsplash.com/photo-1562516710-38a6fa229b23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1385&q=80">
           <p style={{ maxWidth: "40rem" }} className="display-4">

@@ -7,9 +7,7 @@ const users = require('./routes/users')
 const address = require('./routes/address')
 const categories = require('./routes/categories')
 const products = require('./routes/products')
-
-require("dotenv/config")
-
+require("dotenv").config({path:__dirname+'.env'})
 const port = process.env.PORT || 5000
 
 db.authenticate()

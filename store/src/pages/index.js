@@ -114,7 +114,7 @@ export default class index extends Component {
                 you’ve got to expect thousands of nice reviews!
               </Col>
             </Row>
-            <Row>
+            <Row className="mb-4">
               <Col sm={12} md={6}>
                 <ReviewCard
                   userName="Matthew Schneider"

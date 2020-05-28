@@ -65,6 +65,9 @@ export default class index extends Component {
 
         <Section>
           <Container>
+            <h2 className="text-center">New Arrivals</h2>
+            <p className="text-center text-muted">There’s never too many accessories, especially when these are so good and stylish!</p>
+            <hr className='w-25 mb-5 border-primary _border'/>
             <ProductRow products={this.state.products} />
           </Container>
         </Section>

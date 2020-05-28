@@ -17,5 +17,6 @@ $theme-colors: (
   letter-spacing: 1px;
   border-bottom: 3px solid var(--primary);
 }
-
-
+._border-primary{
+  border-bottom: 3px solid var(--primary);
+}

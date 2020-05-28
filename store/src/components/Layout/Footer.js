@@ -1,12 +1,19 @@
 import React from "react"
 import { Link } from "gatsby"
 import { Row, Col, Container } from "react-bootstrap"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons"
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import "../../css/footer.css"
 
 const Footer = () => {
   return (
     <>
-    <Container fluid className="fTop px-5">
+      <Container fluid className="fTop px-5">
         <Row className="justify-content-center text-white  px-5">
           <Col className="mt-5 mt-lg-0 px-3" md={6} lg={3}>
             <Row>
@@ -104,27 +111,38 @@ const Footer = () => {
                 <Row>
                   <Col>
                     <Link to="/" className="h-p">
-                      <span
-                        className="social-icon facebook b-block"
-                        title="facebook"
-                      >
-                        f
-                      </span>
+                      <FontAwesomeIcon
+                        className="facebook"
+                        icon={faFacebook}
+                        size="2x"
+                      />
                     </Link>
                   </Col>
                   <Col>
                     <Link to="/" className="h-p">
-                      <span className="social-icon twitter">t</span>
+                      <FontAwesomeIcon
+                        className="twitter"
+                        icon={faTwitter}
+                        size="2x"
+                      />
                     </Link>
                   </Col>
                   <Col>
                     <Link to="/" className="h-p">
-                      <span className="social-icon instagram">c</span>
+                      <FontAwesomeIcon
+                        className="instagram"
+                        icon={faInstagram}
+                        size="2x"
+                      />
                     </Link>
                   </Col>
                   <Col>
                     <Link to="/" className="h-p">
-                      <span className="social-icon email">E</span>
+                      <FontAwesomeIcon
+                        className="email"
+                        icon={faEnvelope}
+                        size="2x"
+                      />
                     </Link>
                   </Col>
                 </Row>
@@ -132,19 +150,19 @@ const Footer = () => {
             </Row>
           </Col>
         </Row>
-        </Container>
-        <Container fluid className="fBottom px-5">
+      </Container>
+      <Container fluid className="fBottom px-5">
         <Row className="px-2 justify-content-between ">
           <Col className="mt-3">
             <p className="ml-3">© 2020&nbsp;KISSHA. ALL RIGHT RESERVED.</p>
           </Col>
           <Col className="mt-3">
             <p className="text-right mr-3">
-              Website made by Franklin Gonzales & Miguel Angel
+              Website made by Franklin González & Miguel Angel
             </p>
           </Col>
         </Row>
-        </Container>
+      </Container>
     </>
   )
 }

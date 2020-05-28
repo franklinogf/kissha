@@ -18,11 +18,45 @@ $theme-colors: (
   border-bottom: 3px solid var(--primary);
 }
 
-.section-title{
+._section-title{
   font-family: Montserrat;
   font-size: 2.25rem !important;
 }
 
 ._border-primary{
   border-bottom: 3px solid var(--primary);
+}
+
+/*SIZES*/
+
+._font-size-12{
+  font-size: 0.75rem;
+}
+
+._font-size-14{
+  font-size: 0.875rem;
+}
+
+._font-size-16{
+  font-size: 1rem;
+}
+
+._font-size-20{
+  font-size: 1.25rem;
+}
+
+._font-size-24{
+  font-size: 1.5rem;
+}
+
+._font-size-28{
+  font-size: 1.75rem;
+}
+
+._font-size-32{
+  font-size: 2rem;
+}
+
+._font-size-36{
+  font-size: 2.25rem;
 }

@@ -73,16 +73,15 @@ export default class index extends Component {
 
         <Section>
           <Container>
-            <h2 className="text-center">New Arrivals</h2>
-            <p className="text-center text-muted">
-              There’s never too many accessories, especially when these are so
-              good and stylish!
-            </p>
-            <hr className="w-25 mb-5 border-primary _border-primary" />
+            <Section.Header
+            title="New Arrivals"
+            subTitle="There’s never too many accessories, especially when these are so
+            good and stylish!"
+            hr/>           
             <ProductRow products={this.state.products} />
           </Container>
         </Section>
-
+        
         <Section bg="light" height={400}>
           <Container>
             <Row>
@@ -105,33 +104,31 @@ export default class index extends Component {
         </Section>
         <Section>
           <Container>
-            <Row className="text-center">
-              <Col sm={12} className="section-title _font-size-36 text-black">
-                Happy Customers
-              </Col>
-              <Col sm={12} className="text-black-50 mt-1 mb-3 _font-size-20">
-                When millions of people visit your online store every year,
-                you’ve got to expect thousands of nice reviews!
-              </Col>
-            </Row>
+            <Section.Header
+              title="Happy Customers"
+              subTitle="When millions of people visit your online store every year, you’ve
+              got to expect thousands of nice reviews!"
+              hr
+            />
             <Row className="mb-4">
-              <Col sm={12} md={6}>
+              <Col xs={12} lg={6}>
                 <ReviewCard
                   userName="Matthew Schneider"
-                  userComment="'I have a thing for sunglasses, like I do indeed collect these and I
-          have a real big range of it at home. Luckily, stores like this one let
-          me indulge in this hobby furthermore!'"
+                  userComment='"I have a thing for sunglasses, like I do indeed collect these and I
+                                have a real big range of it at home. Luckily, stores like this one let
+                                me indulge in this hobby furthermore!"'
                   userPic="https://pngimage.net/wp-content/uploads/2018/06/profile-png-icon-2.png"
                   userRank="WORDPRESS DEVELOPER"
-                ></ReviewCard>
+                />{" "}
               </Col>
-              <Col sm={12} md={6}>
+              <Col xs={12} lg={6}>
                 <ReviewCard
                   userName="Anne Harris"
-                  userComment="I was always a big shopper, especially when it comes to either apparel or even accessories. Are these sunglasses, jewelry or purses – I need it all!"
+                  userComment='"I was always a big shopper, especially when it comes to either apparel or even accessories.
+                   Are these sunglasses, jewelry or purses – I need it all!"'
                   userPic="https://pngimage.net/wp-content/uploads/2018/06/profile-png-icon-2.png"
                   userRank="WORDPRESS DEVELOPER"
-                ></ReviewCard>
+                />{" "}
               </Col>
             </Row>
           </Container>

@@ -1,19 +1,9 @@
 import React from "react"
-import { Row, Card, Container } from "react-bootstrap"
+import { Row, Card, Col } from "react-bootstrap"
 import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import styled from "styled-components"
 import "../../scss/main-bootstrap.scss"
-
-const StyleRowIcon = styled(Row)`
-  font-size: 76px;
-  margin: 0px;
-`
-const StyleRow = styled(Row)`
-  margin: 0px;
-  justify-content: center;
-  text-align-center;
-`
 
 const StyleCardTitle = styled(Card.Text)`
   font-size: 22px;
@@ -27,23 +17,23 @@ letter-spacing: 0px !important;
 
 export const DeliveryCard = props => {
   return (
-    <Container fluid>
-      <StyleRowIcon className="justify-content-center py-3">
-        <FontAwesomeIcon icon={props.icon} className="text-primary" />
-      </StyleRowIcon>
-      <StyleRow className="py-3">
+    <Row className="text-center">
+      <Col xs={12} className="justify-content-center py-3">
+        <FontAwesomeIcon size='4x' icon={props.icon} className="text-primary" />
+      </Col>
+      <Col xs={12} className="py-3">
         <StyleCardTitle>
           <Link to="/" className="text-dark text-decoration-none">
             {props.title}
           </Link>
         </StyleCardTitle>
-      </StyleRow>
-      <StyleRow>
+      </Col>
+      <Col xs={12}>
         <p className="text-center pt-2 text-black-50">{props.text}</p>
-      </StyleRow>
-      <StyleRow className="py-2">
+      </Col>
+      <Col xs={12} className="py-2">
         <StyledSpan className="pt-2 pb-1 title">READ MORE</StyledSpan>
-      </StyleRow>
-    </Container>
+      </Col>
+    </Row>
   )
 }

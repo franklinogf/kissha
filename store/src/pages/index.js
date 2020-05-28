@@ -6,9 +6,10 @@ import ImageCard from "../components/ImageCard/ImageCard"
 import { ProductRow } from "../components/Products/ProductRow"
 import { DeliveryCard } from "../components/Delivery/DeliveryCard"
 import { library } from "@fortawesome/fontawesome-svg-core"
-import { faTruck, faTag } from "@fortawesome/free-solid-svg-icons"
+import { faTruck, faTag, faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { fab } from "@fortawesome/free-brands-svg-icons"
 
-library.add(faTruck, faTag)
+library.add(fab, faTruck, faTag, faEnvelope)
 
 export default class index extends Component {
   constructor(props) {
@@ -71,8 +72,11 @@ export default class index extends Component {
         <Section>
           <Container>
             <h2 className="text-center">New Arrivals</h2>
-            <p className="text-center text-muted">There’s never too many accessories, especially when these are so good and stylish!</p>
-            <hr className='w-25 mb-5 border-primary _border-primary'/>
+            <p className="text-center text-muted">
+              There’s never too many accessories, especially when these are so
+              good and stylish!
+            </p>
+            <hr className="w-25 mb-5 border-primary _border-primary" />
             <ProductRow products={this.state.products} />
           </Container>
         </Section>
@@ -87,7 +91,7 @@ export default class index extends Component {
                   text="Covering all 50 US states, we will deliver everything we have in stock completely free of charge!"
                 ></DeliveryCard>
               </Col>
-              <Col sm={12} md={6}>
+              <Col sm={12} md={6} className="mt-5 mt-md-0">
                 <DeliveryCard
                   title="Discounts Club"
                   icon="tag"

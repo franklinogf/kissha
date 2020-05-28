@@ -4,11 +4,15 @@ import { Link } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
+
 export const DeliveryCard = props => {
+
+ 
+    
   return (
     <Col sm={12} md={6}>
       <Row>
-        
+        <FontAwesomeIcon icon={props.icon} /> 
       </Row>
       <Row>
         <Card.Text>

@@ -4,7 +4,11 @@ import Section from "../components/Layout/Section"
 import { Row, Col, Container, Button } from "react-bootstrap"
 import ImageCard from "../components/ImageCard/ImageCard"
 import { ProductRow } from "../components/Products/ProductRow"
-import DeliveryCard from "../components/Delivery/DeliveryCard"
+import { DeliveryCard } from "../components/Delivery/DeliveryCard"
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { faTruck, faTag } from "@fortawesome/free-solid-svg-icons"
+
+library.add(faTruck, faTag)
 
 export default class index extends Component {
   constructor(props) {
@@ -70,9 +74,13 @@ export default class index extends Component {
           </Container>
         </Section>
 
-        <Section>
-          <DeliveryCard></DeliveryCard>
-          <DeliveryCard></DeliveryCard>
+        <Section bg="light">
+          <Container>
+            <Row>
+              <DeliveryCard title="Delivery" icon="truck"></DeliveryCard>
+              <DeliveryCard title="Sales" icon="tag"></DeliveryCard>
+            </Row>
+          </Container>
         </Section>
       </MainLayout>
     )

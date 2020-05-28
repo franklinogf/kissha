@@ -105,7 +105,14 @@ export default class index extends Component {
         </Section>
         <Section>
           <Container>
-
+            <Row className="text-center">
+              <Col sm={12} className="section-title text-black">
+              Happy Customers
+              </Col>
+              <Col sm={12} className="text-black-50 mt-1 mb-3">
+              When millions of people visit your online store every year, you’ve got to expect thousands of nice reviews!
+              </Col>
+            </Row>
             <Row className="border border-primary">
               <Col sm={12} md={6}>
                 <ReviewCard></ReviewCard>

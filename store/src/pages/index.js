@@ -19,7 +19,7 @@ export default class index extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetch("http://localhost:5000/products")
       .then(data => data.json())
       .then(products => this.setState({ products: products.data }))

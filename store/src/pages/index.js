@@ -102,6 +102,21 @@ export default class index extends Component {
             </Row>
           </Container>
         </Section>
+        <Section>
+          <Container>
+            <Row>
+              <Col sm={12}>
+
+              </Col>
+              <Col sm={12} md={6}>
+                <ReviewCard></ReviewCard>
+              </Col>
+              <Col sm={12} md={6}>
+                <ReviewCard></ReviewCard>
+              </Col>
+            </Row>
+          </Container>
+        </Section>
       </MainLayout>
     )
   }

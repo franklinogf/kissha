@@ -77,7 +77,7 @@ export default class index extends Component {
           </Container>
         </Section>
 
-        <Section bg="light">
+        <Section bg="light" height={400}>
           <Container>
             <Row>
               <Col sm={12} md={6}>

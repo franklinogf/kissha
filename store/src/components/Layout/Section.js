@@ -8,25 +8,38 @@ const StyledContainer = styled(Container)`
   ${props =>
     props.img &&
     css`
-   background-image:url(${props.img});
-   background-size: cover;
-   background-position: center;
-  `}
+      background-image: url(${props.img});
+      background-size: cover;
+      background-position: center;
+    `}
 `
-const Section = props => {
-  const bg = props.bg || "white"
-  const height = props.height || 496
-
+export const SectionHeader = props => {
   return (
-    <StyledContainer
-      img={props.img}
-      height={`${height}px`}
-      fluid
-      className={`bg-${bg} p-5`}
-    >
-      {props.children}
-    </StyledContainer>
+    <div className="mb-5">
+      <h2 className="section-title _font-size-36 text-center">{props.title}</h2>
+      {props.subTitle &&
+        <p className="text-center text-muted">{props.subTitle}</p>
+      }
+      {props.hr && <hr className="w-25 border-primary _border-primary" />}
+    </div>
   )
 }
 
-export default Section
+export default class Section extends React.Component {
+  static Header = SectionHeader;
+
+  render() {
+    const bg = this.props.bg || "white"
+    const height = this.props.height || 496
+    return (
+      <StyledContainer
+        img={this.props.img}
+        height={`${height}px`}
+        fluid
+        className={`bg-${bg} p-5`}
+      >
+        {this.props.children}
+      </StyledContainer>
+    )
+  }
+}

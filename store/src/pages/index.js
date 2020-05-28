@@ -77,8 +77,20 @@ export default class index extends Component {
         <Section bg="light">
           <Container>
             <Row>
-              <DeliveryCard title="Delivery" icon="truck"></DeliveryCard>
-              <DeliveryCard title="Sales" icon="tag"></DeliveryCard>
+              <Col sm={12} md={6}>
+                <DeliveryCard
+                  title="Free Delivery"
+                  icon="truck"
+                  text="Covering all 50 US states, we will deliver everything we have in stock completely free of charge!"
+                ></DeliveryCard>
+              </Col>
+              <Col sm={12} md={6}>
+                <DeliveryCard
+                  title="Discounts Club"
+                  icon="tag"
+                  text="Covering all 50 US states, we will deliver everything we have in stock completely free of charge!"
+                ></DeliveryCard>
+              </Col>
             </Row>
           </Container>
         </Section>

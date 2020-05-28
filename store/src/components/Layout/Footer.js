@@ -2,12 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 import { Row, Col, Container } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faFacebook,
-  faTwitter,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import "../../css/footer.css"
 
 const Footer = () => {
@@ -113,7 +107,7 @@ const Footer = () => {
                     <Link to="/" className="h-p">
                       <FontAwesomeIcon
                         className="facebook"
-                        icon={faFacebook}
+                        icon={['fab','facebook']}
                         size="2x"
                       />
                     </Link>
@@ -122,7 +116,7 @@ const Footer = () => {
                     <Link to="/" className="h-p">
                       <FontAwesomeIcon
                         className="twitter"
-                        icon={faTwitter}
+                        icon={['fab','twitter']}
                         size="2x"
                       />
                     </Link>
@@ -131,7 +125,7 @@ const Footer = () => {
                     <Link to="/" className="h-p">
                       <FontAwesomeIcon
                         className="instagram"
-                        icon={faInstagram}
+                        icon={['fab','instagram']}
                         size="2x"
                       />
                     </Link>
@@ -140,7 +134,7 @@ const Footer = () => {
                     <Link to="/" className="h-p">
                       <FontAwesomeIcon
                         className="email"
-                        icon={faEnvelope}
+                        icon="envelope"
                         size="2x"
                       />
                     </Link>

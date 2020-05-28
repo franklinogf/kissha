@@ -28,9 +28,5 @@
   },
   "devDependencies": {
     "prettier": "2.0.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  }
+  }  
 }

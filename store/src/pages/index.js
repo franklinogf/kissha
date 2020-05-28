@@ -106,10 +106,10 @@ export default class index extends Component {
         <Section>
           <Container>
             <Row className="text-center">
-              <Col sm={12} className="section-title text-black">
+              <Col sm={12} className="section-title _font-size-36 text-black">
               Happy Customers
               </Col>
-              <Col sm={12} className="text-black-50 mt-1 mb-3">
+              <Col sm={12} className="text-black-50 mt-1 mb-3 _font-size-20">
               When millions of people visit your online store every year, you’ve got to expect thousands of nice reviews!
               </Col>
             </Row>

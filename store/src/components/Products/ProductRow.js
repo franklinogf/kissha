@@ -8,7 +8,7 @@ export const ProductRow = props => {
   return (
     <Row className={`justify-content-center row-cols-1 row-cols-md-${cols}`}>
       {props.products.map((product,i) => (
-        <Col key={i}>
+        <Col className="mb-sm-4" key={i}>
           <ProductCard name={product.name} price={product.price} src={sampleImage} />
         </Col>
       ))}

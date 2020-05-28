@@ -107,18 +107,31 @@ export default class index extends Component {
           <Container>
             <Row className="text-center">
               <Col sm={12} className="section-title _font-size-36 text-black">
-              Happy Customers
+                Happy Customers
               </Col>
               <Col sm={12} className="text-black-50 mt-1 mb-3 _font-size-20">
-              When millions of people visit your online store every year, you’ve got to expect thousands of nice reviews!
+                When millions of people visit your online store every year,
+                you’ve got to expect thousands of nice reviews!
               </Col>
             </Row>
-            <Row className="border border-primary">
+            <Row>
               <Col sm={12} md={6}>
-                <ReviewCard></ReviewCard>
+                <ReviewCard
+                  userName="Matthew Schneider"
+                  userComment="'I have a thing for sunglasses, like I do indeed collect these and I
+          have a real big range of it at home. Luckily, stores like this one let
+          me indulge in this hobby furthermore!'"
+                  userPic="https://pngimage.net/wp-content/uploads/2018/06/profile-png-icon-2.png"
+                  userRank="WORDPRESS DEVELOPER"
+                ></ReviewCard>
               </Col>
               <Col sm={12} md={6}>
-                <ReviewCard></ReviewCard>
+                <ReviewCard
+                  userName="Anne Harris"
+                  userComment="I was always a big shopper, especially when it comes to either apparel or even accessories. Are these sunglasses, jewelry or purses – I need it all!"
+                  userPic="https://pngimage.net/wp-content/uploads/2018/06/profile-png-icon-2.png"
+                  userRank="WORDPRESS DEVELOPER"
+                ></ReviewCard>
               </Col>
             </Row>
           </Container>

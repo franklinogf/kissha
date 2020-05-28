@@ -9,6 +9,7 @@ import { ReviewCard } from "../components/Users/ReviewCard"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { faTruck, faTag, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { fab } from "@fortawesome/free-brands-svg-icons"
+import "../scss/main-bootstrap.scss"
 
 library.add(fab, faTruck, faTag, faEnvelope)
 
@@ -104,10 +105,8 @@ export default class index extends Component {
         </Section>
         <Section>
           <Container>
-            <Row>
-              <Col sm={12}>
 
-              </Col>
+            <Row className="border border-primary">
               <Col sm={12} md={6}>
                 <ReviewCard></ReviewCard>
               </Col>

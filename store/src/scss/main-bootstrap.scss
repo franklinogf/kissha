@@ -17,6 +17,13 @@ $theme-colors: (
   letter-spacing: 1px;
   border-bottom: 3px solid var(--primary);
 }
+
+.section-title{
+  font-family: Montserrat;
+  font-size: 2.25rem !important;
+  font-weight: 400 !important;
+}
+
 ._border-primary{
   border-bottom: 3px solid var(--primary);
 }

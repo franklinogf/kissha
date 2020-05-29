@@ -19,15 +19,14 @@ export default class product extends Component {
   render() {
     return (
       <MainLayout>
-        <h1>This is the Product Page!</h1>
         <Section height={1200} padding="py-5 px-0">
-          <Container className="border border-primary">
+          <Container>
             <Row>
               <Col xs={12} md={6} className="border border-secondary">
                 <ProductGallery></ProductGallery>
               </Col>
-              <Col xs={12} md={6} className="border border-secondary">
-                <ProductDetail className="border border-dark"></ProductDetail>
+              <Col xs={12} md={6}>
+                <ProductDetail></ProductDetail>
               </Col>
             </Row>
           </Container>

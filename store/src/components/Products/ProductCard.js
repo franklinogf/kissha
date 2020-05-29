@@ -1,8 +1,7 @@
 import React from "react"
 import { Card } from "react-bootstrap"
-import { CartButton } from "../Products/CartButton"
-
 import styled from "styled-components"
+import AddToCartButton from "../Buttons/AddToCartButton"
 
 const StyledCard = styled(Card)`
   max-width: 18rem;
@@ -17,13 +16,7 @@ const ProductCard = props => {
       <Card.Body>
         <Card.Text className="text-truncate">{props.name}</Card.Text>
         <Card.Title>{props.price && `$${props.price}`}</Card.Title>
-        <CartButton
-          size="sm"
-          variant="primary"
-          fontSize="16"
-          text="Add to cart"
-          icon
-        ></CartButton>
+        <AddToCartButton icon/>
       </Card.Body>
     </StyledCard>
   )

@@ -2,8 +2,9 @@ import React from "react"
 import { Form, Col, Button } from "react-bootstrap"
 
 export const InputSpinner = props => {
+  const mb = props.marginBottom || "mb-4"
   return (
-    <Form.Row>
+    <Form.Row className={mb}>
       <Col xs={12}>
       <Form.Label>QUANTITY</Form.Label>
       </Col>

@@ -6,7 +6,7 @@ $theme-colors: (
    secondary:#9D2933
  );
  
- @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
+ @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
  @import '~bootstrap/scss/bootstrap.scss';
  
  .title {
@@ -16,6 +16,10 @@ $theme-colors: (
   font-weight: 600 !important;
   letter-spacing: 1px;
   border-bottom: 3px solid var(--primary);
+}
+
+._font-Montserrat{
+  font-family: Montserrat;
 }
 
 ._section-title{

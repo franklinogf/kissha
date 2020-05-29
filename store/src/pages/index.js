@@ -7,11 +7,11 @@ import { ProductRow } from "../components/Products/ProductRow"
 import { DeliveryCard } from "../components/Delivery/DeliveryCard"
 import { ReviewCard } from "../components/Users/ReviewCard"
 import { library } from "@fortawesome/fontawesome-svg-core"
-import { faTruck, faTag, faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faTruck, faTag, faEnvelope, fas } from "@fortawesome/free-solid-svg-icons"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import "../scss/main-bootstrap.scss"
 
-library.add(fab, faTruck, faTag, faEnvelope)
+library.add(fab, fas, faTruck, faTag, faEnvelope)
 
 export default class index extends Component {
   constructor(props) {

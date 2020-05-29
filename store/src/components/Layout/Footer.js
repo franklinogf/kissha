@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { Row, Col, Container } from "react-bootstrap"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import SocialIcons from './SocialIcons'
 import "../../css/footer.css"
 
 const Footer = () => {
@@ -102,44 +102,7 @@ const Footer = () => {
                 <p className="title pb-1 d-inline-block">Social & Contact</p>
               </Col>
               <Col xs={12}>
-                <Row>
-                  <Col>
-                    <Link to="/" className="h-p">
-                      <FontAwesomeIcon
-                        className="facebook"
-                        icon={['fab','facebook']}
-                        size="2x"
-                      />
-                    </Link>
-                  </Col>
-                  <Col>
-                    <Link to="/" className="h-p">
-                      <FontAwesomeIcon
-                        className="twitter"
-                        icon={['fab','twitter']}
-                        size="2x"
-                      />
-                    </Link>
-                  </Col>
-                  <Col>
-                    <Link to="/" className="h-p">
-                      <FontAwesomeIcon
-                        className="instagram"
-                        icon={['fab','instagram']}
-                        size="2x"
-                      />
-                    </Link>
-                  </Col>
-                  <Col>
-                    <Link to="/" className="h-p">
-                      <FontAwesomeIcon
-                        className="email"
-                        icon="envelope"
-                        size="2x"
-                      />
-                    </Link>
-                  </Col>
-                </Row>
+                <SocialIcons/>
               </Col>
             </Row>
           </Col>

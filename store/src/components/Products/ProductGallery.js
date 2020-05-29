@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const ProductGallery = props => {
+ const ProductGallery = props => {
     return (
         <div></div>
     )
   }
+
+  export default ProductGallery

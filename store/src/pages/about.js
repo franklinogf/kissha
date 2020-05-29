@@ -3,6 +3,7 @@ import MainLayout from "../components/Layout/MainLayout"
 import { Row, Col } from "react-bootstrap"
 
 import styled from 'styled-components'
+import PageTitle from "../components/Layout/PageTitle"
 
 const StyledCol = styled(Col)`
 border:1px solid;
@@ -13,6 +14,7 @@ export default class about extends Component {
   render() {
     return (
       <MainLayout>
+        <PageTitle title="About" />
         <Row className="row-cols-1 row-cols-lg-2">
           <StyledCol>1</StyledCol>
           <StyledCol>2</StyledCol>

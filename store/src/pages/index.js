@@ -8,7 +8,6 @@ import DeliveryCard from "../components/Delivery/DeliveryCard"
 import ReviewCard from "../components/Users/ReviewCard"
 import PageTitle from "../components/Layout/PageTitle"
 
-
 export default class index extends Component {
   constructor(props) {
     super(props)
@@ -66,7 +65,7 @@ export default class index extends Component {
           <p>
             Qui ipsum enim labore aliqua fugiat laboris nisi pariatur tempor
             deserunt nisi occaecat mollit ipsum.
-          </p>
+          </p>         
         </Section>
 
         <Section>

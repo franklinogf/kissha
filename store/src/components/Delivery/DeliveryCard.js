@@ -15,7 +15,7 @@ const StyledSpan = styled.span`
 letter-spacing: 0px !important;
 `
 
-export const DeliveryCard = props => {
+ const DeliveryCard = props => {
   return (
     <Row className="text-center">
       <Col xs={12} className="justify-content-center py-3">
@@ -37,3 +37,4 @@ export const DeliveryCard = props => {
     </Row>
   )
 }
+export default DeliveryCard

@@ -3,9 +3,9 @@ import MainLayout from "../components/Layout/MainLayout"
 import Section from "../components/Layout/Section"
 import { Row, Col, Container, Button } from "react-bootstrap"
 import ImageCard from "../components/ImageCard/ImageCard"
-import { ProductRow } from "../components/Products/ProductRow"
-import { DeliveryCard } from "../components/Delivery/DeliveryCard"
-import { ReviewCard } from "../components/Users/ReviewCard"
+import ProductRow from "../components/Products/ProductRow"
+import DeliveryCard from "../components/Delivery/DeliveryCard"
+import ReviewCard from "../components/Users/ReviewCard"
 import PageTitle from "../components/Layout/PageTitle"
 
 

@@ -2,7 +2,7 @@ import React from "react"
 import { Card, Media, Image } from "react-bootstrap"
 import "../../scss/main-bootstrap.scss"
 
-export const ReviewCard = props => {
+const ReviewCard = props => {
   return (
     <Card className="border-0 h-100">
       <Card.Body className="border bg-light font-italic _font-size-20">
@@ -25,3 +25,4 @@ export const ReviewCard = props => {
     </Card>
   )
 }
+export default ReviewCard

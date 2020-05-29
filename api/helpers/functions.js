@@ -1,4 +1,4 @@
-export const Properties = (bodyData) =>{
+const Properties = (bodyData) =>{
    const properties = {}
    for (data in bodyData) {
       properties[data] = bodyData[data]
@@ -6,3 +6,4 @@ export const Properties = (bodyData) =>{
    return properties
 }
 
+module.exports = {Properties}

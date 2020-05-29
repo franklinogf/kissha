@@ -6,5 +6,12 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [`gatsby-plugin-sass`],
+  siteMetadata: {
+    title: `Kissha Store`,
+    author: `Franklin González, Miguel Peña`,
+  },
+  plugins: [
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-react-helmet`
+  ],
 }

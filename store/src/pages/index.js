@@ -6,12 +6,8 @@ import ImageCard from "../components/ImageCard/ImageCard"
 import { ProductRow } from "../components/Products/ProductRow"
 import { DeliveryCard } from "../components/Delivery/DeliveryCard"
 import { ReviewCard } from "../components/Users/ReviewCard"
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { faTruck, faTag, faEnvelope, fas } from "@fortawesome/free-solid-svg-icons"
-import { fab } from "@fortawesome/free-brands-svg-icons"
-import "../scss/main-bootstrap.scss"
+import PageTitle from "../components/Layout/PageTitle"
 
-library.add(fab, fas, faTruck, faTag, faEnvelope)
 
 export default class index extends Component {
   constructor(props) {
@@ -30,6 +26,8 @@ export default class index extends Component {
   render() {
     return (
       <MainLayout>
+        {/* page title */}    
+        <PageTitle title="Home"/>   
         <Section>
           <Container>
             <Row className="d-flex row-cols-1 row-cols-lg-3 pb-5 mt-5">

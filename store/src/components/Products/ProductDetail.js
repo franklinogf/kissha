@@ -1,10 +1,10 @@
 import React from "react"
 import { Card, ListGroup, Form } from "react-bootstrap"
 import { InputSpinner } from "../Products/InputSpinner"
-import { CartButton } from "../Products/CartButton"
+import Button  from "../Buttons/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-export const ProductDetail = props => {
+ const ProductDetail = props => {
   return (
     <Card className="border-0">
       <Card.Title className="_section-title font-weight-normal _font-size-32 mb-3">
@@ -44,13 +44,13 @@ export const ProductDetail = props => {
         250
       </Card.Text>
       <Card.Body className="pl-0 mb-3">
-        <CartButton
+        <Button
           size="lg"
           variant="primary"
           fontSize="18"
           text="Add to cart"
           icon
-        ></CartButton>
+        ></Button>
       </Card.Body>
       <ListGroup horizontal>
         <ListGroup.Item  className="px-1 border-0">
@@ -78,3 +78,5 @@ export const ProductDetail = props => {
     </Card>
   )
 }
+
+export default ProductDetail

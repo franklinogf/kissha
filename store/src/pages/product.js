@@ -4,11 +4,7 @@ import Section from "../components/Layout/Section"
 import { ProductGallery } from "../components/Products/ProductGallery"
 import { ProductDetail } from "../components/Products/ProductDetail"
 import { Container, Row, Col } from "react-bootstrap"
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { fas } from "@fortawesome/free-solid-svg-icons"
-import { fab } from "@fortawesome/free-brands-svg-icons"
 
-library.add(fab, fas)
 
 export default class product extends Component {
   constructor(props) {

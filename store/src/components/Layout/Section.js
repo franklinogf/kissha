@@ -31,13 +31,13 @@ export default class Section extends React.Component {
   render() {
     const bg = this.props.bg || "white"
     const height = this.props.height || 496
-    const padding = this.props.padding || "p-5"
+    const padding = this.props.padding || 5
     return (
       <StyledContainer
         img={this.props.img}
         height={`${height}px`}
         fluid
-        className={`bg-${bg} ${padding}`}
+        className={`bg-${bg} p-${padding}`}
       >
         {this.props.children}
       </StyledContainer>

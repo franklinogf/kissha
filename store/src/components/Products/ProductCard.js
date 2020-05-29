@@ -18,7 +18,7 @@ max-width: 12rem;
               {props.name}
             </Card.Text>
             <Card.Title>{props.price && `$${props.price}`}</Card.Title>
-            <Button size='sm' variant="primary">Add to cart</Button>
+            <Button size='sm' variant="primary" className="text-white rounded-pill _font-size-14 _font-Montserrat">Add to cart</Button>
           </Card.Body>
         </StyledCard>
    )

@@ -6,8 +6,8 @@ import ProductDetail from "../components/Products/ProductDetail"
 import { Container, Row, Col } from "react-bootstrap"
 import PageTitle from "../components/Layout/PageTitle"
 import ProductRow from "../components/Products/ProductRow"
-// import { sortByDate } from "../helpers/functions" /*TEMPORAL, CHANGE FOR OTHER A SORT BY BRAND*/
 import {API_URL} from '../helpers/config'
+
 export default class product extends Component {
   state = {
     product: {},

@@ -1,6 +1,6 @@
 import React from "react"
 import { Card, ListGroup, Form, Row, Col } from "react-bootstrap"
-import { InputSpinner } from "../Products/InputSpinner"
+import InputSpinner from "../Products/InputSpinner"
 import SocialIcons from "../Layout/SocialIcons"
 import AddToCartButton from "../Buttons/AddToCartButton"
 
@@ -44,7 +44,7 @@ const ProductDetail = props => {
             <option>8 oz</option>
           </Form.Control>
         </Form.Group>
-        <InputSpinner></InputSpinner>
+        <InputSpinner max={stock}/>
       </Form>
       <Card.Text className="_font-Montserrat _font-size-16 mt-2 mb-1">
         AVAILABLE QUANTITY

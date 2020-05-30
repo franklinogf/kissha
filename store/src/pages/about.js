@@ -4,9 +4,6 @@ import PageTitle from "../components/Layout/PageTitle"
 
 
 export default class about extends Component { 
-  constructor(props){
-    super(props)    
-  }
   render() {
     return (
       <MainLayout>

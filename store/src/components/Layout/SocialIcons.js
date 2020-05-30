@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
 
 const SocialIcons = ({ facebook, twitter, instagram, email }) => {
-  console.log(facebook)
   return (
     <Row>
       {facebook !== false && (

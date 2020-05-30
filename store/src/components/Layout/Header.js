@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Logo from "../Logo/Logo"
 import { Navbar, Nav } from "react-bootstrap"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const Header = () => {
   return (
@@ -56,6 +57,9 @@ const Header = () => {
             >
               Sales
             </Link>
+            <Navbar.Text>
+              <FontAwesomeIcon className="text-primary" icon={["fas","shopping-cart"]}/> 0
+            </Navbar.Text>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

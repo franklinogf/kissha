@@ -3,12 +3,12 @@ import { Row, Col } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
 
-const SocialIcons = ({ facebook, twitter, instagram, email }) => {
+const SocialIcons = ({ facebook, twitter, instagram, email, baseColor }) => {
   return (
     <Row>
       {facebook !== false && (
         <Col>
-          <Link to="/" className="h-p">
+          <Link to="/" className={baseColor && baseColor}>
             <FontAwesomeIcon
               className="facebook"
               icon={["fab", "facebook"]}
@@ -19,7 +19,7 @@ const SocialIcons = ({ facebook, twitter, instagram, email }) => {
       )}
       {twitter !== false && (
         <Col>
-          <Link to="/" className="h-p">
+          <Link to="/" className={baseColor && baseColor}>
             <FontAwesomeIcon
               className="twitter"
               icon={["fab", "twitter"]}
@@ -30,7 +30,7 @@ const SocialIcons = ({ facebook, twitter, instagram, email }) => {
       )}
       {instagram !== false && (
         <Col>
-          <Link to="/" className="h-p">
+          <Link to="/" className={baseColor && baseColor}>
             <FontAwesomeIcon
               className="instagram"
               icon={["fab", "instagram"]}
@@ -41,7 +41,7 @@ const SocialIcons = ({ facebook, twitter, instagram, email }) => {
       )}
       {email !== false && (
         <Col>
-          <Link to="/" className="h-p">
+          <Link to="/" className="">
             <FontAwesomeIcon className="email" icon="envelope" size="2x" />
           </Link>
         </Col>

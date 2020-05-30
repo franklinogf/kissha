@@ -7,19 +7,23 @@ import ProductRow from "../components/Products/ProductRow"
 import DeliveryCard from "../components/Delivery/DeliveryCard"
 import ReviewCard from "../components/Users/ReviewCard"
 import PageTitle from "../components/Layout/PageTitle"
+import {sortByDate} from '../helpers/functions'
 
 export default class index extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: [],
+      products: []
     }
   }
 
   componentDidMount() {
     fetch("http://localhost:5000/products")
       .then(data => data.json())
-      .then(products => this.setState({ products: products.data }))
+      .then(products => {
+        const sortedProducts = sortByDate(products.data);
+        this.setState({ products: sortedProducts.slice(0,4) })
+      })
   }
 
   render() {

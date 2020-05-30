@@ -41,7 +41,7 @@ const SocialIcons = ({ facebook, twitter, instagram, email, baseColor }) => {
       )}
       {email !== false && (
         <Col>
-          <Link to="/" className="">
+          <Link to="/" className={baseColor && baseColor}>
             <FontAwesomeIcon className="email" icon="envelope" size="2x" />
           </Link>
         </Col>

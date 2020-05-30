@@ -6,34 +6,35 @@ import ProductDetail from "../components/Products/ProductDetail"
 import { Container, Row, Col } from "react-bootstrap"
 import PageTitle from "../components/Layout/PageTitle"
 import ProductRow from "../components/Products/ProductRow"
-import { sortByDate } from "../helpers/functions" /*TEMPORAL, CHANGE FOR OTHER A SORT BY BRAND*/
-
+// import { sortByDate } from "../helpers/functions" /*TEMPORAL, CHANGE FOR OTHER A SORT BY BRAND*/
+import {API_URL} from '../helpers/config'
 export default class product extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      product: {},
-      relatedProducts: [],
-    }
+  state = {
+    product: {},
+    relatedProducts: [],
   }
 
   componentDidMount() {
-    fetch("http://localhost:5000/products/51")
-    .then(data => data.json())
-    .then(products => {
-      this.setState({ product: products.data })
-    })
-    fetch("http://localhost:5000/products/")
-    .then(data => data.json())
-    .then(products => {
-      this.setState({ relatedProducts: products.data.splice(0,4) })
-    })
+    const productId = this.props.location.state.productId
+    fetch(`${API_URL}/products/${productId}`)
+      .then(data => data.json())
+      .then(product => {
+        fetch(`${API_URL}/products`)
+          .then(data => data.json())
+          .then(products => {
+            this.setState({
+              product: product.data,
+              relatedProducts: products.data.splice(0, 4),
+            })
+          })
+      })
   }
 
-  render() {
+  render() {    
+    const {product} = this.state
     return (
       <MainLayout>
-        <PageTitle title="Products" />
+        <PageTitle title={`${product.name}`} />
         <Section padding="py-5 px-0">
           <Container>
             <Row>
@@ -41,7 +42,7 @@ export default class product extends Component {
                 <ProductGallery />
               </Col>
               <Col xs={12} md={6}>
-                <ProductDetail product={this.state.product} />
+                <ProductDetail product={product} />
               </Col>
             </Row>
             <Row className="pt-2 pb-4 mt-4 mb-0 border-top border-bottom border-primary">

@@ -8,6 +8,7 @@ import DeliveryCard from "../components/Delivery/DeliveryCard"
 import ReviewCard from "../components/Users/ReviewCard"
 import PageTitle from "../components/Layout/PageTitle"
 import {sortByDate} from '../helpers/functions'
+import {API_URL} from '../helpers/config'
 
 export default class index extends Component {
   
@@ -16,7 +17,7 @@ export default class index extends Component {
   }
   
   componentDidMount() {
-    fetch("http://localhost:5000/products")
+    fetch(`${API_URL}/products`)
     .then(data => data.json())
     .then(products => {
       const sortedProducts = sortByDate(products.data);
@@ -29,9 +30,9 @@ export default class index extends Component {
       <MainLayout>
         {/* page title */}    
         <PageTitle title="Home"/>   
-        <Section >
-          <Container>
-            <Row className="d-flex row-cols-1 row-cols-lg-3 pb-5 mt-5">
+        <Section padding="p-3">
+          <Container className="mb-5">
+            <Row className="d-flex row-cols-1 row-cols-lg-3">
               <Col className="mt-3 d-flex justify-content-center">
                 <ImageCard
                   title="Makeup Tools"

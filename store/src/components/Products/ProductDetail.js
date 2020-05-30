@@ -5,10 +5,11 @@ import SocialIcons from "../Layout/SocialIcons"
 import AddToCartButton from "../Buttons/AddToCartButton"
 
 const ProductDetail = props => {
+  const { name, brand, model, price, description, stock } = props.product
   return (
     <Card className="border-0">
       <Card.Title className="_section-title font-weight-normal _font-size-32 mb-3">
-        Borghese Effetto Immediato Spa Soothing Tonic
+        {name}
       </Card.Title>
       <ListGroup
         horizontal
@@ -16,7 +17,7 @@ const ProductDetail = props => {
       >
         <ListGroup.Item className="pl-0  border-0">Brand:</ListGroup.Item>
         <ListGroup.Item className="text-primary  border-0">
-          Loreal
+          {brand}
         </ListGroup.Item>
       </ListGroup>
       <ListGroup
@@ -25,16 +26,14 @@ const ProductDetail = props => {
       >
         <ListGroup.Item className="pl-0  border-0">Model:</ListGroup.Item>
         <ListGroup.Item className="text-primary  border-0">
-          Active
+          {model}
         </ListGroup.Item>
       </ListGroup>
       <Card.Text className="_font-Montserrat _font-size-28 my-2">
-        $50.00
+        ${price}
       </Card.Text>
       <Card.Text className="_font-Montserrat _font-size-16 mt-2 mb-3">
-        Even though it may seem like there are too many choices for your night
-        regiment skincare out there, in reality there are only a few good ones –
-        with this one leading the way.
+        {description}
       </Card.Text>
       <Form>
         <Form.Group controlId="variant" className="mb-3">
@@ -51,14 +50,14 @@ const ProductDetail = props => {
         AVAILABLE QUANTITY
       </Card.Text>
       <Card.Text className="_font-Montserrat _font-size-16 mt-1 mb-4 text-primary">
-        250
+        {stock}
       </Card.Text>
       <Card.Body className="pl-0 mb-3">
         <AddToCartButton icon />
       </Card.Body>
       <Row>
         <Col xs={3}>
-          <SocialIcons email={false} baseColor="text-black-50"/>
+          <SocialIcons email={false} baseColor="text-black-50" />
         </Col>
       </Row>
     </Card>

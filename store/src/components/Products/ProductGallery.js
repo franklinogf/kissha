@@ -32,7 +32,7 @@ const ProductGallery = () => {
           </Carousel.Item>
         </Carousel>
       </Row>
-      <Row xs={4} className="w-100 mt-3">
+      <Row xs={4} className="w-100 mt-3 mb-4">
         <Col>
           <Image
             className="w-100"

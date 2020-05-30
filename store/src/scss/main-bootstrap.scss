@@ -1,6 +1,7 @@
 //  fonts imports
  @import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+ @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
 $enable-shadows:true;
 $enable-responsive-font-sizes:true;
@@ -12,6 +13,7 @@ $theme-colors: (
    twitter: #2aa9e0,
    instagram:#d3492c
  );
+ 
  @import '~bootstrap/scss/bootstrap.scss';
  
  ._logo-text{
@@ -29,6 +31,10 @@ $theme-colors: (
 
 ._font-Montserrat{
   font-family: Montserrat;
+}
+
+._font-Playfair-Display{
+  font-family: 'Playfair Display';
 }
 
 ._section-title{
@@ -51,6 +57,10 @@ $theme-colors: (
 
 ._font-size-16{
   font-size: 1rem !important;
+}
+
+._font-size-18{
+  font-size: 1.125rem !important;
 }
 
 ._font-size-20{

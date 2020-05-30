@@ -6,7 +6,7 @@ const AddToCartButton = ({variant,icon}) => {
       <>
          <Button          
           variant={variant || "primary"}
-          fontSize="16"
+          fontSize="20"
           text="Add to cart"
           icon={icon && ["fas", "shopping-cart"]}
         />

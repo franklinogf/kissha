@@ -1,16 +1,12 @@
 import React, { useState } from "react"
-import { Form, Col, Button } from "react-bootstrap"
+import { FormControl, Button, InputGroup } from "react-bootstrap"
 import styled from "styled-components"
 
-const Btn = styled(Button)`
-  border-radius: 0;
+const InputContainer = styled.div`
+  width: 7.5rem;
 `
 
-const Input = styled(Form.Control)`
-  width:3rem;
-`
-
-const InputSpinner = props => {  
+const InputSpinner = props => {
   const max = props.max
 
   const [quantity, setQuantity] = useState(1)
@@ -28,34 +24,39 @@ const InputSpinner = props => {
   }
 
   const handleChangeQuantity = e => {
-    setQuantity(Number(e.target.value))
+    if (!isNaN(e.target.value)) {
+      if (Number(e.target.value) !== 0) {
+        if (Number(e.target.value) > max) {
+          setQuantity(max)
+        } else {
+          setQuantity(Number(e.target.value))
+        }
+      }
+    }
   }
 
   return (
-    <>
-      {max  <= 10 && <p className="text-warning">Almost out of stock</p>}
-      <div className="d-flex">
-        <Btn
-          variant="dark"
-          className="rounded-left"
-          onClick={handleLessQuantity}
-        >
-          -
-        </Btn>
-        <Input
+    <InputContainer>
+      {max <= 10 && <p className="text-warning">Almost out of stock</p>}
+      <InputGroup className="mb-3">
+        <InputGroup.Prepend>
+          <Button variant="secondary" onClick={handleLessQuantity}>
+            -
+          </Button>
+        </InputGroup.Prepend>
+        <FormControl
           value={quantity}
           onChange={handleChangeQuantity}
-          className="rounded-0 text-right p-1"
+          className="text-right"
         />
-        <Btn
-          variant="dark"
-          className="rounded-right"
-          onClick={handleMoreQuantity}
-        >
-          +
-        </Btn>
-      </div>
-    </>    
+        <InputGroup.Append>
+          <Button variant="secondary" onClick={handleMoreQuantity}>
+            +
+          </Button>
+        </InputGroup.Append>
+      </InputGroup>
+      
+    </InputContainer>
   )
 }
 

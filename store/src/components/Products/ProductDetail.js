@@ -44,6 +44,7 @@ const ProductDetail = props => {
             <option>8 oz</option>
           </Form.Control>
         </Form.Group>
+        <p>QUANTITY</p>
         <InputSpinner max={stock}/>
       </Form>      
       <Card.Body className="pl-0 mb-3">

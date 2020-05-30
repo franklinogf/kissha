@@ -18,7 +18,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="navbar" />
         <Navbar.Collapse className="justify-content-center" id="navbar">
           <Nav>
-            <Link activeClassName="active" className="mr-md-2 mr-lg-4 nav-link" to="/about/">
+            <Link activeClassName="active" className="mr-md-2 mr-lg-4 nav-link" to="/about" state={{greeting:"Hello About!"}}>
               New Arrivals
             </Link>
             <Link activeClassName="active" className="mr-md-2 mr-lg-4 nav-link" to="/bestseller">

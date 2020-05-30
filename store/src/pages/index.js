@@ -16,14 +16,14 @@ export default class index extends Component {
       products: []
     }
   }
-
+  
   componentDidMount() {
     fetch("http://localhost:5000/products")
-      .then(data => data.json())
-      .then(products => {
-        const sortedProducts = sortByDate(products.data);
-        this.setState({ products: sortedProducts.slice(0,4) })
-      })
+    .then(data => data.json())
+    .then(products => {
+      const sortedProducts = sortByDate(products.data);
+      this.setState({ products: sortedProducts.slice(0,4) })
+    })
   }
 
   render() {

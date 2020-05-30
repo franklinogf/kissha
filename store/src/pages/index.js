@@ -10,11 +10,9 @@ import PageTitle from "../components/Layout/PageTitle"
 import {sortByDate} from '../helpers/functions'
 
 export default class index extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      products: []
-    }
+  
+  state = {
+    products: []
   }
   
   componentDidMount() {
@@ -31,7 +29,7 @@ export default class index extends Component {
       <MainLayout>
         {/* page title */}    
         <PageTitle title="Home"/>   
-        <Section>
+        <Section >
           <Container>
             <Row className="d-flex row-cols-1 row-cols-lg-3 pb-5 mt-5">
               <Col className="mt-3 d-flex justify-content-center">

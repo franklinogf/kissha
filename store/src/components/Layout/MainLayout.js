@@ -7,7 +7,7 @@ import Footer from "./Footer"
 const MainLayout = ({ children }) => {
   return (
     <>
-      <Container className="pt-5">
+      <Container className="pt-3">
         <Header />
       </Container>
       <Container fluid className="p-0">

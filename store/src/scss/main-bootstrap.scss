@@ -1,3 +1,7 @@
+//  fonts imports
+ @import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
+ @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
 $enable-shadows:true;
 $enable-responsive-font-sizes:true;
 
@@ -8,10 +12,12 @@ $theme-colors: (
    twitter: #2aa9e0,
    instagram:#d3492c
  );
- 
- @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
  @import '~bootstrap/scss/bootstrap.scss';
  
+ ._logo-text{
+  font-family: 'Kavoon', cursive;
+ }
+
  .title {
   font-family: Montserrat;
   font-size: 14px !important;

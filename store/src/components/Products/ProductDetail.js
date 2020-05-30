@@ -45,13 +45,7 @@ const ProductDetail = props => {
           </Form.Control>
         </Form.Group>
         <InputSpinner max={stock}/>
-      </Form>
-      <Card.Text className="_font-Montserrat _font-size-16 mt-2 mb-1">
-        AVAILABLE QUANTITY
-      </Card.Text>
-      <Card.Text className="_font-Montserrat _font-size-16 mt-1 mb-4 text-primary">
-        {stock}
-      </Card.Text>
+      </Form>      
       <Card.Body className="pl-0 mb-3">
         <AddToCartButton icon />
       </Card.Body>

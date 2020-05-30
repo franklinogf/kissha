@@ -1,52 +1,61 @@
 import React, { useState } from "react"
 import { Form, Col, Button } from "react-bootstrap"
+import styled from "styled-components"
 
-const InputSpinner = props => {
-  const mb = props.marginBottom || "mb-4"
+const Btn = styled(Button)`
+  border-radius: 0;
+`
+
+const Input = styled(Form.Control)`
+  width:3rem;
+`
+
+const InputSpinner = props => {  
   const max = props.max
-  
-  const [quantity, setQuantity] = useState("hola")
 
-  const handleMoreQuantity = (e) => {
-    console.log(quantity.typeof)
-    quantity < max && setQuantity(quantity+1)
+  const [quantity, setQuantity] = useState(1)
+
+  const handleMoreQuantity = e => {
+    if (quantity < max) {
+      setQuantity(quantity + 1)
+    }
   }
 
-  const handleLessQuantity = (e) => {
-    quantity > 0 && setQuantity(quantity-1)
+  const handleLessQuantity = e => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1)
+    }
   }
 
-  const showQ = () =>{
-    return quantity
+  const handleChangeQuantity = e => {
+    setQuantity(Number(e.target.value))
   }
 
   return (
-    <Form.Row className={mb}>
-      <Col xs={12}>
-  <Form.Label>QUANTITY {max}</Form.Label>
-      </Col>
-      <Col xs={1} className="m-0 pr-0 d-flex justify-content-end">
-        <Button
+    <>
+      {max  <= 10 && <p className="text-warning">Almost out of stock</p>}
+      <div className="d-flex">
+        <Btn
           variant="dark"
-          className="font-weight-bold _font-size-20 py-0 rounded-left w-100"
+          className="rounded-left"
           onClick={handleLessQuantity}
         >
           -
-        </Button>
-      </Col>
-      <Col xs={1} className="px-0">
-        <Form.Control defaultValue={quantity} value={quantity} onChange={showQ} className="rounded-0 text-right" />
-      </Col>
-      <Col xs={1} className="pl-0 d-flex justify-content-start">
-        <Button
+        </Btn>
+        <Input
+          value={quantity}
+          onChange={handleChangeQuantity}
+          className="rounded-0 text-right p-1"
+        />
+        <Btn
           variant="dark"
-          className="font-weight-bold _font-size-20 py-0 rounded-right w-100"
+          className="rounded-right"
           onClick={handleMoreQuantity}
         >
           +
-        </Button>
-      </Col>
-    </Form.Row>
+        </Btn>
+      </div>
+    </>    
   )
 }
 

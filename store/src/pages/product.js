@@ -17,15 +17,17 @@ export default class product extends Component {
     }
   }
 
-  async componentDidMount() {
-    /*Fetch By id*/
-    const singleResponse = await fetch("http://localhost:5000/products/51")
-    const singleProduct = await singleResponse.json()
-    this.setState({ product: singleProduct.data })
-    /*Fetch By Brand-Model-anything related with the fetched product*/
-    const relatedResponse = await fetch("http://localhost:5000/products/")
-    const products = await relatedResponse.json()
-    this.setState({ relatedProducts: products.data.slice(0, 4) })
+  componentDidMount() {
+    fetch("http://localhost:5000/products/51")
+    .then(data => data.json())
+    .then(products => {
+      this.setState({ product: products.data })
+    })
+    fetch("http://localhost:5000/products/")
+    .then(data => data.json())
+    .then(products => {
+      this.setState({ relatedProducts: products.data.splice(0,4) })
+    })
   }
 
   render() {

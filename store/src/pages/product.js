@@ -6,23 +6,26 @@ import ProductDetail from "../components/Products/ProductDetail"
 import { Container, Row, Col } from "react-bootstrap"
 import PageTitle from "../components/Layout/PageTitle"
 import ProductRow from "../components/Products/ProductRow"
-import {sortByDate} from '../helpers/functions' /*TEMPORAL, CHANGE FOR OTHER A SORT BY BRAND*/ 
+import { sortByDate } from "../helpers/functions" /*TEMPORAL, CHANGE FOR OTHER A SORT BY BRAND*/
 
 export default class product extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: []
+      product: {},
+      relatedProducts: [],
     }
   }
 
-  componentDidMount() {
-    fetch("http://localhost:5000/products")
-    .then(data => data.json())
-    .then(products => {
-      const sortedProducts = sortByDate(products.data);
-      this.setState({ products: sortedProducts.slice(0,4) })
-    })
+  async componentDidMount() {
+    /*Fetch By id*/
+    const singleResponse = await fetch("http://localhost:5000/products/51")
+    const singleProduct = await singleResponse.json()
+    this.setState({ product: singleProduct.data })
+    /*Fetch By Brand-Model-anything related with the fetched product*/
+    const relatedResponse = await fetch("http://localhost:5000/products/")
+    const products = await relatedResponse.json()
+    this.setState({ relatedProducts: products.data.slice(0, 4) })
   }
 
   render() {
@@ -36,12 +39,20 @@ export default class product extends Component {
                 <ProductGallery />
               </Col>
               <Col xs={12} md={6}>
-                <ProductDetail />
+                <ProductDetail product={this.state.product} />
               </Col>
             </Row>
             <Row className="pt-2 pb-4 mt-4 mb-0 border-top border-bottom border-primary">
-              <Col xs={12} className="_font-Montserrat _font-size-20 font-weight-bold mb-2">Description</Col>
-              <Col xs={12} className="_font-Montserrat _font-size-18 font-weight-light">
+              <Col
+                xs={12}
+                className="_font-Montserrat _font-size-20 font-weight-bold mb-2"
+              >
+                Also
+              </Col>
+              <Col
+                xs={12}
+                className="_font-Montserrat _font-size-18 font-weight-light"
+              >
                 When we talk about keeping your skin soothed, moisturized and
                 taken care of – we must mention the night regiment that is
                 absolutely necessary for achieving all these ultimate goals.
@@ -54,10 +65,8 @@ export default class product extends Component {
         </Section>
         <Section>
           <Container>
-            <Section.Header
-            title="Related Products"
-            />
-            <ProductRow products={this.state.products} />           
+            <Section.Header title="Related Products" />
+            <ProductRow products={this.state.relatedProducts} />
           </Container>
         </Section>
       </MainLayout>

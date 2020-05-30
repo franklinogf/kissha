@@ -1,22 +1,32 @@
 import React from "react"
-import { Card, ListGroup, Form } from "react-bootstrap"
+import { Card, ListGroup, Form, Row, Col } from "react-bootstrap"
 import { InputSpinner } from "../Products/InputSpinner"
-import Button  from "../Buttons/Button"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import SocialIcons from "../Layout/SocialIcons"
+import AddToCartButton from "../Buttons/AddToCartButton"
 
- const ProductDetail = props => {
+const ProductDetail = props => {
   return (
     <Card className="border-0">
       <Card.Title className="_section-title font-weight-normal _font-size-32 mb-3">
         Borghese Effetto Immediato Spa Soothing Tonic
       </Card.Title>
-      <ListGroup horizontal className="_font-Montserrat _font-size-16 mb-2  border-0">
+      <ListGroup
+        horizontal
+        className="_font-Montserrat _font-size-16 mb-2  border-0"
+      >
         <ListGroup.Item className="pl-0  border-0">Brand:</ListGroup.Item>
-        <ListGroup.Item className="text-primary  border-0">Loreal</ListGroup.Item>
+        <ListGroup.Item className="text-primary  border-0">
+          Loreal
+        </ListGroup.Item>
       </ListGroup>
-      <ListGroup horizontal className="_font-Montserrat _font-size-16 mb-2  border-0">
+      <ListGroup
+        horizontal
+        className="_font-Montserrat _font-size-16 mb-2  border-0"
+      >
         <ListGroup.Item className="pl-0  border-0">Model:</ListGroup.Item>
-        <ListGroup.Item className="text-primary  border-0">Active</ListGroup.Item>
+        <ListGroup.Item className="text-primary  border-0">
+          Active
+        </ListGroup.Item>
       </ListGroup>
       <Card.Text className="_font-Montserrat _font-size-28 my-2">
         $50.00
@@ -44,37 +54,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
         250
       </Card.Text>
       <Card.Body className="pl-0 mb-3">
-        <Button
-          size="lg"
-          variant="primary"
-          fontSize="18"
-          text="Add to cart"
-          icon
-        ></Button>
+        <AddToCartButton icon />
       </Card.Body>
-      <ListGroup horizontal>
-        <ListGroup.Item  className="px-1 border-0">
-          <FontAwesomeIcon
-            className="facebook text-facebook"
-            icon={["fab", "facebook"]}
-            size="2x"
-          />
-        </ListGroup.Item>
-        <ListGroup.Item className="px-2 border-0">
-          <FontAwesomeIcon
-            className="twitter text-twitter"
-            icon={["fab", "twitter"]}
-            size="2x"
-          />
-        </ListGroup.Item>
-        <ListGroup.Item className="px-1 border-0">
-          <FontAwesomeIcon
-            className="instagram text-instagram"
-            icon={["fab", "instagram"]}
-            size="2x"
-          />
-        </ListGroup.Item>
-      </ListGroup>
+      <Row>
+        <Col xs={3}>
+          <SocialIcons email={false} baseColor="text-black-50"/>
+        </Col>
+      </Row>
     </Card>
   )
 }

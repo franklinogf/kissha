@@ -7,29 +7,34 @@ import ProductRow from "../components/Products/ProductRow"
 import DeliveryCard from "../components/Delivery/DeliveryCard"
 import ReviewCard from "../components/Users/ReviewCard"
 import PageTitle from "../components/Layout/PageTitle"
-import {sortByDate} from '../helpers/functions'
-import {API_URL} from '../helpers/config'
+import { sortByDate } from "../helpers/functions"
+import { API_URL } from "../helpers/config"
 
 export default class index extends Component {
-  
-  state = {
-    products: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      products: [],
+    }
+    this.handleAddToCart = this.handleAddToCart.bind(this)
   }
-  
   componentDidMount() {
     fetch(`${API_URL}/products`)
-    .then(data => data.json())
-    .then(products => {
-      const sortedProducts = sortByDate(products.data);
-      this.setState({ products: sortedProducts.slice(0,4) })
-    })
+      .then(data => data.json())
+      .then(products => {
+        const sortedProducts = sortByDate(products.data)
+        this.setState({ products: sortedProducts.slice(0, 4) })
+      })
+  }
+  handleAddToCart(e) {
+    console.log("added to cart")
   }
 
   render() {
     return (
       <MainLayout>
-        {/* page title */}    
-        <PageTitle title="Home"/>   
+        {/* page title */}
+        <PageTitle title="Home" />
         <Section padding="p-3">
           <Container className="mb-5">
             <Row className="d-flex row-cols-1 row-cols-lg-3">
@@ -68,20 +73,24 @@ export default class index extends Component {
           <p>
             Qui ipsum enim labore aliqua fugiat laboris nisi pariatur tempor
             deserunt nisi occaecat mollit ipsum.
-          </p>         
+          </p>
         </Section>
 
         <Section>
           <Container>
             <Section.Header
-            title="New Arrivals"
-            subTitle="There’s never too many accessories, especially when these are so
+              title="New Arrivals"
+              subTitle="There’s never too many accessories, especially when these are so
             good and stylish!"
-            hr/>           
-            <ProductRow products={this.state.products} />
+              hr
+            />
+            <ProductRow
+              handleAddToCart={this.handleAddToCart}
+              products={this.state.products}
+            />
           </Container>
         </Section>
-        
+
         <Section bg="light" height={400}>
           <Container>
             <Row>

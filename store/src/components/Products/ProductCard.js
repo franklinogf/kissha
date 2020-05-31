@@ -66,11 +66,11 @@ const StyledSale = styled.p`
   color:white;
   background-color: var(--primary);
 `
-const ProductCard = ({product}) => {
+const ProductCard = (props) => {
   return (
     <StyledCard className="border-0 text-center mx-auto">
-      <StyledLink to="/product" state={{ productId: product.id }}>
-        {!!product.discountStatus && <StyledSale>SALE</StyledSale>}
+      <StyledLink to="/product" state={{ productId: props.product.id }}>
+        {!!props.product.discountStatus && <StyledSale>SALE</StyledSale>}
         <CardImage className="rounded-0 mx-auto" src={sampleImage} />
         <IconContainer>
           <FontAwesomeIcon
@@ -82,12 +82,12 @@ const ProductCard = ({product}) => {
       </StyledLink>
       <Card.Body>
         <Card.Text className="text-truncate _font-Playfair-Display _font-size-22">
-          {product.name}
+          {props.product.name}
         </Card.Text>
         <Card.Title className="_font-Montserrat _font-size-20 my-4">
-          {product.price && `$${product.price}`}
+          {props.product.price && `$${props.product.price}`}
         </Card.Title>
-        <AddToCartButton icon />
+        <AddToCartButton handleClick={props.handleAddToCart} icon />
       </Card.Body>
     </StyledCard>
   )

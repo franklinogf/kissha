@@ -8,7 +8,7 @@ const ProductRow = props => {
     <Row className={`justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-${cols}`}>
       {props.products.map((product,i) => (
         <Col className="mb-sm-4" key={i}>
-          <ProductCard product={product} />
+          <ProductCard handleAddToCart={props.handleAddToCart} product={product} />
         </Col>
       ))}
     </Row>

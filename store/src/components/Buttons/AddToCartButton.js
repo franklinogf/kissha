@@ -1,17 +1,30 @@
 import React from "react"
-import Button from "./Button"
+import { Button } from "react-bootstrap"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const AddToCartButton = ({ variant, icon }) => {
+const AddToCartButton = ({
+  size = "",
+  variant = "primary",
+  fontSize = "14",
+  icon,
+  handleClick
+}) => {
   return (
-    <>
-      <Button
-        variant={variant || "primary"}
-        fontSize="16"
-        icon={icon && ["fas", "shopping-cart"]}
-      >
-        Add to cart
-      </Button>
-    </>
+    <Button
+      size={size}
+      variant={variant}
+      className={`text-white rounded-pill _font-size-${fontSize} _font-Montserrat`}
+      onClick={handleClick}
+    >
+      {icon && (
+        <FontAwesomeIcon
+          className="mr-1"
+          icon={["fas", "shopping-cart"]}
+          size="1x"
+        />
+      )}
+      Add to cart
+    </Button>
   )
 }
 

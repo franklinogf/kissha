@@ -1,12 +1,11 @@
 import React, { Component } from "react"
-import MainLayout from "../components/Layout/MainLayout"
 import Section from "../components/Layout/Section"
 import PageTitle from "../components/Layout/PageTitle"
 import { Row, Col } from "react-bootstrap"
 import Login from "../components/Users/Login"
 import wallpaper from '../images/login-wallpaper.jpg'
 
-export default class product extends Component {
+export default class login extends Component {
   state = {}
 
   render() {

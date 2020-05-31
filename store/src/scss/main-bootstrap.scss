@@ -100,3 +100,10 @@ $theme-colors: (
 ._letter-spacing-2{
   letter-spacing: 0.125rem;
 }
+
+/*OTHER EFFECTS*/
+
+.active{
+  background: var(--primary);
+ /*  background: rgba(255, 255, 255, 0.5);*/
+}

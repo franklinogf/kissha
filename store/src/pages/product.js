@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import MainLayout from "../components/Layout/MainLayout"
 import Section from "../components/Layout/Section"
 import ProductGallery from "../components/Products/ProductGallery"
 import ProductDetail from "../components/Products/ProductDetail"
@@ -33,7 +32,7 @@ export default class product extends Component {
   render() {    
     const {product} = this.state
     return (
-      <MainLayout>
+      <>
         <PageTitle title={`${product.name}`} />
         <Section padding="py-5 px-0">
           <Container>
@@ -72,7 +71,7 @@ export default class product extends Component {
             <ProductRow products={this.state.relatedProducts} />
           </Container>
         </Section>
-      </MainLayout>
+      </>
     )
   }
 }

@@ -14,7 +14,7 @@ const Login = () => {
     <div>
       <Section.Header title="Login" fontSize={32} />
       <Form>
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group controlId="email">
           <FormInput
             type="email"
             placeholder="Enter email or number phone"
@@ -23,7 +23,7 @@ const Login = () => {
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
 
-        <Form.Group controlId="formBasicPassword" className="mb-4">
+        <Form.Group controlId="password" className="mb-4">
           <FormInput
             type="password"
             placeholder="Password"

@@ -103,7 +103,7 @@ $theme-colors: (
 
 /*OTHER EFFECTS*/
 
-.active{
-  background: var(--primary);
- /*  background: rgba(255, 255, 255, 0.5);*/
+.selected-thumb{
+  opacity: .3;
+  transition: all .2s linear;
 }

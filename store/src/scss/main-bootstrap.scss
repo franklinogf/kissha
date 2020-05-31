@@ -100,3 +100,10 @@ $theme-colors: (
 ._letter-spacing-2{
   letter-spacing: 0.125rem;
 }
+
+/*OTHER EFFECTS*/
+
+.selected-thumb{
+  opacity: .3;
+  transition: all .2s linear;
+}

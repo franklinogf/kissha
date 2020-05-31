@@ -1,62 +1,42 @@
-import React, { Fragment } from "react"
-import { Row, Col, Carousel, Image } from "react-bootstrap"
+import React, { Fragment, useState } from "react"
+import { Row, Carousel, Image } from "react-bootstrap"
+import ProductThumbnail from "./ProductThumbnail"
 
-const ProductGallery = () => {
+/*TEMPORAL  REMOVE AFTER GET THE SOURCE OF THE PICS*/
+import sampleImage1 from "../../images/sample-image1.jpg"
+import sampleImage2 from "../../images/sample-image2.jpg"
+import sampleImage3 from "../../images/sample-image3.jpg"
+import sampleImage4 from "../../images/sample-image4.jpg"
+//--------------------------------------------------------
+
+const ProductGallery = ({imgaes}) => {
+  const [index, setIndex] = useState(0)
+
+  /*TEMPORAL STATES, CHANGE AFTER GET THE SORCES OF THE PICS*/
+  const thumbnails = [0, 1, 2, 3]  //Actual count of images
+  const images = [sampleImage1, sampleImage2, sampleImage3, sampleImage4] //pass images as a prop
+  //-------------------------------------------------------------------
+
   return (
     <Fragment>
       <Row className="mb-4">
-        <Carousel interval={null} indicators={false}>
-          <Carousel.Item>
-            <Image
-              className="d-block w-100"
-              src="https://template65588.motopreview.com/mt-demo/65500/65588/mt-content/uploads/2018/02/mt-1349_products_img01.jpg"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <Image
-              className="d-block w-100"
-              src="https://template65588.motopreview.com/mt-demo/65500/65588/mt-content/uploads/2018/02/mt-1349_products_img01-1.jpg"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <Image
-              className="d-block w-100"
-              src="https://template65588.motopreview.com/mt-demo/65500/65588/mt-content/uploads/2018/02/mt-1349_products_img01.jpg"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <Image
-              className="d-block w-100"
-              src="https://template65588.motopreview.com/mt-demo/65500/65588/mt-content/uploads/2018/02/mt-1349_products_img01-3.jpg"
-            />
-          </Carousel.Item>
+        <Carousel interval={null} indicators={false} activeIndex={index}>
+          {thumbnails.map(t => (
+            <Carousel.Item>
+              <Image src={images[t]} className="w-100" />
+            </Carousel.Item>
+          ))}
         </Carousel>
       </Row>
       <Row xs={4} className="w-100 mt-3 mb-4">
-        <Col>
-          <Image
-            className="w-100"
-            src="https://template65588.motopreview.com/mt-demo/65500/65588/mt-content/uploads/2018/02/mt-1349_products_img01.jpg"
+        {thumbnails.map(t => (
+          <ProductThumbnail
+            index={t}
+            active={t === index}
+            onClick={() => setIndex(t)}
+            image={images[t]}
           />
-        </Col>
-        <Col>
-          <Image
-            className="w-100"
-            src="https://template65588.motopreview.com/mt-demo/65500/65588/mt-content/uploads/2018/02/mt-1349_products_img01-1.jpg"
-          />
-        </Col>
-        <Col>
-          <Image
-            className="w-100"
-            src="https://template65588.motopreview.com/mt-demo/65500/65588/mt-content/uploads/2018/02/mt-1349_products_img01.jpg"
-          />
-        </Col>
-        <Col>
-          <Image
-            className="w-100"
-            src="https://template65588.motopreview.com/mt-demo/65500/65588/mt-content/uploads/2018/02/mt-1349_products_img01-3.jpg"
-          />
-        </Col>
+        ))}
       </Row>
     </Fragment>
   )

@@ -14,8 +14,8 @@ const CardImage = styled(Card.Img)`
 const StyledLink = styled(Link)`
   display: inline-block;
   position: relative;
-  transition: transform 0.3s;
-  
+  transition: transform 0.3s linear;
+
   &:hover {
     transform: scale(1.1);
   }
@@ -34,22 +34,21 @@ const StyledLink = styled(Link)`
   }
 `
 const IconContainer = styled.div`
-position: absolute;
-z-index: 2;
-top: 50%;
-left: 41%;
-width: 2.5rem;
-height: 2rem;
-background-color: var(--primary);
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 41%;
+  width: 2.5rem;
+  height: 2rem;
+  background-color: var(--primary);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.4s linear;
 
-display: none;
-// transform: translate(-50%,-50%);
-transition: .5s ease-in-out;
-
-${StyledLink}:hover & { 
-  display:block;
-}
-
+  ${StyledLink}:hover & {
+    visibility: visible;
+    opacity: 1;
+  }
 `
 const ProductCard = props => {
   return (
@@ -57,7 +56,11 @@ const ProductCard = props => {
       <StyledLink to="/product" state={{ productId: props.id }}>
         <CardImage className="rounded-0 mx-auto" src={props.src} />
         <IconContainer>
-          <FontAwesomeIcon className="text-white" icon={["fas", "eye"]} size="2x" />
+          <FontAwesomeIcon
+            className="text-white"
+            icon={["fas", "eye"]}
+            size="2x"
+          />
         </IconContainer>
       </StyledLink>
       <Card.Body>

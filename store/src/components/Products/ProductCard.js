@@ -1,5 +1,5 @@
 import React from "react"
-import { Card } from "react-bootstrap"
+import { Card, OverlayTrigger, Tooltip } from "react-bootstrap"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import AddToCartButton from "../Buttons/AddToCartButton"
@@ -45,7 +45,7 @@ const IconContainer = styled.div`
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.4s linear;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 
   ${StyledLink}:hover & {
     visibility: visible;
@@ -55,18 +55,18 @@ const IconContainer = styled.div`
 
 const StyledSale = styled.p`
   position: absolute;
-  z-index: 0;  
-  top:.5rem;
-  left: .8rem;
+  z-index: 0;
+  top: 0.5rem;
+  left: 0.8rem;
   width: fit-content;
   height: fit-content;
-  padding: 0 .15rem;
+  padding: 0 0.15rem;
   margin-bottom: 0;
-  font-size: .8rem;
-  color:white;
+  font-size: 0.8rem;
+  color: white;
   background-color: var(--primary);
 `
-const ProductCard = (props) => {
+const ProductCard = props => {
   return (
     <StyledCard className="border-0 text-center mx-auto">
       <StyledLink to="/product" state={{ productId: props.product.id }}>
@@ -81,9 +81,14 @@ const ProductCard = (props) => {
         </IconContainer>
       </StyledLink>
       <Card.Body>
-        <Card.Text className="text-truncate _font-Playfair-Display _font-size-22">
-          {props.product.name}
-        </Card.Text>
+        <OverlayTrigger
+          placement="bottom"
+          overlay={<Tooltip>{props.product.name}</Tooltip>}
+        >
+          <Card.Text className="text-truncate _font-Playfair-Display _font-size-22">
+            {props.product.name}
+          </Card.Text>
+        </OverlayTrigger>
         <Card.Title className="_font-Montserrat _font-size-20 my-4">
           {props.product.price && `$${props.product.price}`}
         </Card.Title>

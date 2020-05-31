@@ -32,7 +32,7 @@ const StyledImage = styled(Image)`
 `
 
 const ProductThumbnail = ({ active, index, onClick, handleSelect, image }) => {
-
+ 
   return (
     <SCol
       id={index}

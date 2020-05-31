@@ -15,6 +15,7 @@ export default class index extends Component {
     super(props)
     this.state = {
       products: [],
+      cart: props.location.state.cart || 0,
     }
     this.handleAddToCart = this.handleAddToCart.bind(this)
   }
@@ -27,12 +28,14 @@ export default class index extends Component {
       })
   }
   handleAddToCart(e) {
-    console.log("added to cart")
+    this.setState({
+      cart: this.state.cart + 1,
+    })
   }
 
   render() {
     return (
-      <MainLayout>
+      <MainLayout cart={this.state.cart}>
         {/* page title */}
         <PageTitle title="Home" />
         <Section padding="p-3">

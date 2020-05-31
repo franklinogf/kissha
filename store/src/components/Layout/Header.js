@@ -4,7 +4,7 @@ import Logo from "../Logo/Logo"
 import { Navbar, Nav } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const Header = () => {
+const Header = ({cart}) => {  
   return (
     <>
       <div className="text-center">
@@ -25,7 +25,7 @@ const Header = () => {
               activeClassName="active"
               className="mr-md-2 mr-lg-4 nav-link"
               to="/about"
-              state={{ greeting: "Hello About!" }}
+              state={{ cart, greeting: "Hello About!" }}
             >
               New Arrivals
             </Link>
@@ -58,7 +58,7 @@ const Header = () => {
               Sales
             </Link>
             <Navbar.Text>
-              <FontAwesomeIcon className="text-primary" icon={["fas","shopping-cart"]}/> 0
+              <FontAwesomeIcon className="text-primary" icon={["fas","shopping-cart"]}/> ({cart})
             </Navbar.Text>
           </Nav>
         </Navbar.Collapse>

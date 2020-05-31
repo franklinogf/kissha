@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react"
 import { Row, Carousel, Image } from "react-bootstrap"
 import ProductThumbnail from "./ProductThumbnail"
-import styled from "styled-components"
 
 /*TEMPORAL  REMOVE AFTER GET THE SOURCE OF THE PICS*/
 import sampleImage1 from "../../images/sample-image1.jpg"
@@ -9,10 +8,6 @@ import sampleImage2 from "../../images/sample-image2.jpg"
 import sampleImage3 from "../../images/sample-image3.jpg"
 import sampleImage4 from "../../images/sample-image4.jpg"
 //--------------------------------------------------------
-
-const StyledImage = styled(Image)`
-  width: 100%;
-`
 
 const ProductGallery = ({imgaes}) => {
   const [index, setIndex] = useState(0)
@@ -28,7 +23,7 @@ const ProductGallery = ({imgaes}) => {
         <Carousel interval={null} indicators={false} activeIndex={index}>
           {thumbnails.map(t => (
             <Carousel.Item>
-              <StyledImage src={images[t]} />
+              <Image src={images[t]} className="w-100" />
             </Carousel.Item>
           ))}
         </Carousel>

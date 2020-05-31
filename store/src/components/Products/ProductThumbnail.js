@@ -27,7 +27,7 @@ ${({ active }) => !active && `
 `}
 `
 
-const ProductThumbnail = ({ active, index, onClick, handleSelect, image }) => {
+const ProductThumbnail = ({ active, index, onClick, image }) => {
   return (
     <SCol
       active={active}

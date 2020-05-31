@@ -67,7 +67,6 @@ const StyledSale = styled.p`
   background-color: var(--primary);
 `
 const ProductCard = ({product}) => {
-  console.log('product: ', product);
   return (
     <StyledCard className="border-0 text-center mx-auto">
       <StyledLink to="/product" state={{ productId: product.id }}>

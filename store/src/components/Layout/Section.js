@@ -16,7 +16,7 @@ const StyledContainer = styled(Container)`
 export const SectionHeader = props => {
   return (
     <div className="mb-5">
-      <h2 className="section-title _font-size-36 text-center _font-Montserrat font-weight-normal">{props.title}</h2>
+      <h2 className={`section-title _font-size-${props.fontSize ? props.fontSize : 36 } text-center _font-Montserrat font-weight-${props.fontWeight ? props.fontWeight : "normal"}`}>{props.title}</h2>
       {props.subTitle &&
         <p className="text-center text-muted _font-size-20 _font-Playfair-Display">{props.subTitle}</p>
       }

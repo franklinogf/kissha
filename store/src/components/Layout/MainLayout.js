@@ -8,7 +8,7 @@ const MainLayout = ({ children }) => {
   return (
     <>
       <Container className="pt-3">
-        <Header />
+        <Header cart={0} />
       </Container>
       <Container fluid className="p-0">
         {children}

@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import MainLayout from "../components/Layout/MainLayout"
 import Section from "../components/Layout/Section"
 import { Row, Col, Container, Button } from "react-bootstrap"
 import ImageCard from "../components/ImageCard/ImageCard"
@@ -15,6 +14,7 @@ export default class index extends Component {
     super(props)
     this.state = {
       products: [],
+      cart: 0,
     }
     this.handleAddToCart = this.handleAddToCart.bind(this)
   }
@@ -27,12 +27,14 @@ export default class index extends Component {
       })
   }
   handleAddToCart(e) {
-    console.log("added to cart")
+    this.setState({
+      cart: this.state.cart + 1,
+    })
   }
 
   render() {
     return (
-      <MainLayout>
+      <>
         {/* page title */}
         <PageTitle title="Home" />
         <Section padding="p-3">
@@ -142,7 +144,7 @@ export default class index extends Component {
             </Row>
           </Container>
         </Section>
-      </MainLayout>
+      </>
     )
   }
 }

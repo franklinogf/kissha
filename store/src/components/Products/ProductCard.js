@@ -50,10 +50,22 @@ const IconContainer = styled.div`
     opacity: 1;
   }
 `
+
+const StyledSale = styled.p`
+  position: absolute;
+  z-index: 0;  
+  top:.5rem;
+  left: .8rem;
+  width: 2.5rem;
+  height: 1.5rem;
+  color:white;
+  background-color: var(--primary);
+`
 const ProductCard = props => {
   return (
     <StyledCard className="border-0 text-center mx-auto">
       <StyledLink to="/product" state={{ productId: props.id }}>
+        <StyledSale>SALE</StyledSale>
         <CardImage className="rounded-0 mx-auto" src={props.src} />
         <IconContainer>
           <FontAwesomeIcon

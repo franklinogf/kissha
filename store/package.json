@@ -21,6 +21,8 @@
     "gatsby": "^2.22.9",
     "gatsby-plugin-react-helmet": "^3.3.2",
     "gatsby-plugin-sass": "^2.3.2",
+    "mobx": "^5.15.4",
+    "mobx-react": "^6.2.2",
     "node-sass": "^4.14.1",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.1",

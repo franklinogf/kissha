@@ -61,11 +61,13 @@ const Header = observer(() => {
               Sales
             </Link>
             <Navbar.Text>
-              <FontAwesomeIcon
-                className="text-primary"
-                icon={["fas", "shopping-cart"]}
-              />
-              ({ShoppingCartStore.amountOfProducts})
+              <Link>
+                <FontAwesomeIcon
+                  className="text-primary"
+                  icon={["fas", "shopping-cart"]}
+                />
+                ({ShoppingCartStore.amountOfProducts})
+              </Link>
             </Navbar.Text>
           </Nav>
         </Navbar.Collapse>

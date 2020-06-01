@@ -3,8 +3,11 @@ import { Link } from "gatsby"
 import Logo from "../Logo/Logo"
 import { Navbar, Nav } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { observer } from "mobx-react"
+import { useStores } from "../../hooks/useStores"
 
-const Header = ({cart}) => {  
+const Header = observer(() => {
+  const { ShoppingCartStore } = useStores()
   return (
     <>
       <div className="text-center">
@@ -25,7 +28,7 @@ const Header = ({cart}) => {
               activeClassName="active"
               className="mr-md-2 mr-lg-4 nav-link"
               to="/about"
-              state={{ cart, greeting: "Hello About!" }}
+              state={{ greeting: "Hello About!" }}
             >
               New Arrivals
             </Link>
@@ -58,13 +61,17 @@ const Header = ({cart}) => {
               Sales
             </Link>
             <Navbar.Text>
-              <FontAwesomeIcon className="text-primary" icon={["fas","shopping-cart"]}/> ({cart})
+              <FontAwesomeIcon
+                className="text-primary"
+                icon={["fas", "shopping-cart"]}
+              />
+              ({ShoppingCartStore.amountOfProducts})
             </Navbar.Text>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
     </>
   )
-}
+})
 
 export default Header

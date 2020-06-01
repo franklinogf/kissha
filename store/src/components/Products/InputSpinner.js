@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { FormControl, Button, InputGroup } from "react-bootstrap"
 import styled from "styled-components"
 
@@ -7,55 +7,27 @@ const InputContainer = styled.div`
 `
 
 const InputSpinner = props => {
-  const max = props.max
-
-  const [quantity, setQuantity] = useState(1)
-
-  const handleMoreQuantity = e => {
-    if (quantity < max) {
-      setQuantity(quantity + 1)
-    }
-  }
-
-  const handleLessQuantity = e => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1)
-    }
-  }
-
-  const handleChangeQuantity = e => {
-    if (!isNaN(e.target.value)) {
-      if (Number(e.target.value) !== 0) {
-        if (Number(e.target.value) > max) {
-          setQuantity(max)
-        } else {
-          setQuantity(Number(e.target.value))
-        }
-      }
-    }
-  }
 
   return (
     <InputContainer>
-      {max <= 10 && <p className="text-warning">Almost out of stock</p>}
+      {props.max <= 10 && <p className="text-warning">Almost out of stock</p>}
       <InputGroup className="mb-3">
         <InputGroup.Prepend>
-          <Button variant="secondary" onClick={handleLessQuantity}>
+          <Button variant="secondary" onClick={props.handleDecrement}>
             -
           </Button>
         </InputGroup.Prepend>
         <FormControl
-          value={quantity}
-          onChange={handleChangeQuantity}
+          value={props.quantity}
+          onChange={(e) => props.onChangeQuantity(e.target.value)}
           className="text-right"
         />
         <InputGroup.Append>
-          <Button variant="secondary" onClick={handleMoreQuantity}>
+          <Button variant="secondary" onClick={props.handleIncrement}>
             +
           </Button>
         </InputGroup.Append>
       </InputGroup>
-      
     </InputContainer>
   )
 }

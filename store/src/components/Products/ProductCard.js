@@ -85,8 +85,8 @@ const ProductCard = ({product}) => {
           placement="bottom"
           overlay={<Tooltip>{product.name}</Tooltip>}
         >
-          <Card.Text className="text-truncate _font-Playfair-Display _font-size-22">
-            {product.id}
+          <Card.Text className="text-truncate _font-Playfair-Display">
+            {product.name}
           </Card.Text>
         </OverlayTrigger>
         <Card.Title className="_font-Montserrat _font-size-20 my-4">

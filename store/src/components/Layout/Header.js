@@ -61,7 +61,7 @@ const Header = observer(() => {
               Sales
             </Link>
             <Navbar.Text>
-              <Link>
+              <Link to="/cart">
                 <FontAwesomeIcon
                   className="text-primary"
                   icon={["fas", "shopping-cart"]}

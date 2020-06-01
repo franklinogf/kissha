@@ -5,14 +5,14 @@ import { useStores } from "../../hooks/useStores"
 import { observer } from "mobx-react"
 
 const AddToCartButton = observer(
-  ({ size = "", variant = "primary", fontSize = "14", icon,producId }) => {
+  ({ size = "", variant = "primary", fontSize = "14", icon,producId,amount = 1}) => {
     const { ShoppingCartStore } = useStores()
     return (
       <Button
         size={size}
         variant={variant}
         className={`text-white rounded-pill _font-size-${fontSize} _font-Montserrat`}
-        onClick={() => ShoppingCartStore.addProduct(producId)}
+        onClick={() => ShoppingCartStore.addProduct(producId,amount)}
       >
         {icon && (
           <FontAwesomeIcon
@@ -27,5 +27,4 @@ const AddToCartButton = observer(
   }
 )
 
-AddToCartButton.defaultProps = {}
 export default AddToCartButton

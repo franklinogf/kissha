@@ -18,7 +18,6 @@ const Header = observer(({sticky}) => {
         </Link>
       </div>
       <Navbar
-        // fixed={sticky ? 'top' : null}
         className={!sticky ? "mt-3 _transition" :'p-3 fixed fixed-top'}
         bg="white"
         expand="md"

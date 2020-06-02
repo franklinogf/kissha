@@ -5,7 +5,7 @@ export class ShoppingCartStore {
   products = JSON.parse(localStorage.getItem('shoppingCart')) || []
 
   addProduct = (id, amount = 1) => {
-    // check if the addedProduct already exists on the list
+    // check if the added Product already exists on the list
     const productIndex = this.products.map(e => e.id).indexOf(id)
     if (productIndex > -1) {
       // if it exists update the amount of the product
@@ -17,6 +17,7 @@ export class ShoppingCartStore {
     // Every time a product is added to the shopping cart, save the products list into a localStorage
     localStorage.setItem("shoppingCart",JSON.stringify(this.products))
   }
+
   get amountOfProducts() {
     return this.products.length
   }

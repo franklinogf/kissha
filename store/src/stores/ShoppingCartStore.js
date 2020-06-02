@@ -1,4 +1,4 @@
-import { observable, action, computed, decorate, toJS } from "mobx"
+import { observable, action, computed, decorate } from "mobx"
 
 export class ShoppingCartStore {
   products = []

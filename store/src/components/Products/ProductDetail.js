@@ -13,11 +13,11 @@ class ProductDetail extends React.Component {
     this.handleIncrementQuantity = this.handleIncrementQuantity.bind(this)
     this.handleDecrementQuantity = this.handleDecrementQuantity.bind(this)
     this.handleChangeQuantity = this.handleChangeQuantity.bind(this)
+    
+    
   }
-  // amount of products available
-stock = this.props.product.stock
-  handleIncrementQuantity(e) {
-    if (this.state.quantity < this.stock) {
+  handleIncrementQuantity() {
+    if (this.state.quantity < this.props.product.stock) {
       this.setState({ quantity: this.state.quantity + 1 })
     }
   }
@@ -31,8 +31,8 @@ stock = this.props.product.stock
   handleChangeQuantity(quantity) {
     if (!isNaN(quantity)) {
       if (Number(quantity) !== 0) {
-        if (Number(quantity) > this.stock) {
-          this.setState({ quantity: this.stock })
+        if (Number(quantity) > this.props.product.stock) {
+          this.setState({ quantity: this.props.product.stock })
         } else {
           this.setState({ quantity: Number(quantity) })
         }
@@ -40,9 +40,8 @@ stock = this.props.product.stock
     }
   }
 
-  
   render() {
-    const { name, brand, model, price, description, stock } = this.props.product    
+    const { name, brand, model, price, description, stock, id } = this.props.product
     return (
       <Card className="border-0">
         <Card.Title className="_section-title font-weight-normal _font-size-32 mb-3">
@@ -91,7 +90,7 @@ stock = this.props.product.stock
           />
         </Form>
         <Card.Body className="pl-0 mb-3">
-          <AddToCartButton icon />
+          <AddToCartButton icon producId={id} amount={this.state.quantity}/>
         </Card.Body>
         <Row>
           <Col xs={3}>

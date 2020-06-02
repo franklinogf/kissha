@@ -4,7 +4,7 @@ import Logo from "../Logo/Logo"
 import { Navbar, Nav } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { observer } from "mobx-react"
-import { useStores } from "../../hooks/useStores"
+import useStores from "../../hooks/useStores"
 
 const Header = observer(() => {
   const { ShoppingCartStore } = useStores()

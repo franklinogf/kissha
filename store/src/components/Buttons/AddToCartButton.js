@@ -1,7 +1,7 @@
 import React from "react"
 import { Button } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useStores } from "../../hooks/useStores"
+import useStores from "../../hooks/useStores"
 import { observer } from "mobx-react"
 
 const AddToCartButton = observer(

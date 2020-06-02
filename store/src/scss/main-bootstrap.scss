@@ -15,7 +15,22 @@ $theme-colors: (
  );
  
  @import '~bootstrap/scss/bootstrap.scss';
- 
+ ._transition{
+  transition: .5s;
+}
+.navbar.fixed{
+  animation: moveDown 0.5s ease-in-out;
+}
+@keyframes moveDown {
+  from {
+    transform: translateY(-5rem);
+  }
+  to {
+    transform: translateY(0rem);
+  }
+}
+
+
  ._logo-text{
   font-family: 'Kavoon', cursive;
  }

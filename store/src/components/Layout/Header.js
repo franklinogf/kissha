@@ -6,8 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { observer } from "mobx-react"
 import useStores from "../../hooks/useStores"
 
-const Header = observer(() => {
+
+const Header = observer(({sticky}) => {
   const { ShoppingCartStore } = useStores()
+  
   return (
     <>
       <div className="text-center">
@@ -16,14 +18,15 @@ const Header = observer(() => {
         </Link>
       </div>
       <Navbar
-        sticky="top"
-        className="d-flex justify-content-center mt-3"
+        // fixed={sticky ? 'top' : null}
+        className={!sticky ? "mt-3 _transition" :'p-3 fixed fixed-top'}
         bg="white"
         expand="md"
       >
+        {sticky && <Link className="text-decoration-none" to="/"><Navbar.Brand className="_logo-text text-primary">It's Kissha</Navbar.Brand></Link>}
         <Navbar.Toggle aria-controls="navbar" />
-        <Navbar.Collapse className="justify-content-center" id="navbar">
-          <Nav>
+        <Navbar.Collapse id="navbar">
+          <Nav className="justify-content-center flex-fill ">
             <Link
               activeClassName="active"
               className="mr-md-2 mr-lg-4 nav-link"
@@ -59,8 +62,9 @@ const Header = observer(() => {
               to="/sales"
             >
               Sales
-            </Link>
-            <Navbar.Text>
+            </Link>            
+          </Nav>
+          <Navbar.Text>
               <Link to="/cart">
                 <FontAwesomeIcon
                   className="text-primary"
@@ -69,7 +73,15 @@ const Header = observer(() => {
                 ({ShoppingCartStore.amountOfProducts})
               </Link>
             </Navbar.Text>
-          </Nav>
+            
+            <Navbar.Text>
+              <Link className="px-2" to="/profile">
+                <FontAwesomeIcon
+                  className="text-primary"
+                  icon={["fas", "user"]}
+                />                
+              </Link>
+            </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>
     </>

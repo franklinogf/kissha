@@ -1,6 +1,6 @@
 import React from "react"
 import Section from "../Layout/Section"
-import { Form, Row, Col } from "react-bootstrap"
+import { Form } from "react-bootstrap"
 import styled from "styled-components"
 import Btn from "../Buttons/Button"
 
@@ -10,8 +10,8 @@ const FormInput = styled(Form.Control)`
 
 const Register = () => {
   return (
-    <div>
-      <Section.Header title="Sign In" fontSize={32} />
+    <div className="bg-light rounded-lg p-3" style={{ width: "23rem" }}>
+      <Section.Header title="Sign Up" fontSize={32} />
       <Form>
         <Form.Group controlId="email">
           <FormInput
@@ -52,13 +52,9 @@ const Register = () => {
           />
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
-        <Row className="justify-content-between">
-          <Col xs={12} lg={4} className="align-self-end">
-            <Btn size="lg" fontSize={16}>
-              Sign In
-            </Btn>
-          </Col>
-        </Row>
+        <Btn size="lg" fontSize={16}>
+          Sign Up
+        </Btn>
       </Form>
     </div>
   )

@@ -13,12 +13,15 @@ export default class register extends Component {
       <>
         <PageTitle title="Register" />
         <Section img={wallpaper}>
-          <Row className="pb-3 pt-2 pl-0 m-0">
+        <div className="d-flex justify-content-end">
+          <Register/>
+          </div>
+          {/* <Row className="pb-3 pt-2 pl-0 m-0">
             <Col xs={12} md={4} className="py-4 offset-md-8 bg-light rounded-lg">
               <Register />
             </Col>
 
-          </Row>
+          </Row> */}
         </Section>
       </>
     )

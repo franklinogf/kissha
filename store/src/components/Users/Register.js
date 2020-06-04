@@ -13,9 +13,9 @@ const Register = () => {
   const emailVault = ["1@emai.com", "2@email.com"]
 
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState()
-  const [confirmPassword, setConfirmPassword] = useState()
-  const [nameStatus, setNameStatus] = useState()
+  // const [password, setPassword] = useState()
+  // const [confirmPassword, setConfirmPassword] = useState()
+  // const [nameStatus, setNameStatus] = useState()
 
   const handleEmail = e => {
     //temp variable of the state (u cant setState multiple times in a call)
@@ -29,7 +29,7 @@ const Register = () => {
     }
 
     //invalid evaluation
-    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(tmpEmail)) {
+    if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(tmpEmail)) {
       setEmail("invalid")
       return
     }
@@ -48,22 +48,22 @@ const Register = () => {
     }
   }
 
-  const handlePassword = e => {
-    let tmpPass = e.target.value
+  // const handlePassword = e => {
+  //   let tmpPass = e.target.value
 
-    //empty and invalid evaluation
-    if(tmpPass === ""){
-      setPassword("")
-      return
-    }else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(tmpPass)){
-      setPassword("invalid")
-      return
-    }else{
-      setPassword("ok")
-    }
-  }
+  //   //empty and invalid evaluation
+  //   if(tmpPass === ""){
+  //     setPassword("")
+  //     return
+  //   }else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(tmpPass)){
+  //     setPassword("invalid")
+  //     return
+  //   }else{
+  //     setPassword("ok")
+  //   }
+  // }
 
-  const handleName = e => {}
+  // const handleName = e => {}
 
   return (
     <Fragment className="bg-light rounded-lg p-3" style={{ width: "23rem" }}>
@@ -75,9 +75,9 @@ const Register = () => {
             placeholder="Email Address"
             className={`py-2 _input 
             ${
-              email == "invalid" || email == "exist"
+              email === "invalid" || email === "exist"
                 ? "border-danger"
-                : email == "ok"
+                : email === "ok"
                 ? "border-success"
                 : ""
             }
@@ -85,10 +85,10 @@ const Register = () => {
             onBlur={handleEmail}
           />
           <Form.Label className="_label">Email Address</Form.Label>
-          {email == "invalid" && (
+          {email === "invalid" && (
             <Form.Text className="text-danger">Invalid email.</Form.Text>
           )}
-          {email == "exist" && (
+          {email === "exist" && (
             <Form.Text className="text-danger">
               This email is already in use.
             </Form.Text>

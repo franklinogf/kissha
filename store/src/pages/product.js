@@ -13,20 +13,29 @@ export default class product extends Component {
     relatedProducts: [],
   }
 
-  componentDidMount() {
-    const productId = this.props.location.state.productId
+  findProduct(productId) {
     fetch(`${API_URL}/products/${productId}`)
-      .then(data => data.json())
-      .then(product => {
-        fetch(`${API_URL}/products`)
-          .then(data => data.json())
-          .then(products => {
-            this.setState({
-              product: product.data,
-              relatedProducts: products.data.splice(0, 4),
-            })
+    .then(data => data.json())
+    .then(product => {
+      fetch(`${API_URL}/products`)
+        .then(data => data.json())
+        .then(products => {
+          this.setState({
+            product: product.data,
+            relatedProducts: products.data.splice(0, 4),
           })
-      })
+        })
+    })
+  }
+  componentDidMount() {
+    this.findProduct(this.props.location.state.productId)    
+  }
+  
+  componentDidUpdate(prevProps,prevState){
+    const productId = this.props.location.state.productId
+    if(productId !== prevProps.location.state.productId){
+      this.findProduct(productId)    
+    }
   }
 
   render() {    

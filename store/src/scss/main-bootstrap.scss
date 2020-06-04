@@ -134,17 +134,21 @@ $theme-colors: (
   &::placeholder {
     color: transparent;
   }
-  &:placeholder-shown ~ ._label {
+  &:placeholder-shown ~ ._label-inside-to-outside {
     font-size: .875rem;
     cursor: text;
     top: 34px;
     left: 13px;
   }
 
+  &:placeholder-shown ~ ._label-inside {
+    opacity: 1;
+  }
+
   &:required,&:invalid { box-shadow:none; }
 }
 
-._label{
+._label-inside-to-outside{
   font-family: Montserrat;
   position: absolute;
   top: 0;
@@ -156,8 +160,21 @@ $theme-colors: (
   color: #6c757d;
 }
 
+._label-inside{
+  font-family: Montserrat;
+  position: absolute;
+  display: block;
+  transition: 0.3s;
+  font-size: .875rem;
+  cursor: text;
+  top: 14px;
+  left: 13px;
+  color: #6c757d;
+  opacity: 0;
+}
+
 ._input:focus {
-  ~ ._label {
+  ~ ._label-inside-to-outside {
     position: absolute;
     top: 0;
     left: 0;

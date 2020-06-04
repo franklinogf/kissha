@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import Section from "../Layout/Section"
 import { Form, Row, Col } from "react-bootstrap"
 import styled from "styled-components"
@@ -11,7 +11,7 @@ const FormInput = styled(Form.Control)`
 
 const Login = () => {
   return (
-    <div className="bg-light p-3 rounded-lg" style={{width:'23rem'}}>
+    <Fragment className="bg-light p-3 rounded-lg" style={{width:'23rem'}}>
       <Section.Header title="Login" fontSize={32} />
       <Form>
         <Form.Group controlId="email">
@@ -53,7 +53,7 @@ const Login = () => {
           </Col>
         </Row>
       </Form>
-    </div>
+    </Fragment>
   )
 }
 

@@ -122,3 +122,53 @@ $theme-colors: (
   opacity: .3;
   transition: all .2s linear;
 }
+
+
+/*INPUT EFFECTS*/
+
+._input{
+  outline: 0;
+  font-size: .875rem;
+  font-family: Montserrat;
+
+  &::placeholder {
+    color: transparent;
+  }
+  &:placeholder-shown ~ ._label {
+    font-size: .875rem;
+    cursor: text;
+    top: 34px;
+    left: 13px;
+  }
+
+  &:required,&:invalid { box-shadow:none; }
+}
+
+._label{
+  font-family: Montserrat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -20px;
+  display: block;
+  transition: 0.2s;
+  font-size: .75rem;
+  color: #6c757d;
+}
+
+._input:focus {
+  ~ ._label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -20px;
+    display: block;
+    transition: 0.2s;
+    font-size: .75rem;
+    color: #11998e; 
+    font-weight: 500; 
+  }
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  border: 1px solid #ced4da;
+}
+

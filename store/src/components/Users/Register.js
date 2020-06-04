@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react"
+import React, { useState, useRef } from "react"
 import Section from "../Layout/Section"
 import { Form } from "react-bootstrap"
 import styled from "styled-components"
@@ -12,23 +12,27 @@ const Register = () => {
   /*temporal data*/
   const emailVault = ["1@emai.com", "2@email.com"]
 
+  //STATES
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState()
-  const [confirmPassword, setConfirmPassword] = useState()
-  const [nameStatus, setNameStatus] = useState()
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [nameStatus, setNameStatus] = useState("")
+  const [lastNameStatus, setLastNameStatus] = useState("")
 
+  //REFS
+  const passwordRef = useRef(null)
+  const confirmPasswordRef = useRef(null)
+
+  //HANDLERS
   const handleEmail = e => {
-    //temp variable of the state (u cant setState multiple times in a call)
     let tmpEmail = e.target.value
     let count = 0
 
-    //empty evaluation
-    if(tmpEmail === ""){
+    if (tmpEmail === "") {
       setEmail("")
       return
     }
 
-    //invalid evaluation
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(tmpEmail)) {
       setEmail("invalid")
       return
@@ -36,11 +40,9 @@ const Register = () => {
     //do the fetch here
 
     //exist evaluation
-    emailVault.map(
-      iteratedEmail => tmpEmail === iteratedEmail && (count++)
-    )
-    if (count>0) {
-     setEmail("exist")
+    emailVault.map(iteratedEmail => tmpEmail === iteratedEmail && count++)
+    if (count > 0) {
+      setEmail("exist")
       return
     } else {
       setEmail("ok")
@@ -48,22 +50,74 @@ const Register = () => {
     }
   }
 
-  const handlePassword = e => {
-    let tmpPass = e.target.value
+  const handlePassword = () => {
+    //taking refs
+    let tmpPass = passwordRef.current.value
+    let tmpConfirmPass = confirmPasswordRef.current.value
 
-    //empty and invalid evaluation
-    if(tmpPass === ""){
-      setPassword("")
+    //empty and invalid evaluation for PASSWORD
+    tmpPass === ""
+      ? setPassword("")
+      : !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(tmpPass)
+      ? setPassword("invalid")
+      : setPassword("ok")
+
+    //match evaluation CONFIRM PASSWORD
+    tmpPass !== "" && tmpConfirmPass !== ""
+      ? tmpPass !== tmpConfirmPass
+        ? setConfirmPassword("invalid")
+        : setConfirmPassword("ok")
+      : setConfirmPassword("")
+  }
+
+  const onChangePassword = () => {
+    const tmpPass = passwordRef.current.value 
+    let tmpConfirmPass = confirmPasswordRef.current.value
+    
+    password === "invalid" &&
+     (tmpPass !== "")
+      ? /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(tmpPass) &&
+        setPassword("ok")
+      : setPassword("")
+
+      confirmPassword === "invalid" &&
+      (tmpConfirmPass !== "")
+       ? tmpPass === tmpConfirmPass &&
+         setConfirmPassword("ok")
+       : setConfirmPassword("")
+  }
+
+  const handleName = e => {
+    const tmpInput = e.target.value
+
+    if (tmpInput === "") {
+      setNameStatus("")
       return
-    }else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(tmpPass)){
-      setPassword("invalid")
+    }
+
+    if (!/^[a-zA-Z ]+$/.test(tmpInput)) {
+      setNameStatus("invalid")
       return
     }else{
-      setPassword("ok")
+      setNameStatus("ok")
     }
   }
 
-  const handleName = e => {}
+  const handleLastName = e => {
+    const tmpInput = e.target.value
+
+    if (tmpInput === "") {
+      setNameStatus("")
+      return
+    }
+
+    if (!/^[a-zA-Z ]+$/.test(tmpInput)) {
+      setLastNameStatus("invalid")
+      return
+    }else{
+      setLastNameStatus("ok")
+    }
+  }
 
   return (
     <div className="bg-light rounded-lg p-3" style={{ width: "23rem" }}>
@@ -84,7 +138,9 @@ const Register = () => {
             `}
             onBlur={handleEmail}
           />
-          <Form.Label className="_label">Email Address</Form.Label>
+          <Form.Label className="_label-inside-to-outside">
+            Email Address
+          </Form.Label>
           {email == "invalid" && (
             <Form.Text className="text-danger">Invalid email.</Form.Text>
           )}
@@ -99,34 +155,94 @@ const Register = () => {
           <FormInput
             type="password"
             placeholder="Password"
-            className="_input"
+            className={`py-2 _input 
+            ${
+              password == "invalid"
+                ? "border-danger"
+                : password == "ok"
+                ? "border-success"
+                : ""
+            }
+            `}
+            onBlur={handlePassword}
+            onChange={onChangePassword}
+            ref={passwordRef}
           />
-          <Form.Label className="_label">Password</Form.Label>
+          <Form.Label className="_label-inside-to-outside">Password</Form.Label>
+          {password == "invalid" && (
+            <Form.Text className="text-danger">Invalid Password. </Form.Text>
+          )}
         </Form.Group>
-        <Form.Group controlId="confirmPassword" className="mb-4">
+        <Form.Group
+          controlId="confirmPassword"
+          className="mb-4 position-relative"
+        >
           <FormInput
             type="password"
             placeholder="Confirm Password"
-            className="_font-Montserrat _font-size-14"
+            className={`py-2 _input 
+            ${
+              confirmPassword === "invalid"
+                ? "border-danger"
+                : confirmPassword === "ok"
+                ? "border-success"
+                : ""
+            }
+            `}
+            onBlur={handlePassword}
+            onChange={onChangePassword}
+            ref={confirmPasswordRef}
           />
+          <Form.Label className="_label-inside">Confirm Password</Form.Label>
+          {confirmPassword == "invalid" && (
+            <Form.Text className="text-danger">
+              Password doesn't match.{" "}
+            </Form.Text>
+          )}
         </Form.Group>
         <Form.Group controlId="firstName" className=" my-4 position-relative">
           <FormInput
             type="text"
             placeholder="First Name"
-            className="py-2 _input"
+            className={`py-2 _input 
+            ${
+              nameStatus == "invalid"
+                ? "border-danger"
+                : nameStatus == "ok"
+                ? "border-success"
+                : ""
+            }
+            `}
+            onBlur={handleName}
           />
-          <Form.Label className="_label">First Name</Form.Label>
-          <Form.Text className="text-muted"></Form.Text>
+          <Form.Label className="_label-inside-to-outside">
+            First Name
+          </Form.Label>
+          {nameStatus == "invalid" && (
+            <Form.Text className="text-danger">Invalid Name, don't use Numbers or special characters </Form.Text>
+          )}
         </Form.Group>
         <Form.Group controlId="lastName" className="my-4 position-relative">
           <FormInput
             type="email"
             placeholder="Last Name"
-            className="py-2 _input"
+            className={`py-2 _input 
+            ${
+              lastNameStatus == "invalid"
+                ? "border-danger"
+                : lastNameStatus == "ok"
+                ? "border-success"
+                : ""
+            }
+            `}
+            onBlur={handleLastName}
           />
-          <Form.Label className="_label">Last Name</Form.Label>
-          <Form.Text className="text-muted"></Form.Text>
+          <Form.Label className="_label-inside-to-outside">
+            Last Name
+          </Form.Label>
+          {lastNameStatus == "invalid" && (
+            <Form.Text className="text-danger">Invalid Last Name, don't use Numbers or special characters </Form.Text>
+          )}
         </Form.Group>
         <Btn size="lg" fontSize={16}>
           Sign Up

@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react"
 import Section from "../Layout/Section"
-import { Form, Row, Col, FormLabel } from "react-bootstrap"
+import { Form } from "react-bootstrap"
 import styled from "styled-components"
 import Btn from "../Buttons/Button"
 
@@ -66,7 +66,7 @@ const Register = () => {
   const handleName = e => {}
 
   return (
-    <Fragment>
+    <Fragment className="bg-light rounded-lg p-3" style={{ width: "23rem" }}>
       <Section.Header title="Sign In" fontSize={32} />
       <Form>
         <Form.Group controlId="email" className="position-relative">
@@ -128,13 +128,9 @@ const Register = () => {
           <Form.Label className="_label">Last Name</Form.Label>
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
-        <Row className="justify-content-between">
-          <Col xs={12} lg={4} className="align-self-end">
-            <Btn size="lg" fontSize={16}>
-              Sign In
-            </Btn>
-          </Col>
-        </Row>
+        <Btn size="lg" fontSize={16}>
+          Sign Up
+        </Btn>
       </Form>
     </Fragment>
   )

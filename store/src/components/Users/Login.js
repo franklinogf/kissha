@@ -11,7 +11,7 @@ const FormInput = styled(Form.Control)`
 
 const Login = () => {
   return (
-    <Fragment>
+    <Fragment className="bg-light p-3 rounded-lg" style={{width:'23rem'}}>
       <Section.Header title="Login" fontSize={32} />
       <Form>
         <Form.Group controlId="email">

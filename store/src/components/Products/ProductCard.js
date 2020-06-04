@@ -66,7 +66,7 @@ const StyledSale = styled.p`
   color: white;
   background-color: var(--primary);
 `
-const ProductCard = ({product}) => {
+const ProductCard = ({product,icon = true}) => {
   return (
     <StyledCard className="border-0 text-center mx-auto">
       <StyledLink to="/product" state={{ productId: product.id }}>
@@ -92,7 +92,7 @@ const ProductCard = ({product}) => {
         <Card.Title className="_font-Montserrat _font-size-20 my-4">
           {product.price && `$${product.price}`}
         </Card.Title>
-        <AddToCartButton icon producId={product.id}/>
+        <AddToCartButton icon={icon} producId={product.id}/>
       </Card.Body>
     </StyledCard>
   )

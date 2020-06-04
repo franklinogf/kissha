@@ -14,16 +14,10 @@ const Register = () => {
 
   //STATES
   const [email, setEmail] = useState("")
-<<<<<<< HEAD
-  // const [password, setPassword] = useState()
-  // const [confirmPassword, setConfirmPassword] = useState()
-  // const [nameStatus, setNameStatus] = useState()
-=======
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [nameStatus, setNameStatus] = useState("")
   const [lastNameStatus, setLastNameStatus] = useState("")
->>>>>>> 326f0092d9616311cada30cc0330b8c1103dff7b
 
   //REFS
   const passwordRef = useRef(null)
@@ -39,12 +33,7 @@ const Register = () => {
       return
     }
 
-<<<<<<< HEAD
-    //invalid evaluation
-    if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(tmpEmail)) {
-=======
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(tmpEmail)) {
->>>>>>> 326f0092d9616311cada30cc0330b8c1103dff7b
       setEmail("invalid")
       return
     }
@@ -61,24 +50,6 @@ const Register = () => {
     }
   }
 
-<<<<<<< HEAD
-  // const handlePassword = e => {
-  //   let tmpPass = e.target.value
-
-  //   //empty and invalid evaluation
-  //   if(tmpPass === ""){
-  //     setPassword("")
-  //     return
-  //   }else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(tmpPass)){
-  //     setPassword("invalid")
-  //     return
-  //   }else{
-  //     setPassword("ok")
-  //   }
-  // }
-
-  // const handleName = e => {}
-=======
   const handlePassword = () => {
     //taking refs
     let tmpPass = passwordRef.current.value
@@ -147,7 +118,6 @@ const Register = () => {
       setLastNameStatus("ok")
     }
   }
->>>>>>> 326f0092d9616311cada30cc0330b8c1103dff7b
 
   return (
     <div className="bg-light rounded-lg p-3" style={{ width: "23rem" }}>
@@ -168,15 +138,10 @@ const Register = () => {
             `}
             onBlur={handleEmail}
           />
-<<<<<<< HEAD
-          <Form.Label className="_label">Email Address</Form.Label>
-          {email === "invalid" && (
-=======
           <Form.Label className="_label-inside-to-outside">
             Email Address
           </Form.Label>
-          {email == "invalid" && (
->>>>>>> 326f0092d9616311cada30cc0330b8c1103dff7b
+          {email === "invalid" && (
             <Form.Text className="text-danger">Invalid email.</Form.Text>
           )}
           {email === "exist" && (
@@ -192,9 +157,9 @@ const Register = () => {
             placeholder="Password"
             className={`py-2 _input 
             ${
-              password == "invalid"
+              password === "invalid"
                 ? "border-danger"
-                : password == "ok"
+                : password === "ok"
                 ? "border-success"
                 : ""
             }
@@ -204,7 +169,7 @@ const Register = () => {
             ref={passwordRef}
           />
           <Form.Label className="_label-inside-to-outside">Password</Form.Label>
-          {password == "invalid" && (
+          {password === "invalid" && (
             <Form.Text className="text-danger">Invalid Password. </Form.Text>
           )}
         </Form.Group>
@@ -229,7 +194,7 @@ const Register = () => {
             ref={confirmPasswordRef}
           />
           <Form.Label className="_label-inside">Confirm Password</Form.Label>
-          {confirmPassword == "invalid" && (
+          {confirmPassword === "invalid" && (
             <Form.Text className="text-danger">
               Password doesn't match.{" "}
             </Form.Text>
@@ -241,9 +206,9 @@ const Register = () => {
             placeholder="First Name"
             className={`py-2 _input 
             ${
-              nameStatus == "invalid"
+              nameStatus === "invalid"
                 ? "border-danger"
-                : nameStatus == "ok"
+                : nameStatus === "ok"
                 ? "border-success"
                 : ""
             }
@@ -253,7 +218,7 @@ const Register = () => {
           <Form.Label className="_label-inside-to-outside">
             First Name
           </Form.Label>
-          {nameStatus == "invalid" && (
+          {nameStatus === "invalid" && (
             <Form.Text className="text-danger">Invalid Name, don't use Numbers or special characters </Form.Text>
           )}
         </Form.Group>
@@ -263,9 +228,9 @@ const Register = () => {
             placeholder="Last Name"
             className={`py-2 _input 
             ${
-              lastNameStatus == "invalid"
+              lastNameStatus === "invalid"
                 ? "border-danger"
-                : lastNameStatus == "ok"
+                : lastNameStatus === "ok"
                 ? "border-success"
                 : ""
             }
@@ -275,7 +240,7 @@ const Register = () => {
           <Form.Label className="_label-inside-to-outside">
             Last Name
           </Form.Label>
-          {lastNameStatus == "invalid" && (
+          {lastNameStatus === "invalid" && (
             <Form.Text className="text-danger">Invalid Last Name, don't use Numbers or special characters </Form.Text>
           )}
         </Form.Group>

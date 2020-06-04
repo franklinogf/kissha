@@ -66,7 +66,7 @@ const Register = () => {
   const handleName = e => {}
 
   return (
-    <Fragment className="bg-light rounded-lg p-3" style={{ width: "23rem" }}>
+    <div className="bg-light rounded-lg p-3" style={{ width: "23rem" }}>
       <Section.Header title="Sign In" fontSize={32} />
       <Form>
         <Form.Group controlId="email" className="position-relative">
@@ -132,7 +132,7 @@ const Register = () => {
           Sign Up
         </Btn>
       </Form>
-    </Fragment>
+    </div>
   )
 }
 

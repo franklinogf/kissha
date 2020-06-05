@@ -129,9 +129,9 @@ const Register = () => {
             placeholder="Email Address"
             className={`py-2 _input 
             ${
-              email == "invalid" || email == "exist"
+              email === "invalid" || email === "exist"
                 ? "border-danger"
-                : email == "ok"
+                : email === "ok"
                 ? "border-success"
                 : ""
             }
@@ -141,10 +141,10 @@ const Register = () => {
           <Form.Label className="_label-inside-to-outside">
             Email Address
           </Form.Label>
-          {email == "invalid" && (
+          {email === "invalid" && (
             <Form.Text className="text-danger">Invalid email.</Form.Text>
           )}
-          {email == "exist" && (
+          {email === "exist" && (
             <Form.Text className="text-danger">
               This email is already in use.
             </Form.Text>
@@ -157,9 +157,9 @@ const Register = () => {
             placeholder="Password"
             className={`py-2 _input 
             ${
-              password == "invalid"
+              password === "invalid"
                 ? "border-danger"
-                : password == "ok"
+                : password === "ok"
                 ? "border-success"
                 : ""
             }
@@ -169,7 +169,7 @@ const Register = () => {
             ref={passwordRef}
           />
           <Form.Label className="_label-inside-to-outside">Password</Form.Label>
-          {password == "invalid" && (
+          {password === "invalid" && (
             <Form.Text className="text-danger">Invalid Password. </Form.Text>
           )}
         </Form.Group>
@@ -194,7 +194,7 @@ const Register = () => {
             ref={confirmPasswordRef}
           />
           <Form.Label className="_label-inside">Confirm Password</Form.Label>
-          {confirmPassword == "invalid" && (
+          {confirmPassword === "invalid" && (
             <Form.Text className="text-danger">
               Password doesn't match.{" "}
             </Form.Text>
@@ -206,9 +206,9 @@ const Register = () => {
             placeholder="First Name"
             className={`py-2 _input 
             ${
-              nameStatus == "invalid"
+              nameStatus === "invalid"
                 ? "border-danger"
-                : nameStatus == "ok"
+                : nameStatus === "ok"
                 ? "border-success"
                 : ""
             }
@@ -218,7 +218,7 @@ const Register = () => {
           <Form.Label className="_label-inside-to-outside">
             First Name
           </Form.Label>
-          {nameStatus == "invalid" && (
+          {nameStatus === "invalid" && (
             <Form.Text className="text-danger">Invalid Name, don't use Numbers or special characters </Form.Text>
           )}
         </Form.Group>
@@ -228,9 +228,9 @@ const Register = () => {
             placeholder="Last Name"
             className={`py-2 _input 
             ${
-              lastNameStatus == "invalid"
+              lastNameStatus === "invalid"
                 ? "border-danger"
-                : lastNameStatus == "ok"
+                : lastNameStatus === "ok"
                 ? "border-success"
                 : ""
             }

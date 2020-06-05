@@ -13,8 +13,6 @@ class ProductDetail extends React.Component {
     this.handleIncrementQuantity = this.handleIncrementQuantity.bind(this)
     this.handleDecrementQuantity = this.handleDecrementQuantity.bind(this)
     this.handleChangeQuantity = this.handleChangeQuantity.bind(this)
-    
-    
   }
   handleIncrementQuantity() {
     if (this.state.quantity < this.props.product.stock) {
@@ -41,7 +39,17 @@ class ProductDetail extends React.Component {
   }
 
   render() {
-    const { name, brand, model, price, description, stock, id } = this.props.product
+    const {
+      name,
+      brand,
+      model,
+      price,
+      description,
+      stock,
+      id,
+      discountStatus,
+      discount,
+    } = this.props.product
     return (
       <Card className="border-0">
         <Card.Title className="_section-title font-weight-normal _font-size-32 mb-3">
@@ -66,7 +74,12 @@ class ProductDetail extends React.Component {
           </ListGroup.Item>
         </ListGroup>
         <Card.Text className="_font-Montserrat _font-size-28 my-2">
-          ${price}
+          <span className={!!discountStatus ? "small" : undefined}>
+            ${!!discountStatus ? <s>{price}</s> : price}
+          </span>{" "}
+          <span className={!!discountStatus ? "text-primary" : undefined}>
+            {!!discountStatus && "$" + ((1-discount)*price).toFixed(2)}
+          </span>
         </Card.Text>
         <Card.Text className="_font-Montserrat _font-size-16 mt-2 mb-3">
           {description}
@@ -90,7 +103,7 @@ class ProductDetail extends React.Component {
           />
         </Form>
         <Card.Body className="pl-0 mb-3">
-          <AddToCartButton icon producId={id} amount={this.state.quantity}/>
+          <AddToCartButton icon producId={id} amount={this.state.quantity} />
         </Card.Body>
         <Row>
           <Col xs={3}>

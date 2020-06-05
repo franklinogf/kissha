@@ -54,11 +54,11 @@ const CustomInput = props => {
       )}
 
       {
-          //COLLAPSES
-          // you can put as many collapses as you want, in the component declaration you need to insert each collapse as an array in another array [[collapse1],[collapse2],etc...]
-          // 1st parameter (TEXT) a MUST if you invoke this prop
-          // 2nd parameter (IN) OPTIONAL if you invoke this prop
-          // 3rd parameter (TEXT COLOR) OPTIONAL if you invoke this prop
+        //COLLAPSES
+        // you can put as many collapses as you want, in the component declaration you need to insert each collapse as an array in another array [[collapse1],[collapse2],etc...]
+        // 1st parameter (TEXT) a MUST if you invoke this prop
+        // 2nd parameter (IN) OPTIONAL if you invoke this prop
+        // 3rd parameter (TEXT COLOR) OPTIONAL if you invoke this prop
       }
 
       {props.collapses &&

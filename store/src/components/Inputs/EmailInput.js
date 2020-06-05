@@ -1,23 +1,34 @@
 import React, { useState } from "react"
-import { Form } from "react-bootstrap"
+import { Form, Collapse } from "react-bootstrap"
 import styled from "styled-components"
+import CustomInput from "./CustomInput"
 
 const FormInput = styled(Form.Control)`
   height: 48px;
 `
 
-const EmailInput = ({ email, setEmail , fetchEmails }) => {
+const EmailInput = ({ email, setEmail, fetchEmails }) => {
+  const [invalidText, setInvalidText] = useState()
+  const [existText, setExistText] = useState()
+
+  const validationRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
   const handleEmail = e => {
     let tmpEmail = e.target.value
+
     let count = 0
 
     if (tmpEmail === "") {
       setEmail("")
+      setInvalidText(false)
+      setExistText(false)
       return
     }
 
-    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(tmpEmail)) {
+    if (!validationRegex.test(tmpEmail)) {
       setEmail("invalid")
+      setExistText(false)
+      setInvalidText(true)
       return
     }
     //do the fetch here
@@ -26,41 +37,27 @@ const EmailInput = ({ email, setEmail , fetchEmails }) => {
     fetchEmails.map(iteratedEmail => tmpEmail === iteratedEmail && count++)
     if (count > 0) {
       setEmail("exist")
+      setInvalidText(false)
+      setExistText(true)
       return
     } else {
       setEmail("ok")
+      setInvalidText(false)
+      setExistText(false)
       return
     }
   }
 
   return (
-    <Form.Group controlId="email" className="position-relative">
-      <FormInput
-        type="email"
-        placeholder="Email Address"
-        className={`py-2 _input 
-            ${
-              email === "invalid" || email === "exist"
-                ? "border-danger"
-                : email === "ok"
-                ? "border-success"
-                : ""
-            }
-            `}
-        onBlur={handleEmail}
-      />
-      <Form.Label className="_label-inside-to-outside">
-        Email Address
-      </Form.Label>
-      {email === "invalid" && (
-        <Form.Text className="text-danger">Invalid email.</Form.Text>
-      )}
-      {email === "exist" && (
-        <Form.Text className="text-danger">
-          This email is already in use.
-        </Form.Text>
-      )}
-    </Form.Group>
+    <CustomInput
+      id="email"
+      input={["email", email, handleEmail]}
+      label={["Email"]}
+      collapses={[
+        ["Invalid Email", invalidText],
+        ["This Email is already used.", existText],
+      ]}
+    />
   )
 }
 

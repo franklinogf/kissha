@@ -240,9 +240,9 @@ const Register = () => {
           <Form.Label className="_label-inside-to-outside">
             Last Name
           </Form.Label>
-          {lastNameStatus == "invalid" && (
-            <Form.Text className="text-danger">Invalid Last Name, don't use Numbers or special characters </Form.Text>
-          )}
+          
+            <Form.Text className={`text-danger ${lastNameStatus == "invalid" ? ` _opacity-1 ` :` _opacity-0 `}`}>Invalid Last Name, don't use Numbers or special characters </Form.Text>
+          
         </Form.Group>
         <Btn size="lg" fontSize={16}>
           Sign Up

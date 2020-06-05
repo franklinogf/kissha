@@ -189,3 +189,15 @@ $theme-colors: (
   border: 1px solid #ced4da;
 }
 
+._opacity-0{
+  display: none;
+  opacity: 0;
+  transition: all .3s; //back
+}
+
+._opacity-1{
+  display: block;
+  opacity: 1;
+  transition: all .7s; // going to
+}
+

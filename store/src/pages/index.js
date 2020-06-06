@@ -124,21 +124,21 @@ export default class index extends Component {
             <Row className="mb-4">
               <Col xs={12} lg={6}>
                 <ReviewCard
-                  userName="Matthew Schneider"
+                  userName="Franklin Gonzalez"
                   userComment='"I have a thing for sunglasses, like I do indeed collect these and I
                                 have a real big range of it at home. Luckily, stores like this one let
                                 me indulge in this hobby furthermore!"'
                   userPic="https://pngimage.net/wp-content/uploads/2018/06/profile-png-icon-2.png"
-                  userRank="WORDPRESS DEVELOPER"
+                  userRank="WEB Developer"
                 />{" "}
               </Col>
               <Col xs={12} lg={6}>
                 <ReviewCard
-                  userName="Anne Harris"
+                  userName="Miguel Angel"
                   userComment='"I was always a big shopper, especially when it comes to either apparel or even accessories.
                    Are these sunglasses, jewelry or purses – I need it all!"'
                   userPic="https://pngimage.net/wp-content/uploads/2018/06/profile-png-icon-2.png"
-                  userRank="WORDPRESS DEVELOPER"
+                  userRank="WEB Developer"
                 />{" "}
               </Col>
             </Row>

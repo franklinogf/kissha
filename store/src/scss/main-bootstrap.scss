@@ -66,6 +66,10 @@ $theme-colors: (
   font-size: 0.75rem !important;
 }
 
+._font-size-13{
+  font-size: 0.813rem !important;
+}
+
 ._font-size-14{
   font-size: 0.875rem !important;
 }
@@ -187,17 +191,5 @@ $theme-colors: (
   }
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   border: 1px solid #ced4da;
-}
-
-._opacity-0{
-  display: none;
-  opacity: 0;
-  transition: all .3s; //back
-}
-
-._opacity-1{
-  display: block;
-  opacity: 1;
-  transition: all .7s; // going to
 }
 

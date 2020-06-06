@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from "react"
+import React, { useState } from "react"
 import CustomInput from "./CustomInput"
 
 const NameInput = ({ idName, labelName, labelEffect }) => {

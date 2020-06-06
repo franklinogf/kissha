@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useRef } from "react"
 import CustomInput from "./CustomInput"
 
-const PasswordInput = () => {
+const PasswordInput = ({ enableConfirm }) => {
   //STATES
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
@@ -37,7 +37,7 @@ const PasswordInput = () => {
         setInvalidConfirmPassText(true)
       } else {
         setConfirmPassword("ok")
-        setInvalidConfirmPassText(true)
+        setInvalidConfirmPassText(false)
       }
     } else {
       setConfirmPassword("")
@@ -74,19 +74,21 @@ const PasswordInput = () => {
         label={["Password"]}
         collapses={[["Invalid Password", invalidPassText]]}
       />
-      <CustomInput
-        id="confirmPassword"
-        input={[
-          "password",
-          confirmPassword,
-          handlePassword,
-          onChangePassword,
-          null,
-          confirmPasswordRef,
-        ]}
-        label={["Confirm Password", "inside"]}
-        collapses={[["Password doesn't match", invalidConfirmPassText]]}
-      />
+      {enableConfirm && (
+        <CustomInput
+          id="confirmPassword"
+          input={[
+            "password",
+            confirmPassword,
+            handlePassword,
+            onChangePassword,
+            null,
+            confirmPasswordRef,
+          ]}
+          label={["Confirm Password", "inside"]}
+          collapses={[["Password doesn't match", invalidConfirmPassText]]}
+        />
+      )}
     </Fragment>
   )
 }

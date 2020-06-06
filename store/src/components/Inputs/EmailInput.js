@@ -1,13 +1,12 @@
 import React, { useState } from "react"
-import { Form, Collapse } from "react-bootstrap"
-import styled from "styled-components"
 import CustomInput from "./CustomInput"
 
-const FormInput = styled(Form.Control)`
-  height: 48px;
-`
+const EmailInput = () => {
 
-const EmailInput = ({ email, setEmail, fetchEmails }) => {
+  /*initial fetch*/
+  const fetchEmails = ["1@emai.com", "2@email.com"]
+
+  const [email, setEmail] = useState("")
   const [invalidText, setInvalidText] = useState()
   const [existText, setExistText] = useState()
 

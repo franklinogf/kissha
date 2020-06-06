@@ -9,7 +9,7 @@ import NameInput from "../Inputs/NameInput"
 const Register = () => {
   return (
     <div className="bg-light rounded-lg p-3" style={{ width: "23rem" }}>
-      <Section.Header title="Sign In" fontSize={32} />
+      <Section.Header title="Sign Un" fontSize={32} />
       <Form>
         <EmailInput/>
         <PasswordInput enableConfirm/>

@@ -1,12 +1,11 @@
 import React, { useState } from "react"
 import CustomInput from "./CustomInput"
 
-const EmailInput = () => {
+const EmailInput = ({email,setEmail, onChangeHandler}) => {
 
   /*initial fetch*/
   const fetchEmails = ["1@emai.com", "2@email.com"]
 
-  const [email, setEmail] = useState("")
   const [invalidText, setInvalidText] = useState()
   const [existText, setExistText] = useState()
 
@@ -50,7 +49,7 @@ const EmailInput = () => {
   return (
     <CustomInput
       id="email"
-      input={["email", email, handleEmail]}
+      input={["email", email, handleEmail, onChangeHandler && onChangeHandler]}
       label={["Email"]}
       collapses={[
         ["Invalid Email", invalidText],

@@ -16,6 +16,7 @@ const CustomInput = props => {
     onChange, //4th parameter OPTIONAL
     inputPlaceholder, //5th parameter OPTIONAL
     inputRef, //6th parameter OPTIONAL
+    onKeyPress //7th parameter OPTIONAL
   ] = props.input
   const [
     labelText, //1st parameter MUST if you invoke this prop
@@ -42,6 +43,8 @@ const CustomInput = props => {
         onBlur={onBlur && onBlur}
         onChange={onChange && onChange}
         ref={inputRef && inputRef}
+        name={controlId}
+        onKeyPress={onKeyPress && onKeyPress}
       />
       {props.label && (
         <Form.Label

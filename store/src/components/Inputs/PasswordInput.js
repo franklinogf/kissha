@@ -1,9 +1,14 @@
 import React, { Fragment, useState, useRef } from "react"
 import CustomInput from "./CustomInput"
 
-const PasswordInput = ({ enableConfirm }) => {
+const PasswordInput = ({
+  password,
+  setPassword,
+  enableConfirm,
+  onChangeHandler,
+}) => {
   //STATES
-  const [password, setPassword] = useState("")
+
   const [confirmPassword, setConfirmPassword] = useState("")
   const [invalidPassText, setInvalidPassText] = useState(false)
   const [invalidConfirmPassText, setInvalidConfirmPassText] = useState(false)
@@ -49,14 +54,29 @@ const PasswordInput = ({ enableConfirm }) => {
     const tmpPass = passwordRef.current.value
     let tmpConfirmPass = confirmPasswordRef.current.value
 
-    password === "invalid" && tmpPass !== ""
-      ? /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(tmpPass) &&
-        setPassword("ok")
-      : setPassword("")
+    if (password === "invalid") {
+      if (tmpPass !== "") {
+        if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(tmpPass)) {
+          setPassword("ok")
+          setInvalidPassText(false)
+        }
+      } else {
+        setPassword("")
+        setInvalidPassText(false)
+      }
+    }
 
-    confirmPassword === "invalid" && tmpConfirmPass !== ""
-      ? tmpPass === tmpConfirmPass && setConfirmPassword("ok")
-      : setConfirmPassword("")
+    if(confirmPassword === "invalid"){
+      if(tmpConfirmPass !== ""){
+        if(tmpPass === tmpConfirmPass){
+          setConfirmPassword("ok")
+          setInvalidConfirmPassText(false)
+        }
+      }else{
+        setConfirmPassword("")
+        setInvalidConfirmPassText(false)
+      }
+    }
   }
 
   return (
@@ -67,9 +87,10 @@ const PasswordInput = ({ enableConfirm }) => {
           "password",
           password,
           handlePassword,
-          onChangePassword,
+          onChangeHandler,
           null,
           passwordRef,
+          onChangePassword,
         ]}
         label={["Password"]}
         collapses={[["Invalid Password", invalidPassText]]}

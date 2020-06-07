@@ -1,15 +1,14 @@
-import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
-import Header from '../components/Layout/Header'
-import '../css/bootstrap.min.css'
-export default class about extends Component {
+import React, { Component } from "react"
+import PageTitle from "../components/Layout/PageTitle"
+
+
+export default class about extends Component { 
    render() {
-      return (
-         <div>
-            <Container bg="primary" className="p-5">
-               <Header />
-            </Container>
-         </div>
-      )
-   }
+    return (
+      <>
+        <PageTitle title="About" />
+        <h1>{this.props.location.state.greeting}</h1>
+      </>
+    )
+  }
 }

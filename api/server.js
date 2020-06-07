@@ -1,13 +1,14 @@
 const express = require("express")
 const app = express()
+const cors = require('cors')
 const db = require('./database')
+
 const users = require('./routes/users')
 const address = require('./routes/address')
 const categories = require('./routes/categories')
 const products = require('./routes/products')
-
-require("dotenv/config")
-
+const emails = require('./routes/emails')
+require("dotenv").config({path:__dirname+'.env'})
 const port = process.env.PORT || 5000
 
 db.authenticate()
@@ -15,6 +16,7 @@ db.authenticate()
     .catch(error => console.log(error))
 
 // Middleware
+app.use(cors())
 app.use(express.json())
 app.use(['/users/:id',"/categories/:id","/address/:id"], (req, res, next) => {
     const { id } = req.params
@@ -32,6 +34,7 @@ app.use('/users', users)
 app.use('/address', address)
 app.use('/categories', categories)
 app.use('/products', products)
+app.use('/emails', emails)
 
 // Start Server
 app.listen(port, () => console.log(`

@@ -1,0 +1,22 @@
+{
+  "name": "kissha",
+  "version": "1.0.0",
+  "description": "kissha store and api",
+  "main": "index.js",
+  "scripts": {
+    "start-server": "node api/server.js",
+    "start-client": "cd store && gatsby develop",
+    "start": "concurrently \"npm:start-server\" \"npm:start-client\""
+  },
+  "keywords": [
+    "store",
+    "api",
+    "cosmetics",
+    "makeup"
+  ],
+  "author": "Franklin Gonzalez and Miguel Peña",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import Section from "../Layout/Section"
-import { Form, Alert } from "react-bootstrap"
+import { Form } from "react-bootstrap"
 import Btn from "../Buttons/Button"
 import EmailInput from "../Inputs/EmailInput"
 import PasswordInput from "../Inputs/PasswordInput"

@@ -7,6 +7,7 @@ const users = require('./routes/users')
 const address = require('./routes/address')
 const categories = require('./routes/categories')
 const products = require('./routes/products')
+const emails = require('./routes/emails')
 require("dotenv").config({path:__dirname+'.env'})
 const port = process.env.PORT || 5000
 
@@ -33,6 +34,7 @@ app.use('/users', users)
 app.use('/address', address)
 app.use('/categories', categories)
 app.use('/products', products)
+app.use('/emails', emails)
 
 // Start Server
 app.listen(port, () => console.log(`

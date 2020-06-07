@@ -13,7 +13,7 @@ const EmailInput = ({ email, setEmail, onChangeHandler }) => {
   useEffect(() => {
     if (compareEmail) {
       const getEmails = () => {
-        AxiosClient.get("/users/all/emails")
+        AxiosClient.get("/emails")
           .then(data => data.data)
           .then(emails => {
             setFetchEmails(emails.data)

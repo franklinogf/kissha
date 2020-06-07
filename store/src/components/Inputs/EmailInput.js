@@ -1,13 +1,28 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import CustomInput from "./CustomInput"
+import AxiosClient from "../../config/axios"
 
-const EmailInput = ({email,setEmail, onChangeHandler}) => {
-
-  /*initial fetch*/
-  const fetchEmails = ["1@emai.com", "2@email.com"]
-
+const EmailInput = ({ email, setEmail, onChangeHandler }) => {
   const [invalidText, setInvalidText] = useState()
   const [existText, setExistText] = useState()
+  const [compareEmail, setCompareEmail] = useState(false)
+  const [fetchEmails, setFetchEmails] = useState([])
+
+  /*initial fetch*/
+
+  useEffect(() => {
+    if (compareEmail) {
+      const getEmails = () => {
+        AxiosClient.get("/users/all/emails")
+          .then(data => data.data)
+          .then(emails => {
+            setFetchEmails(emails.data)
+            setCompareEmail(false)
+          })
+      }
+      getEmails()
+    }
+  }, [compareEmail])
 
   const validationRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
@@ -29,10 +44,13 @@ const EmailInput = ({email,setEmail, onChangeHandler}) => {
       setInvalidText(true)
       return
     }
-    //do the fetch here
 
     //exist evaluation
-    fetchEmails.map(iteratedEmail => tmpEmail === iteratedEmail && count++)
+    setCompareEmail(true)
+    fetchEmails.forEach(iteratedEmail => {
+      tmpEmail === iteratedEmail.email && count++
+    })
+
     if (count > 0) {
       setEmail("exist")
       setInvalidText(false)

@@ -7,8 +7,9 @@ const Button = props => {
   const variant = props.variant || "primary"
   const fontSize = props.fontSize || "14"  
   const icon = props.icon
+  const onClick = props.onClick || null
   return (
-    <Btn size={size} variant={variant} className={`text-white rounded-pill _font-size-${fontSize} _font-Montserrat`}>
+    <Btn size={size} variant={variant} className={`text-white rounded-pill _font-size-${fontSize} _font-Montserrat`} onClick={onClick && onClick}>
       {icon && 
         <FontAwesomeIcon
           className="mr-1"

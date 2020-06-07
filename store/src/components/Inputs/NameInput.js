@@ -1,8 +1,14 @@
 import React, { useState } from "react"
 import CustomInput from "./CustomInput"
 
-const NameInput = ({ idName, labelName, labelEffect }) => {
-  const [nameStatus, setNameStatus] = useState("")
+const NameInput = ({
+  idName,
+  labelName,
+  labelEffect,
+  nameStatus,
+  setNameStatus,
+  onChangeHandler,
+}) => {
   const [collapseText, setCollapseText] = useState(false)
 
   const handleName = e => {
@@ -27,7 +33,12 @@ const NameInput = ({ idName, labelName, labelEffect }) => {
   return (
     <CustomInput
       id={idName}
-      input={["text", nameStatus, handleName]}
+      input={[
+        "text",
+        nameStatus,
+        handleName,
+        onChangeHandler && onChangeHandler,
+      ]}
       label={[labelName ? labelName : null, labelEffect ? labelEffect : null]}
       collapses={[
         [

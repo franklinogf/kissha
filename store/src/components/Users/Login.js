@@ -1,11 +1,19 @@
-import React from "react"
+import React, {useState} from "react"
 import Section from "../Layout/Section"
-import { Form, Row, Col } from "react-bootstrap"
+import { Form, Row, Col, Spinner } from "react-bootstrap"
 import Btn from "../Buttons/Button"
 import { Link } from "gatsby"
 import CustomInput from '../Inputs/CustomInput'
 
 const Login = () => {
+
+  const [isLoading,setIsLoading] = useState(false)
+
+  //handlers
+  const handleSubmit = e =>{
+    setIsLoading(true)
+  }
+
   return (
     <div className="bg-light p-3 rounded-lg" style={{ width: "23rem" }}>
       <Section.Header title="Login" fontSize={32} />
@@ -15,8 +23,12 @@ const Login = () => {
 
         <Row className="justify-content-between">
           <Col xs={12} lg={2} className="align-self-end">
-            <Btn size="lg" fontSize={16}>
-              Login
+            <Btn onClick={handleSubmit} size="lg" fontSize={16}>
+            {!isLoading ? (
+              "Login"
+            ) : (
+              <Spinner animation="border" size="sm" />
+            )}
             </Btn>
           </Col>
           <Col xs={12} lg={9}>

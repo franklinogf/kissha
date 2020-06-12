@@ -1,13 +1,19 @@
 import React, { useState } from "react"
 import Section from "../Layout/Section"
-import { Form } from "react-bootstrap"
+import { Form, Spinner, Alert,Collapse } from "react-bootstrap"
 import Btn from "../Buttons/Button"
 import EmailInput from "../Inputs/EmailInput"
 import PasswordInput from "../Inputs/PasswordInput"
 import NameInput from "../Inputs/NameInput"
 import AxiosClient from "../../config/axios"
+import { navigate } from "gatsby"
 
 const Register = () => {
+  //stylish states
+  const [loeadingBtn, setLoadingBtn] = useState(false)
+  const [submitWarning, setSubmitWarning] = useState(false)
+
+  // value states
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [firstNameStatus, setFirstNameStatus] = useState("")
@@ -19,6 +25,8 @@ const Register = () => {
     email: "",
   })
 
+
+
   //
   const handleNewUser = e => {
     setNewUser({
@@ -29,7 +37,7 @@ const Register = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-
+    setLoadingBtn(true)
     //check validations
     if (
       email === "ok" &&
@@ -38,12 +46,19 @@ const Register = () => {
       lastNameStatus === "ok"
     ) {
       //POST REQUEST
-      AxiosClient.post('/users',newUser)
-        .then(response=>{
-          console.log(response)
-        })
+      AxiosClient.post("/users", newUser)
+      .then(response => {
+        //Everithig done, redirect
+        console.log(response)
+        navigate('/')
+      })
+      .catch(err=>{
+        console.log("there was an error in the server, try in another time...")
+      })
     } else {
       //GENERATE ALERT WRONG INFO
+      setLoadingBtn(false)
+      setSubmitWarning(true)
     }
   }
 
@@ -76,9 +91,35 @@ const Register = () => {
           setNameStatus={setLastNameStatus}
           onChangeHandler={handleNewUser}
         />
-        <Btn onClick={handleSubmit} size="lg" fontSize={16}>
-          Sign Up
-        </Btn>
+        <div className="d-flex justify-content-center mb-3">
+          <Btn onClick={handleSubmit} size="lg" fontSize={16}>
+            {!loeadingBtn ? (
+              "Sign Up"
+            ) : (
+              <Spinner animation="border" size="sm" />
+            )}
+          </Btn>
+        </div>
+        <div>
+                <Collapse in={submitWarning}>
+                <div id="example-collapse-text">
+                <Alert
+              variant="danger"
+              onClose={() => setSubmitWarning(false)}
+              dismissible
+            >
+              <Alert.Heading>Something 's wrong!</Alert.Heading>
+              <p>
+                  All the fields needs to be filled.
+                  please check it before sign up.
+              </p>
+            </Alert>
+                </div>
+
+              </Collapse>
+
+          
+        </div>
       </Form>
     </div>
   )

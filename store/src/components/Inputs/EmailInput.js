@@ -5,7 +5,7 @@ import AxiosClient from "../../config/axios"
 const EmailInput = ({ email, setEmail, onChangeHandler }) => {
   const [invalidText, setInvalidText] = useState()
   const [existText, setExistText] = useState()
-  const [compareEmail, setCompareEmail] = useState(false)
+  const [compareEmail, setCompareEmail] = useState(true)
   const [fetchEmails, setFetchEmails] = useState([])
 
   /*initial fetch*/
@@ -24,7 +24,7 @@ const EmailInput = ({ email, setEmail, onChangeHandler }) => {
     }
   }, [compareEmail])
 
-  const validationRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  const validationRegex = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/
 
   const handleEmail = e => {
     let tmpEmail = e.target.value

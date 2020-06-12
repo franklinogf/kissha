@@ -1,6 +1,6 @@
-import React,{useState} from "react"
+import React, {useState} from "react"
 import Section from "../Layout/Section"
-import { Form, Row, Col } from "react-bootstrap"
+import { Form, Row, Col, Spinner } from "react-bootstrap"
 import Btn from "../Buttons/Button"
 import { Link } from "gatsby"
 import CustomInput from "../Inputs/CustomInput"
@@ -44,8 +44,12 @@ const Login = () => {
 
         <Row className="justify-content-between">
           <Col xs={12} lg={2} className="align-self-end">
-            <Btn size="lg" fontSize={16} onClick={handleLogin}>
-              Login
+            <Btn onClick={handleSubmit} size="lg" fontSize={16}>
+            {!isLoading ? (
+              "Login"
+            ) : (
+              <Spinner animation="border" size="sm" />
+            )}
             </Btn>
           </Col>
           <Col xs={12} lg={9}>

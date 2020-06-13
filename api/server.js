@@ -2,8 +2,8 @@ const express = require("express")
 const app = express()
 const cors = require('cors')
 const db = require('./database')
-const session = require('express-session')
-const MySQLStore = require('express-mysql-session')(session)
+
+
 
 const users = require('./routes/users')
 const address = require('./routes/address')
@@ -19,25 +19,21 @@ db.authenticate()
     .catch(error => console.log(error))
 
 
-//SESSION STORE
-const sessionStore = new MySQLStore({
-    expiration: (1825 * 86400 * 1000),
-    endConnectionOnClose: false
-}, db);
+
 
 // Middleware
-app.use(session({
-    key: '1234567890qwertyuiop',
-    secret: 'asdfghjklzxcvbnm',
-    store: sessionStore,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: (1825 * 86400 * 1000),
-        httpOnly: false
+const whitelist = ['http://localhost:8000']
+const corsOptions = {
+  origin: (origin,callback) => {
+    const exists = whitelist.some(domain => domain === origin)
+    if(exists){
+      callback(null,true)
+    } else {
+      callback(new Error('Blocked By CORS'))
     }
-}));
-app.use(cors())
+  },credentials: true
+}
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(['/users/:id',"/categories/:id","/address/:id"], (req, res, next) => {
     const { id } = req.params
@@ -50,6 +46,7 @@ app.use(['/users/:id',"/categories/:id","/address/:id"], (req, res, next) => {
     }
     next()
 })
+
 // Routes
 app.use('/users', users)
 app.use('/address', address)

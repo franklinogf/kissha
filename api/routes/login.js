@@ -6,8 +6,6 @@ const bcrypt = require("bcrypt");
 router.post("/login", (req, res) => {
   //Extract
   let { email, phone, password } = req.body;
-  console.log(email);
-  console.log(password);
   //To Lowercase
   if (email) {
     email = email.toLowerCase();
@@ -24,22 +22,22 @@ router.post("/login", (req, res) => {
   //query
   table
     .findOne({
-      where:  { email }
+      where:  whereStatement(email,phone)
     })
     .then((data) => {
-        console.log(`data: ${data}`);
       //get the data, now test the password
-      if (data !== null && data.length > 0) {
+      if (data !== null) {
+        let user = data.dataValues;
         //bycrypt compare
-        bcrypt.compare(password, data[0].password, (bcryptErr, verified) => {
+        bcrypt.compare(password, user.password, (bcryptErr, verified) => {
           // time to login
           if (verified) {
-            req.session.userID = data[0].id;
             res.json({
-              success: true,
-              first: data[0].firstName,
-              lastName: data[0].lastName,
-              email: data[0].email,
+              isLoggedIn: true,
+              id:user.id,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              email: user.email
             });
             return;
           }
@@ -60,57 +58,6 @@ router.post("/login", (req, res) => {
         });
       }
     });
-});
-
-router.post("/logout", (req, res) => {
-  // session exists
-  if (req.session.userID) {
-    //destroy
-    req.session.destroy();
-    res.json({
-      success: true,
-    });
-    return true;
-  } else {
-    res.json({
-      success: false,
-    });
-    return false;
-  }
-});
-
-router.post("/isLoggedIn", (req, res) => {
-  const id = eq.session.userID;
-  if (id) {
-    table
-      .findOne({
-        where: { id },
-      })
-      .then((data) => {
-        //session and user found
-        if (data !== null) {
-          res.json({
-            success: true,
-            first: data[0].firstName,
-            lastName: data[0].lastName,
-            email: data[0].email,
-          });
-          return true;
-
-          // session ok but not found in DB
-        } else {
-          res.json({
-            success: false,
-          });
-        }
-      });
-  }
-  //no session found
-  else {
-    res.json({
-      success: false,
-    });
-  }
 });
 
 module.exports = router

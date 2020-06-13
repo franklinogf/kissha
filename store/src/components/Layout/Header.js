@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { Fragment } from "react"
+import { Link, navigate } from "gatsby"
 import Logo from "../Logo/Logo"
 import { Navbar, Nav } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -7,7 +7,14 @@ import { observer } from "mobx-react"
 import useStores from "../../hooks/useStores"
 
 const Header = observer(({ sticky }) => {
-  const { ShoppingCartStore } = useStores()
+  //global store
+  const { UserStore, ShoppingCartStore } = useStores()
+
+  //handlers
+  const handleLogout = () => {
+    UserStore.setLogout()
+    navigate("/")
+  }
 
   return (
     <>
@@ -17,7 +24,9 @@ const Header = observer(({ sticky }) => {
         </Link>
       </div>
       <Navbar
-        className={!sticky ? "mt-3 _transition" : "p-3 fixed fixed-top shadow-sm"}
+        className={
+          !sticky ? "mt-3 _transition" : "p-3 fixed fixed-top shadow-sm"
+        }
         bg="white"
         expand="md"
       >
@@ -69,13 +78,29 @@ const Header = observer(({ sticky }) => {
             </Link>
           </Navbar.Text>
 
-          <Navbar.Text>
-            <Link className="px-2" to="/profile">
-              <FontAwesomeIcon
-                className="text-primary"
-                icon={["fas", "user"]}
-              />
-            </Link>
+          <Navbar.Text className="pl-2">
+            {UserStore.isLogged ? (
+              <Fragment>
+                <Link className="px-2 text-decoration-none" to="/profile">
+                  <FontAwesomeIcon
+                    className="text-primary"
+                    icon={["fas", "user"]}
+                  />
+                  <span className="font-italic">{` ${UserStore.obtainUser.firstName} `}</span>
+                  ||
+                </Link>
+                <Link
+                  className="font-italic text-decoration-none"
+                  onClick={handleLogout}
+                >
+                  <span className="font-italic h-p text-muted">Logout</span>
+                </Link>
+              </Fragment>
+            ) : (
+              <Link className="font-italic h-p" to="/login">
+                Login
+              </Link>
+            )}
           </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>

@@ -42,6 +42,7 @@ router.get("/:id/:limited?", (req, res) => {
   if (req.params.limited) {
     queryProperties.attributes = [
       "id",
+      "firstName",
       "lastName",
       "email",
       "phone",

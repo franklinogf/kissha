@@ -81,7 +81,7 @@ const Header = observer(({ sticky }) => {
           <Navbar.Text className="pl-2">
             {UserStore.isLogged ? (
               <Fragment>
-                <Link className="px-2 text-decoration-none" to="/profile">
+                <Link className="px-2 text-decoration-none" to="/dashboard">
                   <FontAwesomeIcon
                     className="text-primary"
                     icon={["fas", "user"]}

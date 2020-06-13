@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { Row, Col, Container } from "react-bootstrap"
 import SocialIcons from './SocialIcons'
-import "../../css/footer.css"
+
 
 const Footer = () => {
   return (

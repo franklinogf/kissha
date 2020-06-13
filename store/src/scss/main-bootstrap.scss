@@ -193,3 +193,67 @@ $theme-colors: (
   border: 1px solid #ced4da;
 }
 
+/* FOOTER */
+
+.fTop {
+  padding: 4.375rem 0rem 1.875rem;
+  background-color: #13161b;
+}
+.fBottom {
+  padding: 1.875rem 0rem 1.875rem;
+  background-color: #080a0c;
+}
+
+.fCard {
+  max-width: 18.75rem !important;
+  height: 16.563rem !important;
+}
+
+.h-p {
+  transition: 0.3s;
+}
+
+.h-p:hover {
+  color: #ff758c !important;
+  text-decoration: none !important;
+}
+
+
+.f-card-br {
+  border-top-width: 3px;
+  border-top-style: solid;
+  border-top-color: #ff758c;
+}
+
+.social-icon {
+  font-family: "font-icon";
+  font-size: 40px;
+  color: var(--primary);
+  margin: 0px;
+  padding: 0px;
+  transition: all 100ms;
+  cursor: pointer;
+}
+
+.facebook:hover {
+  color: #39579a;
+}
+
+.twitter:hover {
+  color: #1eb7ed;
+}
+
+.instagram:hover {
+  color: #c03c4b;
+}
+
+.email:hover {
+  color: #c4c4c4;
+}
+
+.f-rights {
+  font-size: 10px;
+  font-family: Montserrat;
+  color: #777c8b;
+  font-weight: 600;
+}

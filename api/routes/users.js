@@ -1,152 +1,175 @@
-const express = require("express")
-const router = express.Router()
-const { Properties } = require('../helpers/functions')
-const table = require('../models/users')
-const addresses = require('../models/address')
+const express = require("express");
+const router = express.Router();
+const { Properties } = require("../helpers/functions");
+const table = require("../models/users");
+const addresses = require("../models/address");
+const bcrypt = require("bcrypt");
 
+table.hasMany(addresses);
+addresses.belongsTo(table);
 
-table.hasMany(addresses)
-addresses.belongsTo(table)
-
-router.get('/', (req, res) => {
-    table.findAll({
-        include: addresses
-    }).then(data => {
-        if (data.length > 0) {
-            res.json({
-                status: true,
-                message: "Ok",
-                data: data
-            })
-        } else {
-            res.json({
-                status: false,
-                message: `No data found`
-            })
-        }
+router.get("/", (req, res) => {
+  table
+    .findAll({
+      include: addresses,
     })
-
-})
-
-router.get('/:id', (req, res) => {
-    const { id } = req.params
-    table.findOne({
-        include: addresses,
-        where: { id }
-    }).then(data => {
-        if (data !== null) {
-            res.json({
-                status: true,
-                message: "Ok",
-                data: data
-            })
-        } else {
-            res.json({
-                status: false,
-                message: `No data found`
-            })
-        }
-    })
-
-})
-
-router.get('/:id/address', (req, res) => {
-    const { id } = req.params
-    addresses.findAll({
-        where: { userId: id }
-    }).then(data => {
-        if (data.length > 0) {
-            res.json({
-                status: true,
-                message: "Ok",
-                data: data
-            })
-        } else {
-            res.json({
-                status: false,
-                message: `No data found`
-            })
-        }
-    })
-
-})
-
-router.post('/:id/address', (req, res) => {
-    const { id } = req.params
-    const data = Properties(req.body)
-    addresses.create({...data, userId: id }).then(data => {
+    .then((data) => {
+      if (data.length > 0) {
         res.json({
-            status: true,
-            message: "Ok",
-            data: data
-        })
-    }).catch(err => {
-        console.log('err: ', err);
+          status: true,
+          message: "Ok",
+          data: data,
+        });
+      } else {
         res.json({
-            status: false,
-            message: `No data found`
-        })
+          status: false,
+          message: `No data found`,
+        });
+      }
+    });
+});
+
+router.get("/:id/:limited?", (req, res) => {
+  const { id } = req.params;
+
+  //object constructor
+  let queryProperties = {
+    include: addresses,
+    where: { id },
+  };
+
+  //limited query?
+  if (req.params.limited) {
+    queryProperties.attributes = [
+      "id",
+      "lastName",
+      "email",
+      "phone",
+      "lastVisit",
+    ];
+  }
+
+  table.findOne(queryProperties).then((data) => {
+    if (data !== null) {
+      res.json({
+        status: true,
+        message: "Ok",
+        data: data,
+      });
+    } else {
+      res.json({
+        status: false,
+        message: `No data found`,
+      });
+    }
+  });
+});
+
+router.get("/:id/address", (req, res) => {
+  const { id } = req.params;
+  addresses
+    .findAll({
+      where: { userId: id },
     })
-
-})
-
-router.post('/', (req, res) => {
-    const data = Properties(req.body)
-    table.create(data).then(data => {
+    .then((data) => {
+      if (data.length > 0) {
         res.json({
-            status: true,
-            message: "created",
-            data: data
-        })
-
-    }).catch(err => {
-        console.log('err: ', err);
+          status: true,
+          message: "Ok",
+          data: data,
+        });
+      } else {
         res.json({
-            status: false,
-            message: "No created"
-        })
+          status: false,
+          message: `No data found`,
+        });
+      }
+    });
+});
 
+router.post("/:id/address", (req, res) => {
+  const { id } = req.params;
+  const data = Properties(req.body);
+  addresses
+    .create({ ...data, userId: id })
+    .then((data) => {
+      res.json({
+        status: true,
+        message: "Ok",
+        data: data,
+      });
     })
-})
+    .catch((err) => {
+      console.log("err: ", err);
+      res.json({
+        status: false,
+        message: `No data found`,
+      });
+    });
+});
 
-router.patch('/:id', (req, res) => {
-    const { id } = req.params
-    const data = Properties(req.body)
-    table.update(data, {
-        where: { id }
+router.post("/", (req, res) => {
+  req.body.password = bcrypt.hashSync(req.body.password, 9);
+  const data = Properties(req.body);
+  table
+    .create(data)
+    .then((data) => {
+      res.json({
+        status: true,
+        message: "created",
+        data: data,
+      });
     })
-        .then(err => {
-            if (err == 1) {
-                res.json({
-                    status: true,
-                    message: "Updated"
-                })
-            } else {
-                res.json({
-                    status: false,
-                    message: "No updated"
-                })
-            }
-        })
-})
+    .catch((err) => {
+      console.log("err: ", err);
+      res.json({
+        status: false,
+        message: "No created",
+      });
+    });
+});
 
-router.delete('/:id', (req, res) => {
-    const { id } = req.params
-    table.delete({
-        where: { id }
-    }).then(err => {
-        if (err == 1) {
-            res.json({
-                status: true,
-                message: "Deleted"
-            })
-        } else {
-            res.json({
-                status: false,
-                message: "No deleted"
-            })
-        }
+router.patch("/:id", (req, res) => {
+  const { id } = req.params;
+  const data = Properties(req.body);
+  table
+    .update(data, {
+      where: { id },
     })
-})
+    .then((err) => {
+      if (err == 1) {
+        res.json({
+          status: true,
+          message: "Updated",
+        });
+      } else {
+        res.json({
+          status: false,
+          message: "No updated",
+        });
+      }
+    });
+});
 
-module.exports = router
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  table
+    .delete({
+      where: { id },
+    })
+    .then((err) => {
+      if (err == 1) {
+        res.json({
+          status: true,
+          message: "Deleted",
+        });
+      } else {
+        res.json({
+          status: false,
+          message: "No deleted",
+        });
+      }
+    });
+});
+
+module.exports = router;

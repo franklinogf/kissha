@@ -98,6 +98,10 @@ $theme-colors: (
   font-size: 1.75rem !important;
 }
 
+._font-size-30{
+  font-size: 1.875rem !important;
+}
+
 ._font-size-32{
   font-size: 2rem !important;
 }
@@ -193,6 +197,24 @@ $theme-colors: (
   border: 1px solid #ced4da;
 }
 
+
+/*Nav Link Button Effects*/
+.link-account-active{
+  background-color: #E9F8F6;
+  color: #ff758c !important;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.link-account{
+  transition: 0.3s;
+
+}
+
+.link-account:hover {
+  color: #ff758c !important;
+
+}
+
 /* FOOTER */
 
 .fTop {
@@ -256,4 +278,14 @@ $theme-colors: (
   font-family: Montserrat;
   color: #777c8b;
   font-weight: 600;
+}
+
+//COLORS
+
+._color-sweet{
+  background-color: #FDF3EA;
+}
+
+._color-candy-blue{
+  background-color: #E9F8F6;
 }

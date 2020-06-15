@@ -9,6 +9,8 @@ const FormInput = styled(Form.Control)`
 const CustomInput = props => {
   const controlId = props.id // MUST
   const extraClassName = props.className || "" //OPTIONAL
+  const preValue = props.value
+  const disabled = props.disabled || false
   const [
     inputType, //1st parameter MUST
     inputState, //2nd parameter OPTIONAL
@@ -17,8 +19,6 @@ const CustomInput = props => {
     inputPlaceholder, //5th parameter OPTIONAL
     inputRef, //6th parameter OPTIONAL
     onKeyPress, //7th parameter OPTIONAL
-    preValue, //8th parameter OPTIONAL
-    disabled //9th parameter OPTIONAL
   ] = props.input
   const [
     labelText, //1st parameter MUST if you invoke this prop
@@ -48,7 +48,7 @@ const CustomInput = props => {
         name={controlId}
         onKeyPress={onKeyPress && onKeyPress}
         value={preValue && preValue}
-        disabled={disabled && disabled}
+        disabled={disabled}
       />
       {props.label && (
         <Form.Label

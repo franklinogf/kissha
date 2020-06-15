@@ -197,24 +197,6 @@ $theme-colors: (
   border: 1px solid #ced4da;
 }
 
-
-/*Nav Link Button Effects*/
-.link-account-active{
-  background-color: #E9F8F6;
-  color: #ff758c !important;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-}
-
-.link-account{
-  transition: 0.3s;
-
-}
-
-.link-account:hover {
-  color: #ff758c !important;
-
-}
-
 /* FOOTER */
 
 .fTop {
@@ -287,5 +269,5 @@ $theme-colors: (
 }
 
 ._color-candy-blue{
-  background-color: #E9F8F6;
+  background-color: #E9F8F6 !important;
 }

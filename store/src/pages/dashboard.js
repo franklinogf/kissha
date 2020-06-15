@@ -1,11 +1,30 @@
 import React, { Component, Fragment } from "react"
-import { Navbar, Nav } from "react-bootstrap"
 import Section from "../components/Layout/Section"
 import PageTitle from "../components/Layout/PageTitle"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import DashboardNavbar from "../components/Users/DashboardNavbar"
+import AccountSettings from "../components/Users/AccountSettings"
+import AddressSettings from "../components/Users/AddressSettings"
+import InfoUser from "../components/Users/InfoUser"
+import OrdersSettings from "../components/Users/OrdersSettings"
+import LoginSettings from "../components/Users/LoginSettings"
+import PaymentSettings from "../components/Users/PaymentSettings"
 
 export default class dashboard extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedSettings: "info",
+    }
+    this.handleSelectedOption = this.handleSelectedOption.bind(this)
+  }
+  handleSelectedOption(eventKey) {
+    this.setState({
+      selectedSettings: eventKey,
+    })
+  }
+
   render() {
+    const selected = this.state.selectedSettings
     return (
       <Fragment>
         <PageTitle title="Dashboard" />
@@ -17,33 +36,17 @@ export default class dashboard extends Component {
           <div className="d-flex justify-content-center mb-4 mt-2 _font-size-30 _font-Montserrat font-italic">
             <h1 className="font-weight-light">Welcome Alexa!</h1>
           </div>
-          <Navbar bg="dark" variant="dark" className="py-0">
-            <Navbar.Brand className="link-account" href="#home">
-              {" "}
-              <FontAwesomeIcon icon={["fas", "home"]} />
-            </Navbar.Brand>
-            <Nav className="mx-auto  _font-size-16 _font-Montserrat">
-              <Nav.Link className="px-4 link-account-active" href="#home">
-                <FontAwesomeIcon icon={["fas", "user-edit"]} /> Account Details
-              </Nav.Link>
-              <Nav.Link className="px-4 link-account" href="#home">
-                <FontAwesomeIcon icon={["fas", "map-marked-alt"]} /> Addreses
-              </Nav.Link>
-              <Nav.Link className="px-4 link-account" href="#pricing">
-                <FontAwesomeIcon icon={["fas", "box"]} /> Orders
-              </Nav.Link>
-              <Nav.Link className="px-4 link-account" href="#features">
-                <FontAwesomeIcon icon={["fas", "key"]} /> Security & Login
-              </Nav.Link>
-              <Nav.Link className="px-4 link-account" href="#pricing">
-                <FontAwesomeIcon icon={["fas", "money-check-alt"]} /> Payment
-                Methods
-              </Nav.Link>
-            </Nav>
-          </Navbar>
+          <DashboardNavbar
+            selectedLink={selected}
+            setSelectedLink={this.handleSelectedOption}
+          />
         </Section>
-        <Section bg=" _color-candy-blue"></Section>
-        {/**FROM HERE, YOU SET THE COMPONENTS HERE */}
+        {selected === "info" && <InfoUser />}
+        {selected === "account" && <AccountSettings />}
+        {selected === "address" && <AddressSettings />}
+        {selected === "orders" && <OrdersSettings />}
+        {selected === "security" && <LoginSettings />}
+        {selected === "payment" && <PaymentSettings />}
       </Fragment>
     )
   }

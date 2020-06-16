@@ -3,7 +3,7 @@ import { Form, Collapse } from "react-bootstrap"
 import styled from "styled-components"
 
 const FormInput = styled(Form.Control)`
-  height: 48px;
+  height: ${({size}) => size}px;
 `
 
 const CustomInput = props => {
@@ -11,6 +11,8 @@ const CustomInput = props => {
   const extraClassName = props.className || "" //OPTIONAL
   const preValue = props.value
   const disabled = props.disabled || false
+  const size = props.inputSize || 48
+  const inputMargin = props.inputMargin || 'my-4'
   const [
     inputType, //1st parameter MUST
     inputState, //2nd parameter OPTIONAL
@@ -28,7 +30,7 @@ const CustomInput = props => {
   return (
     <Form.Group
       controlId={controlId}
-      className={`my-4 position-relative ${extraClassName}`}
+      className={`${inputMargin} position-relative ${extraClassName}`}
     >
       <FormInput
         type={inputType}
@@ -42,6 +44,7 @@ const CustomInput = props => {
                 : ""
             }
             `}
+        size={size}
         onBlur={onBlur && onBlur}
         onChange={onChange && onChange}
         ref={inputRef && inputRef}

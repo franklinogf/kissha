@@ -3,46 +3,45 @@ import { asyncComputed } from "computed-async-mobx"
 import AxiosClient from "../config/axios"
 
 export class UserStore {
-  user = JSON.parse(localStorage.getItem("loggedUser")) || {
-    isLoggedIn: false,
-    id: 0,
-  }
+  //OBSERVABLE
+  loginStatus = null
+  user = {}
 
-  setLogin = newUser => {
-    if (newUser.isLoggedIn && newUser.id) {
-      this.user = newUser
-      localStorage.setItem("loggedUser", JSON.stringify(this.user))
-    }
-  }
+  wrongLoginCollapse = false
 
-  findUser = asyncComputed({}, 600, async () => {
-    const response = await AxiosClient.get(
-      `/users/${this.user.id}/limited`
-    ).then(response => response.data.data)
-    return response
-  })
+  //FETCHS
 
+  //GETTERS
   get obtainUser() {
-    return this.findUser.get()
+    return this.user
   }
 
   get isLogged() {
-    return this.user.isLoggedIn
+    return this.isLogged
   }
 
-  setLogout = () => {
-    this.user = {
-      isLoggedIn: false,
-      id: 0,
-    }
-    localStorage.setItem("loggedUser", JSON.stringify(this.user))
+  //SETTERS
+  setLogin(status) {
+    this.loginStatus = status
+  }
+
+  setUser(user) {
+    this.user = user
+  }
+
+  setLogout(status) {
+    this.loginStatus = status
+    this.user = {}
   }
 }
 
 decorate(UserStore, {
+  loginStatus: observable,
   user: observable,
-  setLogin: action,
-  logout: action,
+  wrongLoginCollapse: observable,
   obtainUser: computed,
   isLogged: computed,
+  setLogin: action,
+  setUser: action,
+  setLogout: action,
 })

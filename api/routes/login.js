@@ -1,60 +1,49 @@
 const express = require("express");
 const router = express.Router();
-const table = require("../models/users");
-const bcrypt = require("bcrypt");
+const passport = require('passport');
 
-router.post("/login", (req, res) => {
-  //Extract
-  let { email, phone, password } = req.body;
-  //To Lowercase
-  if (email) {
-    email = email.toLowerCase();
-  }
-  //Exchange where statement
-  function whereStatement(email, phone) {
-    if (email && !phone) {
-      return { email };
-    } else if (!email && phone) {
-      return { phone };
-    }
-  }
 
-  //query
-  table
-    .findOne({
-      where:  whereStatement(email,phone)
-    })
-    .then((data) => {
-      //get the data, now test the password
-      if (data !== null) {
-        let user = data.dataValues;
-        //bycrypt compare
-        bcrypt.compare(password, user.password, (bcryptErr, verified) => {
-          // time to login
-          if (verified) {
-            res.json({
-              isLoggedIn: true,
-              id:user.id,
-            });
-            return;
-          }
-          //wrong password
-          else {
-            res.json({
-              success: false,
-              message: "Invalid password",
-            });
-            return;
-          }
-        });
-        // email/phone not even finded
-      } else {
+router.post("/login",passport.authenticate('local'),(req,res)=>{
+  res.json({
+    status:true,
+  })
+});
+
+router.get('/isLogged', (req, res, next) => {
+
+       if (req.isAuthenticated()) {
+        const userResponse = {
+          firstName:req.user.firstName,
+          lastName:req.user.lastName,
+          email:req.user.email,
+          phone:req.user.phone,
+          lastVisit:req.user.lastVisit
+        }
+
         res.json({
-          success: false,
-          message: "Your Email/Phone doesn't exists",
+          status: true,
+          message: "Ok",
+          data: userResponse
+  
         });
-      }
-    });
+    } else {
+      res.json({
+        status: false,
+        message: `Client is not logged to get this data`,
+      });
+    }
+
+});
+
+router.get('/logout', (req, res, next) => {
+  req.session.destroy(function (err) {
+    if (!err) {
+        res.status(200).clearCookie('connect.sid', {path: '/'}).json({status: true});
+    } else {
+        console.log(err)
+    }
+
+  })
 });
 
 module.exports = router

@@ -5,6 +5,7 @@ import { Navbar, Nav } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { observer } from "mobx-react"
 import useStores from "../../hooks/useStores"
+import AxiosClient from '../../config/axios'
 
 const Header = observer(({ sticky }) => {
   //global store
@@ -12,8 +13,11 @@ const Header = observer(({ sticky }) => {
 
   //handlers
   const handleLogout = () => {
-    UserStore.setLogout()
-    navigate("/")
+    AxiosClient.get(`/logout`).then(response => {
+      //set some kind of wait here
+      UserStore.setLogout(false)
+    })
+      
   }
 
   return (
@@ -79,9 +83,9 @@ const Header = observer(({ sticky }) => {
           </Navbar.Text>
 
           <Navbar.Text className="pl-2">
-            {UserStore.isLogged ? (
+            {UserStore.loginStatus ? (
               <Fragment>
-                <Link className="px-2 text-decoration-none" to="/dashboard">
+                <Link className="px-2 text-decoration-none" to="/user/dashboard">
                   <FontAwesomeIcon
                     className="text-primary"
                     icon={["fas", "user"]}
@@ -97,7 +101,7 @@ const Header = observer(({ sticky }) => {
                 </Link>
               </Fragment>
             ) : (
-              <Link className="font-italic h-p" to="/login">
+              <Link className="font-italic h-p" to="/user/login">
                 Login
               </Link>
             )}

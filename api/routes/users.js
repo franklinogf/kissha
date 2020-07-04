@@ -30,7 +30,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id/:limited?", (req, res) => {
-  const { id } = req.params;
+ 
+
+ const { id } = req.params;
 
   //object constructor
   let queryProperties = {
@@ -55,7 +57,8 @@ router.get("/:id/:limited?", (req, res) => {
       res.json({
         status: true,
         message: "Ok",
-        data: data,
+        data: data
+
       });
     } else {
       res.json({

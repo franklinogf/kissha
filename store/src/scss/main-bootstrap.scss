@@ -131,6 +131,19 @@ $theme-colors: (
   transition: all .2s linear;
 }
 
+/*CUSTOM TRANSITION*/
+._transition-all-300{
+  transition: all 1s !important;
+}
+
+._transition-all-200{
+  transition: all .2s !important;
+}
+
+._transition-all-400{
+  transition: all .4s !important;
+}
+
 
 /*INPUT EFFECTS*/
 

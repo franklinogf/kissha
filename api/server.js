@@ -13,7 +13,9 @@ const address = require('./routes/address')
 const categories = require('./routes/categories')
 const products = require('./routes/products')
 const emails = require('./routes/emails')
+const phones = require('./routes/phones')
 const login = require('./routes/login')
+const orders = require('./routes/orders')
 
 require("dotenv").config({path:__dirname+'.env'})
 const port = process.env.PORT || 5000
@@ -79,6 +81,8 @@ app.use('/address', address)
 app.use('/categories', categories)
 app.use('/products', products)
 app.use('/emails', emails)
+app.use('/phones', phones)
+app.use('/orders',orders)
 app.use('',login)
 
 

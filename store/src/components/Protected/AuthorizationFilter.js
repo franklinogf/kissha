@@ -1,16 +1,8 @@
 import React, { useState, useEffect, Fragment } from "react"
 import { navigate } from "gatsby"
 import AxiosClient from "../../config/axios"
-import { css } from "@emotion/core"
-import DotLoader from "react-spinners/DotLoader"
-import Section from "../Layout/Section"
+import LoadingSection from "../Layout/LoadingSection"
 import { observer } from "mobx-react"
-
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`
 
 const AuthorizationFilter = observer(
   ({ component: Component, location, redirectTo, withUser, ...rest }) => {
@@ -39,15 +31,7 @@ const AuthorizationFilter = observer(
 
     return (
       <Fragment>
-        {blockPage === true ? (
-          <Component {...rest} />
-        ) : (
-          <Section bg=" _color-sweet" height={250} padding="py-4">
-            <div className="sweet-loading">
-              <DotLoader css={override} size={150} color={"#FF758C"} loading />
-            </div>
-          </Section>
-        )}
+        {blockPage === true ? <Component {...rest} /> : <LoadingSection />}
       </Fragment>
     )
   }

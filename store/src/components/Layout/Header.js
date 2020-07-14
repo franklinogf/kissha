@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import { Link, navigate } from "gatsby"
+import { Link } from "gatsby"
 import Logo from "../Logo/Logo"
 import { Navbar, Nav } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

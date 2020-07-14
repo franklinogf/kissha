@@ -11,27 +11,29 @@ export const MainLayout = observer(({ children }) => {
   const { UserStore } = useStores()
   const { isSticky, element } = useSticky()
 
-  const fetchData = async () => {
-    AxiosClient.get(`/isLogged`).then(response => {
-      if (response.data.status) {
-        UserStore.setLogin(true)
-        UserStore.setUser(response.data.data)
-      } else {
-        UserStore.setLogin(false)
-        UserStore.setUser({})
-      }
-    })
-  }
-
-  //useEffect didmount
+  //useEffect
   useEffect(() => {
-    for (let i = 0; i < 1; i++) {
-      fetchData()
+    //function
+    const fetchData = async () => {
+      AxiosClient.get(`/isLogged`).then(response => {
+        if (response.data.status) {
+          UserStore.setLogin(true)
+          UserStore.setUser(response.data.data)
+        } else { 
+          UserStore.setLogin(false)
+          UserStore.setUser({
+            id:0,
+            firstName:"",
+            lastName:"",
+            phone:"",
+            email:"",
+            lastVisit:"",
+            addresses: []
+          })
+        }
+      })
     }
-  })
 
-  //useEffect didupdate
-  useEffect(() => {
     for (let i = 0; i < 1; i++) {
       fetchData()
     }
@@ -39,9 +41,17 @@ export const MainLayout = observer(({ children }) => {
     if (UserStore.loginStatus) {
       fetchData()
     } else {
-      UserStore.setUser({})
+      UserStore.setUser({
+        id:0,
+        firstName:"",
+        lastName:"",
+        phone:"", 
+        email:"",
+        lastVisit:"",
+        addresses: []
+      })
     }
-  }, [UserStore.loginStatus])
+  }, [UserStore.loginStatus, UserStore])
 
   return (
     <div>

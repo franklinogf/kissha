@@ -30,9 +30,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id/:limited?", (req, res) => {
- 
-
- const { id } = req.params;
+  const { id } = req.params;
 
   //object constructor
   let queryProperties = {
@@ -57,8 +55,7 @@ router.get("/:id/:limited?", (req, res) => {
       res.json({
         status: true,
         message: "Ok",
-        data: data
-
+        data: data,
       });
     } else {
       res.json({
@@ -104,7 +101,6 @@ router.post("/:id/address", (req, res) => {
       });
     })
     .catch((err) => {
-      console.log("err: ", err);
       res.json({
         status: false,
         message: `No data found`,
@@ -125,7 +121,6 @@ router.post("/", (req, res) => {
       });
     })
     .catch((err) => {
-      console.log("err: ", err);
       res.json({
         status: false,
         message: "No created",
@@ -152,6 +147,51 @@ router.patch("/:id", (req, res) => {
           message: "No updated",
         });
       }
+    });
+});
+
+router.patch("/:id/password", (req, res) => {
+  const { id } = req.params;
+  //compare old password with DB
+  table
+    .findAll({
+      where: { id },
+    })
+    .then((data) => {
+      bcrypt.compare(
+        req.body.oldPassword,
+        data[0].dataValues.password,
+        (bcryptErr, verified) => {
+          if (verified) {
+            const newPassword = bcrypt.hashSync(req.body.newPassword, 9);
+            table
+              .update(
+                { password: newPassword },
+                {
+                  where: { id },
+                }
+              )
+              .then((err) => {
+                if (err == 1) {
+                  res.json({
+                    status: true,
+                    message: "Updated",
+                  });
+                } else {
+                  res.json({
+                    status: false,
+                    message: "No updated",
+                  });
+                }
+              });
+          } else {
+            res.json({
+              status: false,
+              message: "No updated, wrong old password",
+            });
+          }
+        }
+      );
     });
 });
 

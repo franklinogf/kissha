@@ -109,14 +109,15 @@ const AddressSettings = observer(() => {
   //effect : everytime addAddres change, it gona fetch the info
   useEffect(() => {
     if (!addAddress) {
-      AxiosClient.get(`/users/${UserStore.obtainUser.id}/limited`).then(
-        response => {
-          setAddresses(response.data.data.addresses)
-          setShowAddress(true)
-        }
-      )
+      const source = AxiosClient.CancelToken.source()
+      AxiosClient.get(`/users/${UserStore.obtainUser.id}/limited`, {
+        cancelToken: source.token,
+      }).then(response => {
+        setAddresses(response.data.data.addresses)
+        setShowAddress(true)
+      })
     }
-  }, [addAddress,UserStore.obtainUser.id])
+  }, [addAddress, UserStore.obtainUser.id])
 
   //effect : if fullName of addAddress is correct, enable ADD button
   useEffect(() => {

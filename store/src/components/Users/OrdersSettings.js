@@ -30,9 +30,12 @@ const OrdersSettings = () => {
 
   //effects
   useEffect(() => {
+    const source = AxiosClient.CancelToken.source()
     //first time loading, take the prop and do your first fetch
     if (!ready) {
-      AxiosClient.get(`/orders/${UserStore.obtainUser.id}`).then(response => {
+      AxiosClient.get(`/orders/${UserStore.obtainUser.id}`, {
+        cancelToken: source.token,
+      }).then(response => {
         setOrderList(response.data.data)
         setReady(true)
       })
@@ -60,7 +63,11 @@ const OrdersSettings = () => {
             </h2>
           </Row>
           {orderList.map(order => (
-            <Container key={order.id} fluid className="px-0 mt-3 bg-white rounded-lg">
+            <Container
+              key={order.id}
+              fluid
+              className="px-0 mt-3 bg-white rounded-lg"
+            >
               <Row className="border p-3 bg-light _font-size-13 _font-Montserrat font-weight-normal mx-0">
                 <Col xs={3}>
                   <Row>ORDER PLACED</Row>

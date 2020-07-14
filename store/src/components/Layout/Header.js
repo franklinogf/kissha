@@ -96,6 +96,7 @@ const Header = observer(({ sticky }) => {
                 <Link
                   className="font-italic text-decoration-none"
                   onClick={handleLogout}
+                  to="/"
                 >
                   <span className="font-italic h-p text-muted">Logout</span>
                 </Link>

@@ -2,7 +2,17 @@ import React, { useState, useEffect } from "react"
 import CustomInput from "./CustomInput"
 import AxiosClient from "../../config/axios"
 
-const EmailInput = ({ email, setEmail, onChangeHandler }) => {
+const EmailInput = ({
+  email,
+  setEmail,
+  onChangeHandler,
+  defaultValue,
+  value,
+  inputMargin,
+  inputSize,
+  inputPadding,
+  labelEffect,
+}) => {
   const [invalidText, setInvalidText] = useState()
   const [existText, setExistText] = useState()
   const [compareEmail, setCompareEmail] = useState(true)
@@ -67,8 +77,13 @@ const EmailInput = ({ email, setEmail, onChangeHandler }) => {
   return (
     <CustomInput
       id="email"
+      defValue={defaultValue && defaultValue}
+      value={value && value}
+      inputSize={inputSize && inputSize}
+      inputMargin={inputMargin && inputMargin}
+      inputPadding={inputPadding && inputPadding}
       input={["email", email, handleEmail, onChangeHandler && onChangeHandler]}
-      label={["Email"]}
+      label={["Email",labelEffect && labelEffect]}
       collapses={[
         ["Invalid Email", invalidText],
         ["This Email is already used.", existText],

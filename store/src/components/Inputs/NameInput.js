@@ -8,6 +8,8 @@ const NameInput = ({
   nameStatus,
   setNameStatus,
   onChangeHandler,
+  defaultValue,
+  disabled
 }) => {
   const [collapseText, setCollapseText] = useState(false)
 
@@ -33,6 +35,8 @@ const NameInput = ({
   return (
     <CustomInput
       id={idName}
+      defValue={defaultValue ? defaultValue : ""}
+      disabled={disabled && disabled}
       input={[
         "text",
         nameStatus,

@@ -3,7 +3,9 @@ const router = express.Router();
 const passport = require('passport');
 
 
-router.post("/login",passport.authenticate('local'),(req,res)=>{
+router.post("/login",passport.authenticate('local',{
+  
+}),(req,res)=>{
   res.json({
     status:true,
   })
@@ -13,6 +15,7 @@ router.get('/isLogged', (req, res, next) => {
 
        if (req.isAuthenticated()) {
         const userResponse = {
+          id:req.user.id,
           firstName:req.user.firstName,
           lastName:req.user.lastName,
           email:req.user.email,

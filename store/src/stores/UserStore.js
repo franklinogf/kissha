@@ -1,11 +1,17 @@
 import { observable, action, computed, decorate } from "mobx"
-import { asyncComputed } from "computed-async-mobx"
-import AxiosClient from "../config/axios"
 
 export class UserStore {
   //OBSERVABLE
   loginStatus = null
-  user = {}
+  user = {
+    id:0,
+    firstName:"",
+    lastName:"",
+    phone:"",
+    email:"",
+    lastVisit:"",
+    addresses: []
+  }
 
   wrongLoginCollapse = false
 

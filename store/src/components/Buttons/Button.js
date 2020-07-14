@@ -10,8 +10,9 @@ const Button = props => {
   const padding = props.padding || ""  
   const icon = props.icon
   const onClick = props.onClick || null
+  const disabled = props.disabled || false
   return (
-    <Btn id={id && id} size={size} variant={variant} className={`text-white rounded-pill _font-size-${fontSize} _font-Montserrat ${padding}`} onClick={onClick && onClick}>
+    <Btn id={id && id} disabled={disabled} size={size} variant={variant} className={`text-white rounded-pill _font-size-${fontSize} _font-Montserrat ${padding}`} onClick={onClick && onClick}>
       {icon && 
         <FontAwesomeIcon
           className="mr-1"

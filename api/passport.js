@@ -13,7 +13,6 @@ const verifyCallback = (username, password, done) => {
 
             bcrypt.compare(password, user.password, (bcryptErr, verified) => {
                 if (verified) {
-                    console.log('login sir!')
                     return done(null, user);
                 } else {
                     console.log('wrong pass')
@@ -32,13 +31,10 @@ const strategy  = new LocalStrategy({usernameField:'email'}, verifyCallback);
 passport.use(strategy);
 
 passport.serializeUser((user, done) => {
-    console.log('u are serializing an user')
     done(null, user.id);
 });
 
 passport.deserializeUser((userId, done) => {
-    console.log('u are DEserializing an user')
-
     User.findByPk(userId)
         .then((user) => {
             console.log('done!')

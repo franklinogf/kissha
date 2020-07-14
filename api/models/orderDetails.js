@@ -18,7 +18,7 @@ module.exports = mysql.define('orderDetails', {
     allowNull: true,
     comment: "null"
   },
-  'idOrder': {
+  'orderId': {
     type: DataTypes.INTEGER(11),
     allowNull: true,
     comment: "null",
@@ -27,7 +27,7 @@ module.exports = mysql.define('orderDetails', {
       key: 'id'
     }
   },
-  'idProduct': {
+  'productId': {
     type: DataTypes.INTEGER(11),
     allowNull: true,
     comment: "null",

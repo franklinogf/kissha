@@ -6,7 +6,16 @@ const PasswordInput = ({
   setPassword,
   enableConfirm,
   onChangeHandler,
+  inputMargin,
+  inputSize,
+  inputPadding,
+  labelEffect,
+  passwordPlaceholder,
+  confirmPlaceholder,
+  defaultValue,
+  value
 }) => {
+
   //STATES
 
   const [confirmPassword, setConfirmPassword] = useState("")
@@ -21,7 +30,10 @@ const PasswordInput = ({
   const handlePassword = () => {
     //taking refs
     let tmpPass = passwordRef.current.value
-    let tmpConfirmPass = confirmPasswordRef.current.value
+    let tmpConfirmPass = ""
+    if (enableConfirm) {
+      tmpConfirmPass = confirmPasswordRef.current.value
+    }
 
     //empty and invalid evaluation for PASSWORD
     if (tmpPass === "") {
@@ -36,23 +48,28 @@ const PasswordInput = ({
     }
 
     //match evaluation CONFIRM PASSWORD
-    if (tmpPass !== "" && tmpConfirmPass !== "") {
-      if (tmpPass !== tmpConfirmPass) {
-        setConfirmPassword("invalid")
-        setInvalidConfirmPassText(true)
+    if (enableConfirm) {
+      if (tmpPass !== "" && tmpConfirmPass !== "") {
+        if (tmpPass !== tmpConfirmPass) {
+          setConfirmPassword("invalid")
+          setInvalidConfirmPassText(true)
+        } else {
+          setConfirmPassword("ok")
+          setInvalidConfirmPassText(false)
+        }
       } else {
-        setConfirmPassword("ok")
+        setConfirmPassword("")
         setInvalidConfirmPassText(false)
       }
-    } else {
-      setConfirmPassword("")
-      setInvalidConfirmPassText(false)
     }
   }
 
   const onChangePassword = () => {
     const tmpPass = passwordRef.current.value
-    let tmpConfirmPass = confirmPasswordRef.current.value
+    let tmpConfirmPass = ""
+    if (enableConfirm) {
+      tmpConfirmPass = confirmPasswordRef.current.value
+    }
 
     if (password === "invalid") {
       if (tmpPass !== "") {
@@ -66,13 +83,13 @@ const PasswordInput = ({
       }
     }
 
-    if(confirmPassword === "invalid"){
-      if(tmpConfirmPass !== ""){
-        if(tmpPass === tmpConfirmPass){
+    if (confirmPassword === "invalid") {
+      if (tmpConfirmPass !== "") {
+        if (tmpPass === tmpConfirmPass) {
           setConfirmPassword("ok")
           setInvalidConfirmPassText(false)
         }
-      }else{
+      } else {
         setConfirmPassword("")
         setInvalidConfirmPassText(false)
       }
@@ -83,6 +100,11 @@ const PasswordInput = ({
     <Fragment>
       <CustomInput
         id="password"
+        value={value && value}
+        defValue={defaultValue && defaultValue}
+        inputSize={inputSize && inputSize}
+        inputMargin={inputMargin && inputMargin}
+        inputPadding={inputPadding && inputPadding}
         input={[
           "password",
           password,
@@ -92,12 +114,18 @@ const PasswordInput = ({
           passwordRef,
           onChangePassword,
         ]}
-        label={["Password"]}
+        label={[
+          passwordPlaceholder ? passwordPlaceholder : "Password",
+          labelEffect && labelEffect,
+        ]}
         collapses={[["Invalid Password", invalidPassText]]}
       />
       {enableConfirm && (
         <CustomInput
           id="confirmPassword"
+          inputSize={inputSize && inputSize}
+          inputMargin={inputMargin && inputMargin}
+          inputPadding={inputPadding && inputPadding}
           input={[
             "password",
             confirmPassword,
@@ -106,7 +134,10 @@ const PasswordInput = ({
             null,
             confirmPasswordRef,
           ]}
-          label={["Confirm Password", "inside"]}
+          label={[
+            confirmPlaceholder ? confirmPlaceholder : "Confirm Password",
+            "inside",
+          ]}
           collapses={[["Password doesn't match", invalidConfirmPassText]]}
         />
       )}

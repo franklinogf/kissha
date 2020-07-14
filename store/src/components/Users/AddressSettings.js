@@ -8,6 +8,7 @@ import NameInput from "../Inputs/NameInput"
 import Button from "../Buttons/Button"
 import styled from "styled-components"
 import useStores from "../../hooks/useStores"
+import axios from 'axios'
 import AxiosClient from "../../config/axios"
 import PulseLoader from "react-spinners/PulseLoader"
 import { observer } from "mobx-react"
@@ -109,7 +110,7 @@ const AddressSettings = observer(() => {
   //effect : everytime addAddres change, it gona fetch the info
   useEffect(() => {
     if (!addAddress) {
-      const source = AxiosClient.CancelToken.source()
+      const source = axios.CancelToken.source()
       AxiosClient.get(`/users/${UserStore.obtainUser.id}/limited`, {
         cancelToken: source.token,
       }).then(response => {

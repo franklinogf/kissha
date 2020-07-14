@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Section from "../Layout/Section"
 import { Row, Col, Container, Image, Button } from "react-bootstrap"
 import styled from "styled-components"
+import axios from 'axios'
 import AxiosClient from "../../config/axios"
 import useStores from "../../hooks/useStores"
 
@@ -30,7 +31,7 @@ const OrdersSettings = () => {
 
   //effects
   useEffect(() => {
-    const source = AxiosClient.CancelToken.source()
+    const source = axios.CancelToken.source()
     //first time loading, take the prop and do your first fetch
     if (!ready) {
       AxiosClient.get(`/orders/${UserStore.obtainUser.id}`, {

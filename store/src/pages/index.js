@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Section from "../components/Layout/Section"
-import { Row, Col, Container, Button } from "react-bootstrap"
+import { Row, Col, Container, Button, Carousel } from "react-bootstrap"
+import styled, { css } from "styled-components"
 import ImageCard from "../components/ImageCard/ImageCard"
 import ProductRow from "../components/Products/ProductRow"
 import DeliveryCard from "../components/Delivery/DeliveryCard"
@@ -8,6 +9,23 @@ import ReviewCard from "../components/Users/ReviewCard"
 import PageTitle from "../components/Layout/PageTitle"
 import { sortByDate } from "../helpers/functions"
 import { API_URL } from "../helpers/config"
+
+//temp images
+import slider1 from "../images/index-slider-1.jpg"
+import slider2 from "../images/index-slider-2.jpg"
+import slider3 from "../images/index-slider-3.jpg"
+
+const StyledSliderImage = styled.div`
+  min-height: ${props => props.height};
+
+  ${props =>
+    props.img &&
+    css`
+      background-image: url(${props.img});
+      background-size: cover;
+      background-position: center;
+    `}
+`
 
 export default class index extends Component {
   constructor(props) {
@@ -37,6 +55,38 @@ export default class index extends Component {
       <>
         {/* page title */}
         <PageTitle title="Home" />
+        <Section bg="light" height={100} padding="p-0" margin="m-0">
+          <Carousel className="overflow-hidden h-100">
+            <Carousel.Item>
+              <StyledSliderImage img={slider1} height={`500px`} />
+              <Carousel.Caption>
+                <h3>First slide label</h3>
+                <p>
+                  Nulla vitae elit libero, a pharetra augue mollis interdum.
+                </p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <StyledSliderImage img={slider2} height={`500px`} />
+
+              <Carousel.Caption>
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <StyledSliderImage img={slider3} height={`500px`} />
+
+              <Carousel.Caption>
+                <h3>Third slide label</h3>
+                <p>
+                  Praesent commodo cursus magna, vel scelerisque nisl
+                  consectetur.
+                </p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
+        </Section>
         <Section padding="p-3">
           <Container className="mb-5">
             <Row className="d-flex row-cols-1 row-cols-lg-3">
@@ -124,19 +174,19 @@ export default class index extends Component {
             <Row className="mb-4">
               <Col xs={12} lg={6}>
                 <ReviewCard
-                  userName="Franklin Gonzalez"
-                  userComment='"I have a thing for sunglasses, like I do indeed collect these and I
-                                have a real big range of it at home. Luckily, stores like this one let
-                                me indulge in this hobby furthermore!"'
+                  userName="Miguel Angel"
+                  userComment='"I was always a big shopper, especially when it comes to either apparel or even accessories.
+                   Are these sunglasses, jewelry or purses – I need it all!"'
                   userPic="https://pngimage.net/wp-content/uploads/2018/06/profile-png-icon-2.png"
                   userRank="WEB Developer"
                 />{" "}
               </Col>
               <Col xs={12} lg={6}>
                 <ReviewCard
-                  userName="Miguel Angel"
-                  userComment='"I was always a big shopper, especially when it comes to either apparel or even accessories.
-                   Are these sunglasses, jewelry or purses – I need it all!"'
+                  userName="Franklin Gonzalez"
+                  userComment='"I have a thing for sunglasses, like I do indeed collect these and I
+                                have a real big range of it at home. Luckily, stores like this one let
+                                me indulge in this hobby furthermore!"'
                   userPic="https://pngimage.net/wp-content/uploads/2018/06/profile-png-icon-2.png"
                   userRank="WEB Developer"
                 />{" "}

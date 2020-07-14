@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from "react"
 import useStores from "../../hooks/useStores"
+import axios from "axios"
 import AxiosClient from "../../config/axios"
 import Section from "../Layout/Section"
 import PageTitle from "../Layout/PageTitle"
@@ -24,12 +25,13 @@ const Dashboard = observer(() => {
     setSelectedSettings("loading")
 
     //before load the component, fetch the info to fill the data
-    AxiosClient.get(`/users/${UserStore.obtainUser.id}/limited`).then(
-      response => {
-        UserStore.setUser(response.data.data)
-        setSelectedSettings(eventKey)
-      }
-    )
+    const source = axios.CancelToken.source()
+    AxiosClient.get(`/users/${UserStore.obtainUser.id}/limited`, {
+      cancelToken: source.token,
+    }).then(response => {
+      UserStore.setUser(response.data.data)
+      setSelectedSettings(eventKey)
+    })
   }
 
   return (

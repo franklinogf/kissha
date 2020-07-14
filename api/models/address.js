@@ -9,6 +9,11 @@ module.exports = mysql.define('addresses', {
     comment: "null",
     autoIncrement: true
   },
+  'fullName': {
+    type: DataTypes.STRING(100),
+    allowNull: true,
+    comment: "null"
+  },
   'street': {
     type: DataTypes.STRING(100),
     allowNull: true,

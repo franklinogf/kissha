@@ -11,6 +11,7 @@ const CustomSelect = props => {
   const inputRef = props.inputRef
   const onKeyPress = props.onKeyPress
   const inputMargin = props.inputMargin || "my-4"
+  const defaultValue = props.defaultValue
 
   return (
     <Form.Group
@@ -19,6 +20,7 @@ const CustomSelect = props => {
     >
       <Form.Control
         as="select"
+        defaultValue={defaultValue && defaultValue}
         className={`py-2 _input`}
         onBlur={onBlur && onBlur}
         onChange={onChange && onChange}

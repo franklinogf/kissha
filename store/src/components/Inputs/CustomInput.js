@@ -10,9 +10,11 @@ const CustomInput = props => {
   const controlId = props.id // MUST
   const extraClassName = props.className || "" //OPTIONAL
   const preValue = props.value
+  const defValue = props.defValue
   const disabled = props.disabled || false
   const size = props.inputSize || 48
   const inputMargin = props.inputMargin || 'my-4'
+  const inputPadding = props.inputPadding || 'py-2'
   const [
     inputType, //1st parameter MUST
     inputState, //2nd parameter OPTIONAL
@@ -35,7 +37,7 @@ const CustomInput = props => {
       <FormInput
         type={inputType}
         placeholder={inputPlaceholder ? inputPlaceholder : "placeholder"}
-        className={`py-2 _input 
+        className={`${inputPadding} _input 
             ${
               inputState && inputState === "invalid"
                 ? "border-danger"
@@ -51,9 +53,13 @@ const CustomInput = props => {
         name={controlId}
         onKeyPress={onKeyPress && onKeyPress}
         value={preValue && preValue}
+        defaultValue={defValue && defValue}
         disabled={disabled}
       />
-      {props.label && (
+      {
+      //label inside-to-outside: the label stands on top of the input
+      //label inside: the label dissapears when you start to write
+      props.label && (
         <Form.Label
           className={`_label-${
             labelEffect ? labelEffect : "inside-to-outside"

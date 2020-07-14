@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Section from "../Layout/Section"
-import { Form, Row, Col, Spinner, Alert, Collapse } from "react-bootstrap"
+import { Form, Row, Col, Alert, Collapse } from "react-bootstrap"
+import PulseLoader from "react-spinners/PulseLoader"
 import Btn from "../Buttons/Button"
 import { Link, navigate } from "gatsby"
 import CustomInput from "../Inputs/CustomInput"
@@ -33,31 +34,37 @@ const Login = observer(() => {
     })
   }
 
-  const handleLogin = e => {
-    // if everything ok
 
+  const handleLogin = e => {
+    //block part
+    setLoginFail({ status: false })
+
+    // if everything ok
     setLoading(true)
-    //POST REQUEST
-    AxiosClient.post("/login", user).then(response => {
-      if (response.data.isLoggedIn) {
-        //Correctly logged, proceed to store info
-        UserStore.setLogin(response.data)
-        //redirect to userProfile or home
-        navigate("/")
-      } else {
-        //Wrong Login, show collapse
+
+    AxiosClient.post("/login", user)
+      .then(response => {
+        //Login Success
+        console.log(response.data)
+        UserStore.setUser({ firstName: "Loading..." })
+        UserStore.setLogin(response.data.status)
+        setLoading(false)
+        navigate("/", { replace: true })
+      })
+      .catch(err => {
+        //Login fail
+        setLoading(false)
         setLoginFail({
           status: true,
-          message: response.data.message,
+          message: "Wrong Credentials",
         })
-      }
-    })
-    setLoading(false)
+      })
   }
 
   return (
     <div className="bg-light p-3 rounded-lg" style={{ width: "23rem" }}>
       <Section.Header title="Login" fontSize={32} />
+
       <Form>
         <CustomInput
           id="email"
@@ -71,12 +78,18 @@ const Login = observer(() => {
         />
 
         <Row className="justify-content-between">
-          <Col xs={12} lg={2} className="align-self-end">
-            <Btn onClick={handleLogin} size="lg" fontSize={16}>
-              {!isLoading ? "Login" : <Spinner animation="border" size="sm" />}
-            </Btn>
+          <Col xs={12} lg={4} className="d-flex justify-content-center align-self-center">
+            {!isLoading ? (
+              <Btn onClick={handleLogin} size="lg" fontSize={16}>
+                Login
+              </Btn>
+            ) : (
+              <div className="d-block h-100 justify-content-center">
+                <PulseLoader size={16} color={"#FF758C"} loading />
+              </div>
+            )}
           </Col>
-          <Col xs={12} lg={9}>
+          <Col xs={12} lg={8} className="pl-0">
             {" "}
             <Link
               to=""

@@ -55,35 +55,46 @@ export default class index extends Component {
       <>
         {/* page title */}
         <PageTitle title="Home" />
-        <Section bg="light" height={100} padding="p-0" margin="m-0">
-          <Carousel className="overflow-hidden h-100">
+        <Section bg="light" height={500} padding="p-0" margin="m-0">
+          <Carousel className="position-relative">
             <Carousel.Item>
               <StyledSliderImage img={slider1} height={`500px`} />
-              <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
+              <Carousel.Caption className="_slider-caption">
+                <h3 className="_slider-caption-title">Have to Deal With</h3>
+                <h3 className="_slider-caption-title">a Sensitive Skin?</h3>
+                <p className="text-dark">
+                  Taking good care of your hair wellness is
+                </p>
+                <p className="text-dark">
+                  essential for any gal. Try the items on sale to
+                </p>
+                <p className="text-dark">
+                  make that care both effective & affordable!
                 </p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
               <StyledSliderImage img={slider2} height={`500px`} />
 
-              <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </Carousel.Caption>
+<Container className="bg-light">
+zxc
+</Container>
             </Carousel.Item>
             <Carousel.Item>
               <StyledSliderImage img={slider3} height={`500px`} />
 
-              <Carousel.Caption>
+
+              <Carousel.Caption className="bg-light">
                 <h3>Third slide label</h3>
                 <p>
                   Praesent commodo cursus magna, vel scelerisque nisl
                   consectetur.
                 </p>
               </Carousel.Caption>
+
+
+
+
             </Carousel.Item>
           </Carousel>
         </Section>

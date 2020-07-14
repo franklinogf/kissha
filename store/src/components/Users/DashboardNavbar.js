@@ -40,14 +40,6 @@ const DashboardNavbar = ({ selectedLink, setSelectedLink }) => {
         >
           <Nav.Item>
             <StyledNavLink
-              eventKey="info"
-              selected={selectedLink === "info"}
-            >
-              <FontAwesomeIcon icon={["fas", "home"]} /> Info
-            </StyledNavLink>
-          </Nav.Item>
-          <Nav.Item>
-            <StyledNavLink
               eventKey="account"
               selected={selectedLink === "account"}
             >

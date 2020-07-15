@@ -18,13 +18,33 @@ export class ShoppingCartStore {
     localStorage.setItem("shoppingCart",JSON.stringify(this.products))
   }
 
+  removeProduct = (index)=>{
+    this.products.splice(index,1)
+
+    localStorage.setItem("shoppingCart",JSON.stringify(this.products))
+  }
+
+  removeAll = ()=>{
+    this.products = []
+
+    localStorage.setItem("shoppingCart",JSON.stringify(this.products))
+  }
+
   get amountOfProducts() {
     return this.products.length
+  }
+
+  get obtainProducts(){
+    return this.products
   }
 }
 
 decorate(ShoppingCartStore, {
   products: observable,
   addProduct: action,
+  removeProduct:action,
+  removeAll:action,
   amountOfProducts: computed,
+  obtainProducts:computed
+
 })

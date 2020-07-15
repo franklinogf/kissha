@@ -3,6 +3,29 @@
  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
+ /*********************
+BREAKPOINTS
+*********************/
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 70em) { @content ; }
+ }
+  @else if $point == laptop {
+    @media (min-width: 64em) { @content ; }
+ }
+   @else if $point == tablet {
+    @media (min-width: 50em) { @content ; }
+ }
+  @else if $point == phablet {
+    @media (min-width: 37.5em)  { @content ; }
+ }
+ @else if $point == mobileonly {
+    @media (max-width: 37.5em)  { @content ; }
+
+ }
+}
+
 $enable-shadows:true;
 $enable-responsive-font-sizes:true;
 
@@ -11,7 +34,8 @@ $theme-colors: (
    secondary:#9D2933,
    facebook:#3b5998,
    twitter: #2aa9e0,
-   instagram:#d3492c
+   instagram:#d3492c,
+   disabled: #6C757D
  );
  
  @import '~bootstrap/scss/bootstrap.scss';
@@ -290,12 +314,19 @@ $theme-colors: (
 }
 
 ._slider-caption{
-  left: 10px;
-  bottom: 0;
-height: 400px;
-width: 90%;
-justify-content: start;
+height: 425px;
 text-align: left;
+
+
+@include breakpoint(mobileonly) {
+  height: 375px;
+}
+@include breakpoint(phablet) {
+  height: 425px;
+}
+@include breakpoint(laptop) {
+  height: 425px;
+}
 }
 
 ._slider-caption-title{
@@ -306,8 +337,62 @@ text-align: left;
     font-size: 54px;
     line-height: 1.2;
     letter-spacing: 0px;
-}
 
-._transparent {
-  background-color: rgba(255,255,255,0.5);
-}
+    @include breakpoint(mobileonly) {
+      font-size: 26px;
+    }
+    @include breakpoint(phablet) {
+      font-size: 40px;
+    }
+    @include breakpoint(laptop) {
+      font-size: 54px;
+    }
+  }
+
+  ._slider-caption-subtitle{
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0px;
+    font-weight: 400;
+    font-style: normal;
+    font-family: 'Montserrat', sans-serif;
+    color: #6b6e75;
+
+    @include breakpoint(mobileonly) {
+      font-size: 14px;
+    }
+    @include breakpoint(phablet) {
+      font-size: 16px;
+    }
+    @include breakpoint(laptop) {
+      font-size: 18px;
+    }
+  }
+
+  ._hr-divisor{
+    max-width: 100%;
+    width: 75px;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: #ff758c;
+    margin: 0;
+    display: inline-block;
+  }
+
+  ._parallax-title{
+    padding-left: 28px;
+    padding-top: 28px;
+    font-size: 54px;
+    font-family: 'Playfair Display', serif;
+    color: black;
+
+    @include breakpoint(mobileonly) {
+      font-size: 54px;
+    }
+    @include breakpoint(phablet) {
+      font-size: 60px;
+    }
+    @include breakpoint(laptop) {
+      font-size: 70px;
+    }
+  }

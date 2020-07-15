@@ -1,12 +1,14 @@
 import React, { Component } from "react"
 import Section from "../components/Layout/Section"
-import { Row, Col, Container, Button, Carousel } from "react-bootstrap"
+import { Row, Col, Container, Carousel } from "react-bootstrap"
 import styled, { css } from "styled-components"
 import ImageCard from "../components/ImageCard/ImageCard"
 import ProductRow from "../components/Products/ProductRow"
 import DeliveryCard from "../components/Delivery/DeliveryCard"
 import ReviewCard from "../components/Users/ReviewCard"
+import CustomButton from "../components/Buttons/Button"
 import PageTitle from "../components/Layout/PageTitle"
+import { Parallax } from "react-parallax"
 import { sortByDate } from "../helpers/functions"
 import { API_URL } from "../helpers/config"
 
@@ -14,6 +16,7 @@ import { API_URL } from "../helpers/config"
 import slider1 from "../images/index-slider-1.jpg"
 import slider2 from "../images/index-slider-2.jpg"
 import slider3 from "../images/index-slider-3.jpg"
+import homePic from '../images/home-pic.jpg'
 
 const StyledSliderImage = styled.div`
   min-height: ${props => props.height};
@@ -55,49 +58,124 @@ export default class index extends Component {
       <>
         {/* page title */}
         <PageTitle title="Home" />
-        <Section bg="light" height={500} padding="p-0" margin="m-0">
-          <Carousel className="position-relative">
-            <Carousel.Item>
-              <StyledSliderImage img={slider1} height={`500px`} />
-              <Carousel.Caption className="_slider-caption">
-                <h3 className="_slider-caption-title">Have to Deal With</h3>
-                <h3 className="_slider-caption-title">a Sensitive Skin?</h3>
-                <p className="text-dark">
-                  Taking good care of your hair wellness is
-                </p>
-                <p className="text-dark">
-                  essential for any gal. Try the items on sale to
-                </p>
-                <p className="text-dark">
-                  make that care both effective & affordable!
-                </p>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <StyledSliderImage img={slider2} height={`500px`} />
 
-<Container className="bg-light">
-zxc
-</Container>
-            </Carousel.Item>
-            <Carousel.Item>
-              <StyledSliderImage img={slider3} height={`500px`} />
+        <Carousel className="position-relative" fade>
+          <Carousel.Item>
+            <StyledSliderImage img={slider1} height={`500px`} />
 
+            <Carousel.Caption className="_slider-caption">
+              <Row>
+                <Col xs={12} className="_slider-caption-title">
+                  Have to Deal With
+                </Col>
 
-              <Carousel.Caption className="bg-light">
-                <h3>Third slide label</h3>
-                <p>
-                  Praesent commodo cursus magna, vel scelerisque nisl
-                  consectetur.
-                </p>
-              </Carousel.Caption>
+                <Col xs={12} className="_slider-caption-title">
+                  a Sensitive Skin?
+                </Col>
+                <Col xs={12} className="text-left py-4">
+                  <hr className="_hr-divisor"></hr>
+                </Col>
+                <Col
+                  xs={12}
+                  sm={6}
+                  className="_slider-caption-subtitle text-justify"
+                >
+                  {" "}
+                  Taking good care of your hair wellness is essential for any
+                  gal. Try the items on sale to make that care both effective &
+                  affordable!
+                </Col>
+                <Col xs={12} className="pt-3 pb-4">
+                  <CustomButton
+                    fontSize="16"
+                    size="lg"
+                    padding="p-3 px-4"
+                    id="collections2"
+                  >
+                    View All Collections
+                  </CustomButton>
+                </Col>
+              </Row>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <StyledSliderImage img={slider2} height={`500px`} />
 
+            <Carousel.Caption className="_slider-caption">
+              <Row>
+                <Col xs={12} className="_slider-caption-title">
+                  Have to Deal With
+                </Col>
 
+                <Col xs={12} className="_slider-caption-title">
+                  a Sensitive Skin?
+                </Col>
+                <Col xs={12} className="text-left py-4">
+                  <hr className="_hr-divisor"></hr>
+                </Col>
+                <Col
+                  xs={12}
+                  sm={6}
+                  className="_slider-caption-subtitle text-justify"
+                >
+                  {" "}
+                  Taking good care of your hair wellness is essential for any
+                  gal. Try the items on sale to make that care both effective &
+                  affordable!
+                </Col>
+                <Col xs={12} className="pt-3 pb-4">
+                  <CustomButton
+                    fontSize="16"
+                    size="lg"
+                    padding="p-3 px-4"
+                    id="collections2"
+                  >
+                    View All Collections
+                  </CustomButton>
+                </Col>
+              </Row>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <StyledSliderImage img={slider3} height={`500px`} />
 
+            <Carousel.Caption className="_slider-caption">
+              <Row>
+                <Col xs={12} className="_slider-caption-title">
+                  Have to Deal With
+                </Col>
 
-            </Carousel.Item>
-          </Carousel>
-        </Section>
+                <Col xs={12} className="_slider-caption-title">
+                  a Sensitive Skin?
+                </Col>
+                <Col xs={12} className="text-left py-4">
+                  <hr className="_hr-divisor"></hr>
+                </Col>
+                <Col
+                  xs={12}
+                  sm={6}
+                  className="_slider-caption-subtitle text-justify"
+                >
+                  {" "}
+                  Taking good care of your hair wellness is essential for any
+                  gal. Try the items on sale to make that care both effective &
+                  affordable!
+                </Col>
+                <Col xs={12} className="pt-3 pb-4">
+                  <CustomButton
+                    fontSize="16"
+                    size="lg"
+                    padding="p-3 px-4"
+                    id="collections2"
+                  >
+                    View All Collections
+                  </CustomButton>
+                </Col>
+              </Row>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+
         <Section padding="p-3">
           <Container className="mb-5">
             <Row className="d-flex row-cols-1 row-cols-lg-3">
@@ -122,23 +200,33 @@ zxc
             </Row>
           </Container>
         </Section>
-        <Section img="https://images.unsplash.com/photo-1562516710-38a6fa229b23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1385&q=80">
-          <p style={{ maxWidth: "40rem" }} className="display-4">
-            This is a wider card with supporting text
-          </p>
-          <Button variant="primary" className="mt-3">
-            Read More
-          </Button>
-        </Section>
 
-        <Section bg="light">
-          <h1>Space 1</h1>
-          <p>
-            Qui ipsum enim labore aliqua fugiat laboris nisi pariatur tempor
-            deserunt nisi occaecat mollit ipsum.
-          </p>
-        </Section>
+        <Section padding="p-0">
+          <Parallax
+            className=""
+            bgImage={homePic}
+            strength={600}
+          >
+            <p
+              style={{ maxWidth: "40rem" }}
+              className="_parallax-title display-4"
+            >
+              Natural Skin Powder by L'omeal d'Orange
+            </p>
+            <div className="py-5 px-5">
+              <CustomButton
+                fontSize="32"
+                size="lg"
+                padding="p-4 px-5"
+                id="collections2"
+              >
+                Buy Now
+              </CustomButton>
+            </div>
 
+            <div style={{ height: "350px" }}></div>
+          </Parallax>
+        </Section>
         <Section>
           <Container>
             <Section.Header

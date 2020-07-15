@@ -11,8 +11,10 @@ const Button = props => {
   const icon = props.icon
   const onClick = props.onClick || null
   const disabled = props.disabled || false
+  const shape = props.shape || "rounded-pill"
+  const fullWidth = props.fullWidth
   return (
-    <Btn id={id && id} disabled={disabled} size={size} variant={variant} className={`text-white rounded-pill _font-size-${fontSize} _font-Montserrat ${padding}`} onClick={onClick && onClick}>
+    <Btn id={id && id} disabled={disabled} size={size} variant={variant} className={`text-white ${shape} _font-size-${fontSize} _font-Montserrat ${padding} ${fullWidth && 'w-100'}`} onClick={onClick && onClick}>
       {icon && 
         <FontAwesomeIcon
           className="mr-1"

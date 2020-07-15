@@ -13,10 +13,14 @@ router.get('/', (req, res) => {
         include: categories
     }).then(data => {
         if (data.length > 0) {
+
+            
+
             res.json({
                 status: true,
                 message: "Ok",
-                data: data
+                data: data,
+                pics:JSON.parse(data[0].images)
             })
         } else {
             res.json({

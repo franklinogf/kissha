@@ -19,16 +19,16 @@ export const MainLayout = observer(({ children }) => {
         if (response.data.status) {
           UserStore.setLogin(true)
           UserStore.setUser(response.data.data)
-        } else { 
+        } else {
           UserStore.setLogin(false)
           UserStore.setUser({
-            id:0,
-            firstName:"",
-            lastName:"",
-            phone:"",
-            email:"",
-            lastVisit:"",
-            addresses: []
+            id: 0,
+            firstName: "",
+            lastName: "",
+            phone: "",
+            email: "",
+            lastVisit: "",
+            addresses: [],
           })
         }
       })
@@ -42,13 +42,13 @@ export const MainLayout = observer(({ children }) => {
       fetchData()
     } else {
       UserStore.setUser({
-        id:0,
-        firstName:"",
-        lastName:"",
-        phone:"", 
-        email:"",
-        lastVisit:"",
-        addresses: []
+        id: 0,
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: "",
+        lastVisit: "",
+        addresses: [],
       })
     }
   }, [UserStore.loginStatus, UserStore])
@@ -56,15 +56,15 @@ export const MainLayout = observer(({ children }) => {
   return (
     <div>
       {UserStore.loginStatus !== null && (
-        <Fragment>
-          <Container className="pt-3">
-            <Header sticky={isSticky} />
-          </Container>
-          <Container ref={element} fluid className="p-0">
-            {children}
-          </Container>
-          <Footer />
-        </Fragment>
+          <Fragment>
+            <Container className="pt-3">
+              <Header sticky={isSticky} />
+            </Container>
+            <Container ref={element} fluid className="p-0">
+              {children}
+            </Container>
+            <Footer />
+          </Fragment>
       )}
     </div>
   )

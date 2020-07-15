@@ -33,6 +33,7 @@
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.0.0",
+    "react-parallax": "^3.0.3",
     "react-router-dom": "^5.2.0",
     "react-spinners": "^0.9.0",
     "styled-components": "^5.1.1"

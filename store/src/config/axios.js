@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosClient = axios.create({
-    baseURL: "https://kissha-api.herokuapp.com",
+    baseURL: "http://localhost:5000",
     withCredentials: true
 })
 

@@ -98,7 +98,7 @@ const Login = observer(() => {
               Forgot your password?
             </Link>
             <Link
-              to=""
+              to="/user/signup"
               className="float-right _font-size-16 _font-Montserrat text-decoration-none"
             >
               Don't have an account yet?

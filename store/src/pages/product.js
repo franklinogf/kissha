@@ -10,6 +10,7 @@ import {API_URL} from '../helpers/config'
 export default class product extends Component {
   state = {
     product: {},
+    images: [],
     relatedProducts: [],
   }
 
@@ -20,8 +21,10 @@ export default class product extends Component {
       fetch(`${API_URL}/products`)
         .then(data => data.json())
         .then(products => {
+          console.log(JSON.parse(product.data.images))
           this.setState({
             product: product.data,
+            images: JSON.parse(product.data.images),
             relatedProducts: products.data.splice(0, 4),
           })
         })
@@ -47,7 +50,8 @@ export default class product extends Component {
           <Container>
             <Row>
               <Col xs={12} md={6}>
-                <ProductGallery />
+                {this.state.images !== [] &&
+                <ProductGallery productImages={this.state.images}/>}
               </Col>
               <Col xs={12} md={6}>
                 <ProductDetail product={product} />

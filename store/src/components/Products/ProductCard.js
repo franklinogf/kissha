@@ -4,7 +4,6 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import AddToCartButton from "../Buttons/AddToCartButton"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import sampleImage from "../../images/sample-image1.jpg"
 
 const StyledCard = styled(Card)`
   max-width: 16.875rem;
@@ -67,11 +66,12 @@ const StyledSale = styled.p`
   background-color: var(--primary);
 `
 const ProductCard = ({product,icon = true}) => {
+  const images = JSON.parse(product.images)
   return (
     <StyledCard className="border-0 text-center mx-auto">
       <StyledLink to="/product" state={{ productId: product.id }}>
         {!!product.discountStatus && <StyledSale>SALE</StyledSale>}
-        <CardImage className="rounded-0 mx-auto" src={sampleImage} />
+        <CardImage className="rounded-0 mx-auto" src={images[0].url} />
         <IconContainer>
           <FontAwesomeIcon
             className="text-white"

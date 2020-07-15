@@ -58,6 +58,11 @@ module.exports = mysql.define('products', {
       key: 'id'
     }
   },
+  'images': {
+    type: DataTypes.STRING(500),
+    allowNull: false,
+    comment: "null"
+  },
   'createdAt': {
     type: DataTypes.DATE,
     allowNull: true,

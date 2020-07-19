@@ -7,7 +7,7 @@ export default class about extends Component {
     return (
       <>
         <PageTitle title="About" />
-        <h1>{this.props.location.state.greeting}</h1>
+        <h1>Building...</h1>
       </>
     )
   }

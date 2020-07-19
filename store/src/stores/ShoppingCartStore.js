@@ -2,7 +2,7 @@ import { observable, action, computed, decorate } from "mobx"
 
 export class ShoppingCartStore {
   // LocalStorage or empty array
-  products = JSON.parse(localStorage.getItem('shoppingCart')) || []
+   products =typeof window !== 'undefined' && JSON.parse(localStorage.getItem('shoppingCart')) || []
 
   addProduct = (id, amount = 1) => {
     // check if the added Product already exists on the list
@@ -15,13 +15,13 @@ export class ShoppingCartStore {
       this.products.push({ id, amount })
     }
     // Every time a product is added to the shopping cart, save the products list into a localStorage
-    localStorage.setItem("shoppingCart",JSON.stringify(this.products))
+    typeof window !== 'undefined' && localStorage.setItem("shoppingCart",JSON.stringify(this.products))
   }
 
   removeProduct = (index)=>{
     this.products.splice(index,1)
 
-    localStorage.setItem("shoppingCart",JSON.stringify(this.products))
+   typeof window !== 'undefined' && localStorage.setItem("shoppingCart",JSON.stringify(this.products))
   }
 
   removeAll = ()=>{

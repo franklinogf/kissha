@@ -27,7 +27,7 @@ dbConnection.authenticate()
 
 
 //CORS SETUP
-const whitelist = ['http://localhost:8000']
+const whitelist = process.env.WHITELIST.split(",")
 const corsOptions = {
   origin: (origin,callback) => {
     const exists = whitelist.some(domain => domain === origin)

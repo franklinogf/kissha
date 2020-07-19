@@ -18,7 +18,11 @@ const login = require('./routes/login')
 const orders = require('./routes/orders')
 
 require("dotenv").config({path:__dirname+'.env'})
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5001
+
+console.log(process.env.PORT)
+console.log(process.env.WHITELIST)
+console.log(process.env.WHITELIST.split(","))
 
 // TEST DATABASE CONNECTION
 dbConnection.authenticate()
@@ -27,6 +31,7 @@ dbConnection.authenticate()
 
 
 //CORS SETUP
+
 const whitelist = process.env.WHITELIST.split(",")
 const corsOptions = {
   origin: (origin,callback) => {

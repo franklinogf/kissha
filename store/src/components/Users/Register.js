@@ -50,7 +50,7 @@ const Register = () => {
       .then(response => {
         //Everithig done, redirect
         console.log(response)
-        navigate('/')
+        navigate('/user/login')
       })
       .catch(err=>{
         console.log("there was an error in the server, try in another time...")

@@ -2,7 +2,7 @@ import { observable, action, computed, decorate } from "mobx"
 
 export class ShoppingCartStore {
   // LocalStorage or empty array
-   products =typeof window !== 'undefined' && JSON.parse(localStorage.getItem('shoppingCart')) || []
+   products =typeof window !== 'undefined' && JSON.parse(localStorage.getItem('shoppingCart')) ? JSON.parse(localStorage.getItem('shoppingCart')): []
 
   addProduct = (id, amount = 1) => {
     // check if the added Product already exists on the list

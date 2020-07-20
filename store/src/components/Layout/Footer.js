@@ -78,17 +78,17 @@ const Footer = () => {
               <Col xs={12}>
                 <Row>
                   <Col xs={12}>
-                    <Link to="/" className="text-white py-1 h-p">
+                    <Link to="/about" className="text-white py-1 h-p">
                       About
                     </Link>
                   </Col>
                   <Col xs={12}>
-                    <Link to="/" className="text-white py-1 h-p">
+                    <Link to="/contact-us" className="text-white py-1 h-p">
                       Contact
                     </Link>
                   </Col>
                   <Col xs={12}>
-                    <Link to="/" className="text-white py-1 h-p">
+                    <Link to="/privacy-policy" className="text-white py-1 h-p">
                       Privacy Policy
                     </Link>
                   </Col>

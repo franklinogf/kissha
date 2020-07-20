@@ -21,15 +21,16 @@ const StyledCategoryCol = styled(Col)`
   }
 `
 
-const products = observer(() => {
+const products = observer(({location}) => {
   //variables
   const numRegex = /^[0-9]+(\.[0-9]{1,2})?$/
   const emptyFilter = { minPrice: "", maxPrice: "", brand: "Brands..." }
+  const initialCategory = location.state ? location.state.option : "All"
 
   //common states
   //set the category filter
   const [fetchProductsTrigger, setFetchProductsTrigger] = useState(false)
-  const [selectedCategory, setSelectedCategory] = useState("All")
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory)
   const [filter, setFilter] = useState(emptyFilter)
   const [listOfProducts, setListOfProducts] = useState([])
   const [showItems, setShowItems] = useState(6)
@@ -133,7 +134,7 @@ const products = observer(() => {
     if (fetchProductsTrigger) {
       fetchIt()
     }
-  }, [fetchProductsTrigger])
+  }, [fetchProductsTrigger,currentPage,filter,selectedCategory,showItems,sortBy])
   //END OF EFFECT
 
   //handles
@@ -328,17 +329,17 @@ const products = observer(() => {
                 <Col xs={12}>
                   <Row>
                     <Col xs={12}>
-                      <Link to="/products" className="text-dark">
+                      <Link to="/about" className="text-dark">
                         About
                       </Link>
                     </Col>
                     <Col xs={12}>
-                      <Link to="/products" className="text-dark">
+                      <Link to="/contact-us" className="text-dark">
                         Contact
                       </Link>
                     </Col>
                     <Col xs={12}>
-                      <Link to="/products" className="text-dark">
+                      <Link to="/privacy-policy" className="text-dark">
                         Privacy Policy
                       </Link>
                     </Col>

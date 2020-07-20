@@ -59,7 +59,6 @@ const Header = observer(({ sticky }) => {
 
   const handleCartLoad = () => {
     setCartStatus("loading")
-    console.log("first part")
     //map and fetch
     if (ShoppingCartStore.amountOfProducts !== 0) {
       AxiosClient.get("/products").then(response => {
@@ -128,21 +127,20 @@ const Header = observer(({ sticky }) => {
             <Link
               className="mr-md-2 mr-lg-4 nav-link"
               to="/products"
-              state={{ option: "makeup" }}
+              state={{ option: "Make Up" }}
             >
               Makeup
             </Link>
             <Link
               className="mr-md-2 mr-lg-4 nav-link"
               to="/products"
-              state={{ option: "skin care" }}
+              state={{ option: "Skin Care" }}
             >
               Skin care
             </Link>
             <Link
               className="mr-md-2 mr-lg-4 nav-link"
               to="/products"
-              state={{ option: "Sales" }}
             >
               Sales
             </Link>

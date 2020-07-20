@@ -5,44 +5,54 @@ import ProductDetail from "../components/Products/ProductDetail"
 import { Container, Row, Col } from "react-bootstrap"
 import PageTitle from "../components/Layout/PageTitle"
 import ProductRow from "../components/Products/ProductRow"
-import {API_URL} from '../helpers/config'
+import { FadeLoader } from "react-spinners"
+import { API_URL } from "../helpers/config"
+import { navigate } from "gatsby"
 
 export default class product extends Component {
   state = {
     product: {},
     images: [],
     relatedProducts: [],
+    isLoading: false,
   }
 
   findProduct(productId) {
-    fetch(`${API_URL}/products/${productId}`)
-    .then(data => data.json())
-    .then(product => {
-      fetch(`${API_URL}/products`)
-        .then(data => data.json())
-        .then(products => {
-          console.log(JSON.parse(product.data.images))
-          this.setState({
-            product: product.data,
-            images: JSON.parse(product.data.images),
-            relatedProducts: products.data.splice(0, 4),
-          })
-        })
+    this.setState({
+      isLoading: true,
     })
+    fetch(`${API_URL}/products/${productId}`)
+      .then(data => data.json())
+      .then(product => {
+        fetch(`${API_URL}/products`)
+          .then(data => data.json())
+          .then(products => {
+            this.setState({
+              product: product.data,
+              images: JSON.parse(product.data.images),
+              relatedProducts: products.data.splice(0, 4),
+              isLoading: false,
+            })
+          })
+      })
   }
   componentDidMount() {
-    this.findProduct(this.props.location.state.productId)    
-  }
-  
-  componentDidUpdate(prevProps,prevState){
-    const productId = this.props.location.state.productId
-    if(productId !== prevProps.location.state.productId){
-      this.findProduct(productId)    
+    if (this.props.location.state == null) {
+      navigate("/")
+    } else {
+      this.findProduct(this.props.location.state.productId)
     }
   }
 
-  render() {    
-    const {product} = this.state
+  componentDidUpdate(prevProps, prevState) {
+    const productId = this.props.location.state.productId
+    if (productId !== prevProps.location.state.productId) {
+      this.findProduct(productId)
+    }
+  }
+
+  render() {
+    const { product } = this.state
     return (
       <>
         <PageTitle title={`${product.name}`} />
@@ -50,11 +60,28 @@ export default class product extends Component {
           <Container>
             <Row>
               <Col xs={12} md={6}>
-                {this.state.images !== [] &&
-                <ProductGallery productImages={this.state.images}/>}
+                {!this.state.isLoading ? (
+                  <ProductGallery productImages={this.state.images} />
+                ) : (
+                  <Row className="justify-content-center m-0 py-5">
+                    <div className="d-block position-relative">
+                      <FadeLoader
+                        height={70}
+                        width={12}
+                        radius={15}
+                        margin={50}
+                        color={"#FF758C"}
+                        loading
+                      />
+                    </div>
+                  </Row>
+                )}
               </Col>
               <Col xs={12} md={6}>
-                <ProductDetail product={product} />
+                <ProductDetail
+                  product={product}
+                  loadingState={this.state.isLoading}
+                />
               </Col>
             </Row>
             <Row className="pt-2 pb-4 mt-4 mb-0 border-top border-bottom border-primary">

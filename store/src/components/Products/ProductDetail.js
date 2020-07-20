@@ -1,8 +1,9 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { Card, ListGroup, Form, Row, Col } from "react-bootstrap"
 import InputSpinner from "../Products/InputSpinner"
 import SocialIcons from "../Layout/SocialIcons"
 import AddToCartButton from "../Buttons/AddToCartButton"
+import { PulseLoader } from "react-spinners"
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -50,10 +51,17 @@ class ProductDetail extends React.Component {
       discountStatus,
       discount,
     } = this.props.product
+
+    const loadingState = this.props.loadingState || false
+
     return (
       <Card className="border-0">
         <Card.Title className="_section-title font-weight-normal _font-size-32 mb-3">
-          {name}
+          {loadingState ? (
+            <PulseLoader size={25} color={"#FF758C"} loading />
+          ) : (
+            name
+          )}
         </Card.Title>
         <ListGroup
           horizontal
@@ -61,7 +69,11 @@ class ProductDetail extends React.Component {
         >
           <ListGroup.Item className="pl-0  border-0">Brand:</ListGroup.Item>
           <ListGroup.Item className="text-primary  border-0">
-            {brand}
+            {loadingState ? (
+              <PulseLoader size={10} color={"#FF758C"} loading />
+            ) : (
+              brand
+            )}
           </ListGroup.Item>
         </ListGroup>
         <ListGroup
@@ -70,16 +82,26 @@ class ProductDetail extends React.Component {
         >
           <ListGroup.Item className="pl-0  border-0">Model:</ListGroup.Item>
           <ListGroup.Item className="text-primary  border-0">
-            {model}
+            {loadingState ? (
+              <PulseLoader size={10} color={"#FF758C"} loading />
+            ) : (
+              model
+            )}
           </ListGroup.Item>
         </ListGroup>
         <Card.Text className="_font-Montserrat _font-size-28 my-2">
-          <span className={!!discountStatus ? "small" : undefined}>
-            ${!!discountStatus ? <s>{price}</s> : price}
-          </span>{" "}
-          <span className={!!discountStatus ? "text-primary" : undefined}>
-            {!!discountStatus && "$" + ((1-discount)*price).toFixed(2)}
-          </span>
+          {loadingState ? (
+            <PulseLoader size={15} color={"#FF758C"} loading />
+          ) : (
+            <Fragment>
+              <span className={!!discountStatus ? "small" : undefined}>
+                ${!!discountStatus ? <s>{price}</s> : price}
+              </span>{" "}
+              <span className={!!discountStatus ? "text-primary" : undefined}>
+                {!!discountStatus && "$" + ((1 - discount) * price).toFixed(2)}
+              </span>
+            </Fragment>
+          )}
         </Card.Text>
         <Card.Text className="_font-Montserrat _font-size-16 mt-2 mb-3">
           {description}

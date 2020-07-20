@@ -3,7 +3,7 @@ Shop your beauty
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://kissha-ecommerce-makeup.netlify.app/">
-    <img alt="Gatsby" src="https://imgur.com/7vnykRs" width="60" />
+    <img alt="Gatsby" src="https://i.imgur.com/7vnykRs.png" width="60" />
   </a>
 </p>
 <h1 align="center">

@@ -21,7 +21,7 @@
     "@fortawesome/free-brands-svg-icons": "5.13.0",
     "@fortawesome/free-solid-svg-icons": "5.13.0",
     "@fortawesome/react-fontawesome": "0.1.9",
-    "axios": "0.19.2",
+    "axios": "1.6.0",
     "bootstrap": "4.5.0",
     "computed-async-mobx": "4.2.1",
     "gatsby": "2.22.15",

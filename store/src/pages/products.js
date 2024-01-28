@@ -40,101 +40,101 @@ const products = observer(({location}) => {
   const [loading, setLoading] = useState(false)
 
   //EEFECT
-  useEffect(() => {
-    const fetchIt = () => {
-      setLoading(true)
+  // useEffect(() => {
+  //   const fetchIt = () => {
+  //     setLoading(true)
 
-      let tempURL = "/products"
-      let count = 0
+  //     let tempURL = "/products"
+  //     let count = 0
 
-      if (selectedCategory !== "All" && selectedCategory !== "New Arrivals") {
-        if (count === 0) {
-          tempURL += `?`
-          count++
-        } else {
-          tempURL += `&`
-        }
-        tempURL += `category=${selectedCategory}`
-      }
+  //     if (selectedCategory !== "All" && selectedCategory !== "New Arrivals") {
+  //       if (count === 0) {
+  //         tempURL += `?`
+  //         count++
+  //       } else {
+  //         tempURL += `&`
+  //       }
+  //       tempURL += `category=${selectedCategory}`
+  //     }
 
-      if (filter.minPrice !== "") {
-        if (count === 0) {
-          tempURL += `?`
-          count++
-        } else {
-          tempURL += `&`
-        }
-        tempURL += `minPrice=${filter.minPrice}`
-      }
-      if (filter.maxPrice !== "") {
-        if (count === 0) {
-          tempURL += `?`
-          count++
-        } else {
-          tempURL += `&`
-        }
-        tempURL += `maxPrice=${filter.maxPrice}`
-      }
-      if (filter.brand !== "Brands...") {
-        if (count === 0) {
-          tempURL += `?`
-          count++
-        } else {
-          tempURL += `&`
-        }
-        tempURL += `brand=${filter.brand}`
-      }
+  //     if (filter.minPrice !== "") {
+  //       if (count === 0) {
+  //         tempURL += `?`
+  //         count++
+  //       } else {
+  //         tempURL += `&`
+  //       }
+  //       tempURL += `minPrice=${filter.minPrice}`
+  //     }
+  //     if (filter.maxPrice !== "") {
+  //       if (count === 0) {
+  //         tempURL += `?`
+  //         count++
+  //       } else {
+  //         tempURL += `&`
+  //       }
+  //       tempURL += `maxPrice=${filter.maxPrice}`
+  //     }
+  //     if (filter.brand !== "Brands...") {
+  //       if (count === 0) {
+  //         tempURL += `?`
+  //         count++
+  //       } else {
+  //         tempURL += `&`
+  //       }
+  //       tempURL += `brand=${filter.brand}`
+  //     }
 
-      if (showItems !== 0) {
-        if (count === 0) {
-          tempURL += `?`
-          count++
-        } else {
-          tempURL += `&`
-        }
-        tempURL += `limit=${showItems}`
-      }
+  //     if (showItems !== 0) {
+  //       if (count === 0) {
+  //         tempURL += `?`
+  //         count++
+  //       } else {
+  //         tempURL += `&`
+  //       }
+  //       tempURL += `limit=${showItems}`
+  //     }
 
-      if (sortBy !== "...") {
-        if (count === 0) {
-          tempURL += `?`
-          count++
-        } else {
-          tempURL += `&`
-        }
-        tempURL += `sort=${sortBy.split(" ").join("-")}`
-      }
+  //     if (sortBy !== "...") {
+  //       if (count === 0) {
+  //         tempURL += `?`
+  //         count++
+  //       } else {
+  //         tempURL += `&`
+  //       }
+  //       tempURL += `sort=${sortBy.split(" ").join("-")}`
+  //     }
 
-      if (currentPage !== 1) {
-        if (count === 0) {
-          tempURL += `?`
-          count++
-        } else {
-          tempURL += `&`
-        }
-        tempURL += `page=${currentPage}`
-      }
+  //     if (currentPage !== 1) {
+  //       if (count === 0) {
+  //         tempURL += `?`
+  //         count++
+  //       } else {
+  //         tempURL += `&`
+  //       }
+  //       tempURL += `page=${currentPage}`
+  //     }
 
-      AxiosClient.get(tempURL).then(response => {
-        console.log(response)
-        setListOfProducts(response.data.data)
-        setTotalPages(response.data.totalPages)
-        setCurrentPage(response.data.currentPage)
-        setFetchProductsTrigger(false)
-        setLoading(false)
-      })
-    }
+  //     AxiosClient.get(tempURL).then(response => {
+  //       console.log(response)
+  //       setListOfProducts(response.data.data)
+  //       setTotalPages(response.data.totalPages)
+  //       setCurrentPage(response.data.currentPage)
+  //       setFetchProductsTrigger(false)
+  //       setLoading(false)
+  //     })
+  //   }
 
-    //first time fetch all
-    for (let i = 0; i < 1; i++) {
-      fetchIt()
-    }
+  //   //first time fetch all
+  //   for (let i = 0; i < 1; i++) {
+  //     fetchIt()
+  //   }
 
-    //if
-    if (fetchProductsTrigger) {
-      fetchIt()
-    }
-  }, [fetchProductsTrigger,currentPage,filter,selectedCategory,showItems,sortBy])
+  //   //if
+  //   if (fetchProductsTrigger) {
+  //     fetchIt()
+  //   }
+  // }, [fetchProductsTrigger,currentPage,filter,selectedCategory,showItems,sortBy])
   //END OF EFFECT
 
   //handles

@@ -40,12 +40,12 @@ export default class index extends Component {
     this.handleAddToCart = this.handleAddToCart.bind(this)
   }
   componentDidMount() {
-    fetch(`${API_URL}/products`)
-      .then(data => data.json())
-      .then(products => {
-        const sortedProducts = sortByDate(products.data)
-        this.setState({ products: sortedProducts.slice(0, 4) })
-      })
+    // fetch(`${API_URL}/products`)
+    //   .then(data => data.json())
+    //   .then(products => {
+    //     const sortedProducts = sortByDate(products.data)
+    //     this.setState({ products: sortedProducts.slice(0, 4) })
+    //   })
   }
   handleAddToCart(e) {
     this.setState({

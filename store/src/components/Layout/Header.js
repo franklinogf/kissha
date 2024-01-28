@@ -65,7 +65,7 @@ const Header = observer(({ sticky }) => {
         const fetchedProducts = response.data.data
         const tempProducts = []
 
-        ShoppingCartStore.obtainProducts.map(StoredCartProduct => {
+        ShoppingCartStore.obtainProducts.forEach(StoredCartProduct => {
           const tempArray = fetchedProducts.filter(
             fetchedProduct =>{return fetchedProduct.id === StoredCartProduct.id}
           )

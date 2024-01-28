@@ -24,7 +24,7 @@
     "axios": "0.19.2",
     "bootstrap": "4.5.0",
     "computed-async-mobx": "4.2.1",
-    "gatsby": "2.22.15",
+    "gatsby": "5.13.3",
     "gatsby-plugin-create-client-paths": "2.3.9",
     "gatsby-plugin-react-helmet": "3.3.2",
     "gatsby-plugin-sass": "2.3.2",

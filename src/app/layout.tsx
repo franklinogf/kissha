@@ -1,15 +1,15 @@
-import type { Metadata } from "next"
+import type { Metadata } from 'next'
 
-import "./globals.css"
-import { inter } from "@/app/libs/fonts"
+import './globals.css'
+import { inter } from '@/app/libs/fonts'
 
 export const metadata: Metadata = {
-  title: "Its Kissha - Cosmetic store",
-  description: "A cosmetic store for every woman needs",
+  title: 'Its Kissha - Cosmetic store',
+  description: 'A cosmetic store for every woman needs'
 }
 
-export default function RootLayout({
-  children,
+export default function RootLayout ({
+  children
 }: Readonly<{
   children: React.ReactNode
 }>) {
